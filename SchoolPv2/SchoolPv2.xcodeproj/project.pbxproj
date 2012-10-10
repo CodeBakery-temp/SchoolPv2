@@ -1,0 +1,375 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		06AA444F16256504002DDB8F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06AA444E16256504002DDB8F /* UIKit.framework */; };
+		06AA445116256504002DDB8F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06AA445016256504002DDB8F /* Foundation.framework */; };
+		06AA445316256504002DDB8F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06AA445216256504002DDB8F /* CoreGraphics.framework */; };
+		06AA445516256504002DDB8F /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06AA445416256504002DDB8F /* CoreData.framework */; };
+		06AA445B16256504002DDB8F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 06AA445916256504002DDB8F /* InfoPlist.strings */; };
+		06AA445D16256504002DDB8F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 06AA445C16256504002DDB8F /* main.m */; };
+		06AA446116256504002DDB8F /* CBAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 06AA446016256504002DDB8F /* CBAppDelegate.m */; };
+		06AA446316256504002DDB8F /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 06AA446216256504002DDB8F /* Default.png */; };
+		06AA446516256504002DDB8F /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 06AA446416256504002DDB8F /* Default@2x.png */; };
+		06AA446716256504002DDB8F /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 06AA446616256504002DDB8F /* Default-568h@2x.png */; };
+		06AA446A16256504002DDB8F /* SchoolPv2.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 06AA446816256504002DDB8F /* SchoolPv2.xcdatamodeld */; };
+		06AA44811625660F002DDB8F /* CBLecture.m in Sources */ = {isa = PBXBuildFile; fileRef = 06AA44801625660F002DDB8F /* CBLecture.m */; };
+		06AA448416256623002DDB8F /* CBNote.m in Sources */ = {isa = PBXBuildFile; fileRef = 06AA448316256623002DDB8F /* CBNote.m */; };
+		06AA448716256638002DDB8F /* CBUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 06AA448616256638002DDB8F /* CBUser.m */; };
+		06AA448A16256644002DDB8F /* CBMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 06AA448916256644002DDB8F /* CBMessage.m */; };
+		06AA448D16256777002DDB8F /* CBDatabaseService.m in Sources */ = {isa = PBXBuildFile; fileRef = 06AA448C16256777002DDB8F /* CBDatabaseService.m */; };
+		06AA4490162567EB002DDB8F /* CBScheduleService.m in Sources */ = {isa = PBXBuildFile; fileRef = 06AA448F162567EB002DDB8F /* CBScheduleService.m */; };
+		06AA449316256877002DDB8F /* CBWeekViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06AA449216256877002DDB8F /* CBWeekViewController.m */; };
+		06AA4496162568A9002DDB8F /* CBDayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06AA4495162568A9002DDB8F /* CBDayViewController.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		06AA444A16256504002DDB8F /* SchoolPv2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SchoolPv2.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		06AA444E16256504002DDB8F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		06AA445016256504002DDB8F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		06AA445216256504002DDB8F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		06AA445416256504002DDB8F /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		06AA445816256504002DDB8F /* SchoolPv2-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SchoolPv2-Info.plist"; sourceTree = "<group>"; };
+		06AA445A16256504002DDB8F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		06AA445C16256504002DDB8F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		06AA445E16256504002DDB8F /* SchoolPv2-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SchoolPv2-Prefix.pch"; sourceTree = "<group>"; };
+		06AA445F16256504002DDB8F /* CBAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CBAppDelegate.h; sourceTree = "<group>"; };
+		06AA446016256504002DDB8F /* CBAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CBAppDelegate.m; sourceTree = "<group>"; };
+		06AA446216256504002DDB8F /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		06AA446416256504002DDB8F /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		06AA446616256504002DDB8F /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		06AA446916256504002DDB8F /* SchoolPv2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SchoolPv2.xcdatamodel; sourceTree = "<group>"; };
+		06AA447F1625660F002DDB8F /* CBLecture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBLecture.h; sourceTree = "<group>"; };
+		06AA44801625660F002DDB8F /* CBLecture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBLecture.m; sourceTree = "<group>"; };
+		06AA448216256623002DDB8F /* CBNote.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBNote.h; sourceTree = "<group>"; };
+		06AA448316256623002DDB8F /* CBNote.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBNote.m; sourceTree = "<group>"; };
+		06AA448516256638002DDB8F /* CBUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBUser.h; sourceTree = "<group>"; };
+		06AA448616256638002DDB8F /* CBUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBUser.m; sourceTree = "<group>"; };
+		06AA448816256644002DDB8F /* CBMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBMessage.h; sourceTree = "<group>"; };
+		06AA448916256644002DDB8F /* CBMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBMessage.m; sourceTree = "<group>"; };
+		06AA448B16256777002DDB8F /* CBDatabaseService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBDatabaseService.h; sourceTree = "<group>"; };
+		06AA448C16256777002DDB8F /* CBDatabaseService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBDatabaseService.m; sourceTree = "<group>"; };
+		06AA448E162567EB002DDB8F /* CBScheduleService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBScheduleService.h; sourceTree = "<group>"; };
+		06AA448F162567EB002DDB8F /* CBScheduleService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBScheduleService.m; sourceTree = "<group>"; };
+		06AA449116256877002DDB8F /* CBWeekViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBWeekViewController.h; sourceTree = "<group>"; };
+		06AA449216256877002DDB8F /* CBWeekViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBWeekViewController.m; sourceTree = "<group>"; };
+		06AA4494162568A9002DDB8F /* CBDayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBDayViewController.h; sourceTree = "<group>"; };
+		06AA4495162568A9002DDB8F /* CBDayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBDayViewController.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		06AA444716256504002DDB8F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				06AA444F16256504002DDB8F /* UIKit.framework in Frameworks */,
+				06AA445116256504002DDB8F /* Foundation.framework in Frameworks */,
+				06AA445316256504002DDB8F /* CoreGraphics.framework in Frameworks */,
+				06AA445516256504002DDB8F /* CoreData.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		06AA443F16256504002DDB8F = {
+			isa = PBXGroup;
+			children = (
+				06AA445616256504002DDB8F /* SchoolPv2 */,
+				06AA444D16256504002DDB8F /* Frameworks */,
+				06AA444B16256504002DDB8F /* Products */,
+				06AA445716256504002DDB8F /* Supporting Files */,
+			);
+			sourceTree = "<group>";
+		};
+		06AA444B16256504002DDB8F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				06AA444A16256504002DDB8F /* SchoolPv2.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		06AA444D16256504002DDB8F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				06AA444E16256504002DDB8F /* UIKit.framework */,
+				06AA445016256504002DDB8F /* Foundation.framework */,
+				06AA445216256504002DDB8F /* CoreGraphics.framework */,
+				06AA445416256504002DDB8F /* CoreData.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		06AA445616256504002DDB8F /* SchoolPv2 */ = {
+			isa = PBXGroup;
+			children = (
+				06AA447016256555002DDB8F /* Service */,
+				06AA44711625655C002DDB8F /* View */,
+				06AA447216256562002DDB8F /* Model */,
+				06AA445F16256504002DDB8F /* CBAppDelegate.h */,
+				06AA446016256504002DDB8F /* CBAppDelegate.m */,
+				06AA446816256504002DDB8F /* SchoolPv2.xcdatamodeld */,
+			);
+			path = SchoolPv2;
+			sourceTree = "<group>";
+		};
+		06AA445716256504002DDB8F /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				06AA445816256504002DDB8F /* SchoolPv2-Info.plist */,
+				06AA445916256504002DDB8F /* InfoPlist.strings */,
+				06AA445C16256504002DDB8F /* main.m */,
+				06AA445E16256504002DDB8F /* SchoolPv2-Prefix.pch */,
+				06AA446216256504002DDB8F /* Default.png */,
+				06AA446416256504002DDB8F /* Default@2x.png */,
+				06AA446616256504002DDB8F /* Default-568h@2x.png */,
+			);
+			name = "Supporting Files";
+			path = SchoolPv2;
+			sourceTree = "<group>";
+		};
+		06AA447016256555002DDB8F /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				06AA448B16256777002DDB8F /* CBDatabaseService.h */,
+				06AA448C16256777002DDB8F /* CBDatabaseService.m */,
+				06AA448E162567EB002DDB8F /* CBScheduleService.h */,
+				06AA448F162567EB002DDB8F /* CBScheduleService.m */,
+			);
+			name = Service;
+			sourceTree = "<group>";
+		};
+		06AA44711625655C002DDB8F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				06AA449116256877002DDB8F /* CBWeekViewController.h */,
+				06AA449216256877002DDB8F /* CBWeekViewController.m */,
+				06AA4494162568A9002DDB8F /* CBDayViewController.h */,
+				06AA4495162568A9002DDB8F /* CBDayViewController.m */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		06AA447216256562002DDB8F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				06AA447F1625660F002DDB8F /* CBLecture.h */,
+				06AA44801625660F002DDB8F /* CBLecture.m */,
+				06AA448216256623002DDB8F /* CBNote.h */,
+				06AA448316256623002DDB8F /* CBNote.m */,
+				06AA448516256638002DDB8F /* CBUser.h */,
+				06AA448616256638002DDB8F /* CBUser.m */,
+				06AA448816256644002DDB8F /* CBMessage.h */,
+				06AA448916256644002DDB8F /* CBMessage.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		06AA444916256504002DDB8F /* SchoolPv2 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 06AA446D16256504002DDB8F /* Build configuration list for PBXNativeTarget "SchoolPv2" */;
+			buildPhases = (
+				06AA444616256504002DDB8F /* Sources */,
+				06AA444716256504002DDB8F /* Frameworks */,
+				06AA444816256504002DDB8F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SchoolPv2;
+			productName = SchoolPv2;
+			productReference = 06AA444A16256504002DDB8F /* SchoolPv2.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		06AA444116256504002DDB8F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = CB;
+				LastUpgradeCheck = 0450;
+			};
+			buildConfigurationList = 06AA444416256504002DDB8F /* Build configuration list for PBXProject "SchoolPv2" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 06AA443F16256504002DDB8F;
+			productRefGroup = 06AA444B16256504002DDB8F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				06AA444916256504002DDB8F /* SchoolPv2 */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		06AA444816256504002DDB8F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				06AA445B16256504002DDB8F /* InfoPlist.strings in Resources */,
+				06AA446316256504002DDB8F /* Default.png in Resources */,
+				06AA446516256504002DDB8F /* Default@2x.png in Resources */,
+				06AA446716256504002DDB8F /* Default-568h@2x.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		06AA444616256504002DDB8F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				06AA445D16256504002DDB8F /* main.m in Sources */,
+				06AA446116256504002DDB8F /* CBAppDelegate.m in Sources */,
+				06AA446A16256504002DDB8F /* SchoolPv2.xcdatamodeld in Sources */,
+				06AA44811625660F002DDB8F /* CBLecture.m in Sources */,
+				06AA448416256623002DDB8F /* CBNote.m in Sources */,
+				06AA448716256638002DDB8F /* CBUser.m in Sources */,
+				06AA448A16256644002DDB8F /* CBMessage.m in Sources */,
+				06AA448D16256777002DDB8F /* CBDatabaseService.m in Sources */,
+				06AA4490162567EB002DDB8F /* CBScheduleService.m in Sources */,
+				06AA449316256877002DDB8F /* CBWeekViewController.m in Sources */,
+				06AA4496162568A9002DDB8F /* CBDayViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		06AA445916256504002DDB8F /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				06AA445A16256504002DDB8F /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		06AA446B16256504002DDB8F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		06AA446C16256504002DDB8F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		06AA446E16256504002DDB8F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SchoolPv2/SchoolPv2-Prefix.pch";
+				INFOPLIST_FILE = "SchoolPv2/SchoolPv2-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		06AA446F16256504002DDB8F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SchoolPv2/SchoolPv2-Prefix.pch";
+				INFOPLIST_FILE = "SchoolPv2/SchoolPv2-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		06AA444416256504002DDB8F /* Build configuration list for PBXProject "SchoolPv2" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				06AA446B16256504002DDB8F /* Debug */,
+				06AA446C16256504002DDB8F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		06AA446D16256504002DDB8F /* Build configuration list for PBXNativeTarget "SchoolPv2" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				06AA446E16256504002DDB8F /* Debug */,
+				06AA446F16256504002DDB8F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		06AA446816256504002DDB8F /* SchoolPv2.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				06AA446916256504002DDB8F /* SchoolPv2.xcdatamodel */,
+			);
+			currentVersion = 06AA446916256504002DDB8F /* SchoolPv2.xcdatamodel */;
+			path = SchoolPv2.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 06AA444116256504002DDB8F /* Project object */;
+}
