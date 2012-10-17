@@ -26,6 +26,8 @@
 		06AA4490162567EB002DDB8F /* CBScheduleService.m in Sources */ = {isa = PBXBuildFile; fileRef = 06AA448F162567EB002DDB8F /* CBScheduleService.m */; };
 		06AA449316256877002DDB8F /* CBWeekViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06AA449216256877002DDB8F /* CBWeekViewController.m */; };
 		06AA4496162568A9002DDB8F /* CBDayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06AA4495162568A9002DDB8F /* CBDayViewController.m */; };
+		06AA44B6162C4409002DDB8F /* CBWeekViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 06AA44B5162C4409002DDB8F /* CBWeekViewCell.m */; };
+		06AA44B9162C4466002DDB8F /* CBWeekViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 06AA44B8162C4466002DDB8F /* CBWeekViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,6 +62,9 @@
 		06AA449216256877002DDB8F /* CBWeekViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBWeekViewController.m; sourceTree = "<group>"; };
 		06AA4494162568A9002DDB8F /* CBDayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBDayViewController.h; sourceTree = "<group>"; };
 		06AA4495162568A9002DDB8F /* CBDayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBDayViewController.m; sourceTree = "<group>"; };
+		06AA44B4162C4409002DDB8F /* CBWeekViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBWeekViewCell.h; sourceTree = "<group>"; };
+		06AA44B5162C4409002DDB8F /* CBWeekViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBWeekViewCell.m; sourceTree = "<group>"; };
+		06AA44B8162C4466002DDB8F /* CBWeekViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CBWeekViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,6 +157,9 @@
 				06AA449216256877002DDB8F /* CBWeekViewController.m */,
 				06AA4494162568A9002DDB8F /* CBDayViewController.h */,
 				06AA4495162568A9002DDB8F /* CBDayViewController.m */,
+				06AA44B4162C4409002DDB8F /* CBWeekViewCell.h */,
+				06AA44B5162C4409002DDB8F /* CBWeekViewCell.m */,
+				06AA44B8162C4466002DDB8F /* CBWeekViewCell.xib */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -226,6 +234,7 @@
 				06AA446316256504002DDB8F /* Default.png in Resources */,
 				06AA446516256504002DDB8F /* Default@2x.png in Resources */,
 				06AA446716256504002DDB8F /* Default-568h@2x.png in Resources */,
+				06AA44B9162C4466002DDB8F /* CBWeekViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -247,6 +256,7 @@
 				06AA4490162567EB002DDB8F /* CBScheduleService.m in Sources */,
 				06AA449316256877002DDB8F /* CBWeekViewController.m in Sources */,
 				06AA4496162568A9002DDB8F /* CBDayViewController.m in Sources */,
+				06AA44B6162C4409002DDB8F /* CBWeekViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -355,6 +365,7 @@
 				06AA446F16256504002DDB8F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

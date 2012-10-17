@@ -2,4 +2,6 @@
 
 @interface CBDayViewController : UITableViewController
 
+@property (nonatomic, weak) id delegate;
+
 @end

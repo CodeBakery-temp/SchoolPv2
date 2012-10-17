@@ -1,4 +1,3 @@
-
 #import "CBDatabaseService.h"
 #import "CBScheduleService.h"
 #import "CBWeekViewController.h"
@@ -7,16 +6,22 @@
 #import "CBNote.h"
 #import "CBUser.h"
 #import "CBMessage.h"
+#import "CBWeekViewCell.h"
 
 @implementation CBWeekViewController
 {
+    CBScheduleService *schedule;
     CBUser *user;
 }
+@synthesize delegate;
 
 - (id)init
 {
     self = [super initWithStyle:UITableViewStyleGrouped];
     if (self) {
+        self.tableView.separatorColor = [UIColor clearColor];
+        
+        NSLog(@"GET USER");
         userName = @"nordin.christoffer@gmail.com";
         CBDatabaseService *db = [CBDatabaseService database];
         NSMutableArray *users = [[db getUsers] objectForKey:@"STUDENT"];
@@ -25,36 +30,20 @@
                 user = u;
             }
         }
-        CBScheduleService *schedule = [CBScheduleService schedule];
-        NSDictionary *lecturesDays = [schedule getLecturesPerDays:[schedule getLecturesOfWeek:user currentWeek:41]];
+        NSDate *date = [NSDate date];
+        NSCalendar *calendar = [NSCalendar currentCalendar];
+        NSInteger units = NSWeekCalendarUnit;
+        NSDateComponents *components = [calendar components:units fromDate:date];
         
-        NSMutableArray *mondayList = [lecturesDays objectForKey:@"MONDAY"];
-        NSLog(@"%d", [mondayList count]);
-        NSMutableDictionary *mondayDict = [NSMutableDictionary dictionaryWithObject:mondayList forKey:@"LECTURES"];
-        [mondayDict setObject:@"MONDAY" forKey:@"DAY"];
-        NSMutableArray *tuesdayList = [lecturesDays objectForKey:@"TUESDAY"];
-        NSLog(@"%d", [tuesdayList count]);
-        NSMutableDictionary *tuesdayDict = [NSMutableDictionary dictionaryWithObject:tuesdayList forKey:@"LECTURES"];
-        [tuesdayDict setObject:@"TUESDAY" forKey:@"DAY"];
-        NSMutableArray *wednesdayList = [lecturesDays objectForKey:@"WEDNESDAY"];
-        NSLog(@"%d", [wednesdayList count]);
-        NSMutableDictionary *wednesdayDict = [NSMutableDictionary dictionaryWithObject:wednesdayList forKey:@"LECTURES"];
-        [wednesdayDict setObject:@"WEDNESDAY" forKey:@"DAY"];
-        NSMutableArray *thursdayList = [lecturesDays objectForKey:@"THURSDAY"];
-        NSLog(@"%d", [thursdayList count]);
-        NSMutableDictionary *thursdayDict = [NSMutableDictionary dictionaryWithObject:thursdayList forKey:@"LECTURES"];
-        [thursdayDict setObject:@"THURSDAY" forKey:@"DAY"];
-        NSMutableArray *fridayList = [lecturesDays objectForKey:@"FRIDAY"];
-        NSLog(@"%d", [fridayList count]);
-        NSMutableDictionary *fridayDict = [NSMutableDictionary dictionaryWithObject:fridayList forKey:@"LECTURES"];
-        [fridayDict setObject:@"FRIDAY" forKey:@"DAY"];
-        
-        weekDays = [[NSMutableArray alloc] initWithObjects:mondayDict, tuesdayDict, wednesdayDict, thursdayDict, fridayDict, nil];
-        
-        UINavigationItem *item = [self navigationItem];
-        [item setTitle:@"Scheduler"];
-        UIBarButtonItem *inboxButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemOrganize target:self action:@selector(toInbox:)];
-        [item setRightBarButtonItem:inboxButton];
+        schedule = [CBScheduleService schedule];
+        [schedule getLecturesOfWeek:user currentWeek:[components week]];
+        [schedule sortLecturesByVersionAndTime];
+        //[schedule getNotesOfWeekAndMessages:user currentWeek:[components week]];
+        NSLog(@"%d %d %d %d %d", [[[[schedule getWeekLectures] objectAtIndex:0] objectForKey:@"LECTURES"] count],
+              [[[[schedule getWeekLectures] objectAtIndex:1] objectForKey:@"LECTURES"] count],
+              [[[[schedule getWeekLectures] objectAtIndex:2] objectForKey:@"LECTURES"] count],
+              [[[[schedule getWeekLectures] objectAtIndex:3] objectForKey:@"LECTURES"] count],
+              [[[[schedule getWeekLectures] objectAtIndex:4] objectForKey:@"LECTURES"] count]);
     }
     return self;
 }
@@ -64,9 +53,16 @@
     return [self init];
 }
 
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    UINib *nib = [UINib nibWithNibName:@"CBWeekViewCell" bundle:nil];
+    [[self tableView] registerNib:nib forCellReuseIdentifier:@"CBWeekViewCell"];
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [[[weekDays objectAtIndex:section] objectForKey:@"LECTURES"] count]+1;
+    return [[[[schedule getWeekLectures] objectAtIndex:section] objectForKey:@"LECTURES"] count]+1;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -77,50 +73,41 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell;
+    CBWeekViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CBWeekViewCell"];
     if ([indexPath row]==0) {
         // DAY HEADER
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"UITableViewCell"];
-        [[cell textLabel] setText:[[weekDays objectAtIndex:[indexPath section]] objectForKey:@"DAY"]];
+        [[cell dayLabel] setText:[[[schedule getWeekLectures] objectAtIndex:[indexPath section]] objectForKey:@"DAY"]];
+        [[cell courseLabel] setText:@""];
+        [[cell startLabel] setText:@""];
+        [[cell stopLabel] setText:@""];
+        return cell;
     }
     else {
         // COURSE OBJECTS
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"UITableViewCell"];
-        NSArray *lectures = [[weekDays objectAtIndex:[indexPath section]] objectForKey:@"LECTURES"];
+        NSArray *lectures = [[[schedule getWeekLectures] objectAtIndex:[indexPath section]] objectForKey:@"LECTURES"];
         CBLecture *lec = [lectures objectAtIndex:([indexPath row]-1)];
-        [[cell textLabel] setText: [lec course]];
-        [[cell detailTextLabel] setText: [NSString stringWithFormat:@"%@ - %@", [lec startTime], [lec stopTime]]];
+        [[cell dayLabel] setText:@""];
+        [[cell courseLabel] setText: [lec course]];
+        [[cell startLabel] setText: [NSString stringWithFormat:@"%@ -", [lec startTime]]];
+        [[cell stopLabel] setText: [NSString stringWithFormat:@"%@", [lec stopTime]]];
+        return cell;
     }
-    return cell;
-    
-    /*static NSString *cellId = @"CNFriendListCell";
-     NSArray *array = [[[[CNFriendManager manager] allFriends] objectAtIndex:[indexPath section]] objectForKey:@"list"];
-     CNFriend *entry = [array objectAtIndex:[indexPath row]];
-     
-     if(([indexPath section]==0)||[[[CNFriendManager manager] allFriends] count]>0) {
-     CNFriendListCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId];
-     [[cell nameLabel] setText:[entry name]];
-     [[cell idLabel] setText:[NSString stringWithFormat:@"ID: %@",[entry phone]]];
-     [cell setController:self];
-     [cell setIndexPath:indexPath];
-     if([indexPath section]==0)
-     cell.showLabel.hidden =YES;
-     if([[entry show]isEqualToString:@"YES"])
-     [[cell showLabel] setImage:[UIImage imageNamed:@"button_on.png"] forState:UIControlStateNormal];
-     else
-     [[cell showLabel] setImage:[UIImage imageNamed:@"button_off.png"] forState:UIControlStateNormal];
-     return cell;*/
+    return nil;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
 {
-    CBDayViewController *dayController = [[CBDayViewController alloc] init];
-    
-    //NSArray *array = [[[[CNFriendManager manager] allFriends] objectAtIndex:[indexPath section]] objectForKey:@"list"];
-    //CNFriend *f = [array objectAtIndex:[indexPath row]];
-    //[addFriendController setPerson:f];
-    
-    [[self navigationController] pushViewController:dayController animated:YES];
+    if (fromInterfaceOrientation==UIInterfaceOrientationLandscapeLeft||
+        fromInterfaceOrientation==UIInterfaceOrientationLandscapeRight) {
+        CBDayViewController *dayController = [[CBDayViewController alloc] init];
+        dayController.delegate = delegate;
+        [delegate setRootViewController:dayController];
+    }
+}
+
+- (NSUInteger)supportedInterfaceOrientations
+{
+    return UIInterfaceOrientationMaskAll;
 }
 
 @end

@@ -1,13 +1,5 @@
-//
-//  CBAppDelegate.m
-//  SchoolPv2
-//
-//  Created by Christoffer Nordin on 10/10/12.
-//
-//
-
 #import "CBAppDelegate.h"
-#import "CBWeekViewController.h"
+#import "CBDayViewController.h"
 
 @implementation CBAppDelegate
 
@@ -20,10 +12,9 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     
-    CBWeekViewController *weekController = [[CBWeekViewController alloc] init];
-    UIViewController *controller = [[UINavigationController alloc] initWithRootViewController:weekController];
-    
-    [[self window] setRootViewController:controller];
+    CBDayViewController *dayController = [[CBDayViewController alloc] init];
+    dayController.delegate = [self window];
+    [[self window] setRootViewController:dayController];
     
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];

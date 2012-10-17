@@ -3,7 +3,8 @@
 @interface CBWeekViewController : UITableViewController
 {
     NSString* userName;
-    NSMutableArray *weekDays;
 }
+
+@property (nonatomic, weak) id delegate;
 
 @end

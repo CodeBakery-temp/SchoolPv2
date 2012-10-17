@@ -58,13 +58,13 @@ NSString *const getAll = @"_all_docs?include_docs=true";
 /*********************************************************************
  METHOD : POST LECTURE OBJECT TO LECTURE DATABASE
  ACCEPTS: Lecture object as NSDictionary
- RETURNS: NONE
+ RETURNS: Result NSString
  *********************************************************************/
--(NSString*) lectureToDataBase:(NSDictionary *)dictionary
+-(NSString*) lectureToDataBase:(CBLecture *)lecture
 {
     NSData *tempData;
-    if([NSJSONSerialization isValidJSONObject:dictionary]) {
-        tempData = [NSJSONSerialization dataWithJSONObject:dictionary
+    if([NSJSONSerialization isValidJSONObject:lecture]) {
+        tempData = [NSJSONSerialization dataWithJSONObject:lecture
                                                    options:NSJSONWritingPrettyPrinted
                                                      error:NULL];
     }
@@ -90,14 +90,45 @@ NSString *const getAll = @"_all_docs?include_docs=true";
 /*********************************************************************
  METHOD : POST NOTE OR MESSAGE OBJECT TO NOTIFICATION DATABASE
  ACCEPTS: Note or Message object as NSDictionary
- RETURNS: NONE
+ RETURNS: Result NSString
  *********************************************************************/
--(NSString*) notificationToDataBase:(NSDictionary *)dictionary
+-(NSString*) noteToDataBase:(CBNote *)note
 {
     NSData *tempData;
-    if([NSJSONSerialization isValidJSONObject:dictionary])
-    {
-        tempData = [NSJSONSerialization dataWithJSONObject:dictionary
+    if([NSJSONSerialization isValidJSONObject:note]) {
+        tempData = [NSJSONSerialization dataWithJSONObject:note
+                                                   options:NSJSONWritingPrettyPrinted
+                                                     error:NULL];
+    }
+    //REQUEST
+    NSString *urlString = [NSString stringWithString: notificationsDB];
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+    [request setURL:[NSURL URLWithString:urlString]];
+    [request setHTTPMethod:@"POST"];
+    NSString *contentType = [NSString stringWithFormat:@"application/json"];
+    [request addValue:contentType forHTTPHeaderField: @"Content-Type"];
+    NSMutableData *postBody = [NSMutableData data];
+    [postBody appendData:tempData];
+    [request setHTTPBody:postBody];
+    
+    //RESPONSE
+    NSHTTPURLResponse* urlResponse = nil;
+    NSError *error = [[NSError alloc] init];
+    NSData *responseData = [NSURLConnection sendSynchronousRequest:request returningResponse:&urlResponse error:&error];
+    NSString *result = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
+    return result;
+}
+
+/*********************************************************************
+ METHOD : POST NOTE OR MESSAGE OBJECT TO NOTIFICATION DATABASE
+ ACCEPTS: Note or Message object as NSDictionary
+ RETURNS: Result NSString
+ *********************************************************************/
+-(NSString*) messageToDataBase:(CBMessage *)message
+{
+    NSData *tempData;
+    if([NSJSONSerialization isValidJSONObject:message]) {
+        tempData = [NSJSONSerialization dataWithJSONObject:message
                                                    options:NSJSONWritingPrettyPrinted
                                                      error:NULL];
     }
@@ -277,3 +308,4 @@ NSString *const getAll = @"_all_docs?include_docs=true";
 }
 
 @end
+

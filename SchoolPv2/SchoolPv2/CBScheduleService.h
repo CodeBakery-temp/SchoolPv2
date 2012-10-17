@@ -1,41 +1,43 @@
 #import <Foundation/Foundation.h>
 
-@class CBUser, CBLecture;
+@class CBUser, CBLecture, CBNote, CBMessage;
 
 @interface CBScheduleService : NSObject
+{
+    NSMutableArray *weekLectures;
+    NSMutableArray *weekNotes;
+    NSMutableArray *messages;
+}
 
 +(id)schedule;
 +(id)createSchedule;
 -(id)initSchedule;
 
--(NSArray*)getLecturesOfWeek: (CBUser*)user
-                 currentWeek: (NSUInteger)currentWeek;
+- (NSArray*)getWeekLectures;
+- (NSArray*)getDayLectures;
+- (NSArray*)getWeekNotes;
+- (NSArray*)getDayNotes;
+- (NSArray*)getMessages;
 
--(NSDictionary*)getLecturesPerDays:(NSArray *)lectures;
+- (void)getLecturesOfWeek:(CBUser*)user
+              currentWeek:(NSUInteger)currentWeek;
 
--(NSDictionary*)getLecturesWithVersion:(NSDictionary*)lectures;
+- (void)sortLecturesByVersionAndTime;
 
--(NSDictionary*)getLecturesPerDaysRefined:(NSArray*)lectures;
+- (void)getNotesOfWeekAndMessages: (CBUser*)user
+                      currentWeek: (NSUInteger)currentWeek;
 
--(NSSet*)getLecturesOfDay:(NSDictionary*)lectures;
+- (void)createLecture:(NSDictionary*)dict;
 
--(NSArray*)getNotesOfWeek: (CBUser*)user
-              currentWeek: (NSUInteger)currentWeek;
+- (void)createNote:(NSDictionary*)dict;
 
--(NSDictionary*)getNotesPerDays:(NSArray *)notes;
+- (void)createMessage:(NSDictionary*)dict;
 
--(NSSet*)getNotesOfDay:(NSDictionary*)notes;
-
--(NSArray*)getUserMessages:(CBUser*)user;
-
--(void)createLecture:(NSString *)jsonPath;
-
--(void)createNote:(NSString *)jsonPath;
-
--(void)createMessage:(NSString *)jsonPath;
 
 //-(void)updateLectureTemplate:(CBLecture*)lecture;
 
 //-(void)updateLectureEvent:(CBLecture*)lecture;
+
+-(int)timeStringToTimeInt:(NSString *)stringNum;
 
 @end

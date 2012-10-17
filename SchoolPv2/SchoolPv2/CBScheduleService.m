@@ -14,7 +14,11 @@
     // Singleton
     static CBScheduleService *schedule = nil;
     if (!schedule) {
+        NSLog(@"NEW SCHEDULESERVICE");
         schedule = [[super allocWithZone:nil] init];
+    }
+    else {
+        NSLog(@"EXISTING SCHEDULESERVICE");
     }
     return schedule;
 }
@@ -39,22 +43,91 @@
     if(self = [super init])
     {
         db = [CBDatabaseService database];
+        
+        NSMutableDictionary *mondayDict = [NSMutableDictionary dictionaryWithObject:@"MONDAY" forKey:@"DAY"];
+        NSMutableArray *mondayList = [[NSMutableArray alloc] init];
+        [mondayDict setObject:mondayList forKey:@"LECTURES"];
+        NSMutableDictionary *tuesdayDict = [NSMutableDictionary dictionaryWithObject:@"TUESDAY" forKey:@"DAY"];
+        NSMutableArray *tuesdayList = [[NSMutableArray alloc] init];
+        [tuesdayDict setObject:tuesdayList forKey:@"LECTURES"];
+        NSMutableDictionary *wednesdayDict = [NSMutableDictionary dictionaryWithObject:@"WEDNESDAY" forKey:@"DAY"];
+        NSMutableArray *wednesdayList = [[NSMutableArray alloc] init];
+        [wednesdayDict setObject:wednesdayList forKey:@"LECTURES"];
+        NSMutableDictionary *thursdayDict = [NSMutableDictionary dictionaryWithObject:@"THURSDAY" forKey:@"DAY"];
+        NSMutableArray *thursdayList = [[NSMutableArray alloc] init];
+        [thursdayDict setObject:thursdayList forKey:@"LECTURES"];
+        NSMutableDictionary *fridayDict = [NSMutableDictionary dictionaryWithObject:@"FRIDAY" forKey:@"DAY"];
+        NSMutableArray *fridayList = [[NSMutableArray alloc] init];
+        [fridayDict setObject:fridayList forKey:@"LECTURES"];
+        
+        weekLectures = [[NSMutableArray alloc] initWithObjects:mondayDict, tuesdayDict, wednesdayDict, thursdayDict, fridayDict, nil];
+        
+        NSMutableDictionary *mondayNoteDict = [NSMutableDictionary dictionaryWithObject:@"MONDAY" forKey:@"DAY"];
+        NSMutableArray *mondayNoteList = [[NSMutableArray alloc] init];
+        [mondayNoteDict setObject:mondayNoteList forKey:@"NOTES"];
+        NSMutableDictionary *tuesdayNoteDict = [NSMutableDictionary dictionaryWithObject:@"TUESDAY" forKey:@"DAY"];
+        NSMutableArray *tuesdayNoteList = [[NSMutableArray alloc] init];
+        [tuesdayNoteDict setObject:tuesdayNoteList forKey:@"NOTES"];
+        NSMutableDictionary *wednesdayNoteDict = [NSMutableDictionary dictionaryWithObject:@"WEDNESDAY" forKey:@"DAY"];
+        NSMutableArray *wednesdayNoteList = [[NSMutableArray alloc] init];
+        [wednesdayNoteDict setObject:wednesdayNoteList forKey:@"NOTES"];
+        NSMutableDictionary *thursdayNoteDict = [NSMutableDictionary dictionaryWithObject:@"THURSDAY" forKey:@"DAY"];
+        NSMutableArray *thursdayNoteList = [[NSMutableArray alloc] init];
+        [thursdayNoteDict setObject:thursdayNoteList forKey:@"NOTES"];
+        NSMutableDictionary *fridayNoteDict = [NSMutableDictionary dictionaryWithObject:@"FRIDAY" forKey:@"DAY"];
+        NSMutableArray *fridayNoteList = [[NSMutableArray alloc] init];
+        [fridayNoteDict setObject:fridayNoteList forKey:@"NOTES"];
+        
+        weekNotes = [[NSMutableArray alloc] initWithObjects:mondayNoteDict, tuesdayNoteDict, wednesdayNoteDict, thursdayNoteDict, fridayNoteDict, nil];
     }
     return self;
 }
 
+- (NSArray *)getWeekLectures
+{
+    return weekLectures;
+}
+
+- (NSArray *)getDayLectures
+{
+    NSDate *date = [NSDate date];
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSInteger units = NSWeekdayCalendarUnit;
+    NSDateComponents *components = [calendar components:units fromDate:date];
+    return [[weekLectures objectAtIndex:([components weekday]-1)] objectForKey:@"LECTURES"];
+}
+
+- (NSArray *)getWeekNotes
+{
+    return weekNotes;
+}
+
+- (NSArray *)getDayNotes
+{
+    NSDate *date = [NSDate date];
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSInteger units = NSWeekdayCalendarUnit;
+    NSDateComponents *components = [calendar components:units fromDate:date];
+    return [[weekNotes objectAtIndex:([components weekday]-1)] objectForKey:@"NOTES"];
+}
+
+- (NSArray *)getMessages
+{
+    return messages;
+}
+
 /*********************************************************************
- METHOD : GET ALL USER'S LECTURE OBJECTS FROM USER-DATA AND CURRENT WEEK
+ METHOD : GET ALL USER'S LECTURE OBJECTS BY USER-DATA AND CURRENT WEEK
  ACCEPTS: Student/Admin object, NSUInteger of current week
- RETURNS: NSArray with Lecture objects
+ RESULT : weekLectures has LECTURES sorts in MONDAY - FRIDAY
  *********************************************************************/
--(NSArray*)getLecturesOfWeek:(CBUser*)user
-                 currentWeek: (NSUInteger) currentWeek {
+- (void)getLecturesOfWeek:(CBUser *)user currentWeek:(NSUInteger)currentWeek
+{
     NSArray* lectures = [db getLectures];
     NSMutableArray* userLectures = [NSMutableArray array];
-    
+    // SORT OUT WEEK LECTURES
     for(NSString* courseID in [user courses]) {
-        for(id lecture in lectures) {
+        for(CBLecture* lecture in lectures) {
             if([courseID isEqualToString:[lecture courseID]]) {
                 for(NSString* week in [lecture weeks]) {
                     if([week isEqualToString:[NSString stringWithFormat:@"%d", currentWeek]]) {
@@ -64,62 +137,51 @@
             }
         }
     }
-    return userLectures;
-}
-
-/*********************************************************************
- METHOD : GET ALL LECTURE OBJECTS SORTED IN MONDAY - FRIDAY
- ACCEPTS: NSArray with Lecture objects
- RETURNS: NSDictionary with Lecture objects sorted in KEYS MONDAY - FRIDAY
- *********************************************************************/
--(NSDictionary*)getLecturesPerDays:(NSArray *)lectures {
-    NSDictionary* lecturesDays = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                  [NSMutableArray array], @"MONDAY",
-                                  [NSMutableArray array], @"TUESDAY",
-                                  [NSMutableArray array], @"WEDNESDAY",
-                                  [NSMutableArray array], @"THURSDAY",
-                                  [NSMutableArray array], @"FRIDAY",nil];
-    for(NSArray* day in lecturesDays) {
-        for(CBLecture* lecture in lectures) {
-            for(NSString* weekDay in [lecture daysOfWeek]) {
-                if(![weekDay caseInsensitiveCompare:[NSString stringWithFormat:@"%@", day]]) {
-                    [[lecturesDays objectForKey:day] addObject:lecture];
+    for (int i=0; i<5; i++) {
+        NSMutableArray *list = [[NSMutableArray alloc] init];
+        [[weekLectures objectAtIndex:i] setObject:list forKey:@"LECTURES"];
+    }
+    // SORT LECTURES TO DAYS
+    for (int day=0; day<5; day++) {
+        for (CBLecture* lecture in userLectures) {
+            for (NSString* weekDay in [lecture daysOfWeek]) {
+                if(![weekDay caseInsensitiveCompare:[[weekLectures objectAtIndex:day] objectForKey:@"DAY"]]) {
+                    [[[weekLectures objectAtIndex:day] objectForKey:@"LECTURES"] addObject:lecture];
                 }
             }
         }
     }
-    return lecturesDays;
 }
 
 /*********************************************************************
- METHOD : GET ALL LECTURE OBJECTS SORTED NEWEST VERSION IN MONDAY - FRIDAY
- ACCEPTS: NSDictionary with Lecture objects sorted in KEYS MONDAY - FRIDAY
- RETURNS: NSDictionary with Lecture objects sorted only newest version in KEYS MONDAY - FRIDAY
+ METHOD : SORT weekLectures by VERSION and TIME
+ ACCEPTS: Student/Admin object, NSUInteger of current week
+ RESULT : Stores LECTURES sorted in MONDAY-FRIDAY in NSArray weekLectures
  *********************************************************************/
--(NSDictionary*)getLecturesWithVersion:(NSDictionary *)lectures {
-    NSDictionary* lecturesDays = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                  [NSMutableArray array], @"MONDAY",
-                                  [NSMutableArray array], @"TUESDAY",
-                                  [NSMutableArray array], @"WEDNESDAY",
-                                  [NSMutableArray array], @"THURSDAY",
-                                  [NSMutableArray array], @"FRIDAY",nil];
-    for (NSString* weekDay in lectures) {   // EACH WEEKDAY
-        // CHECKS NUMBER OF DIFFERENT COURSES FOR EACH DAY
+- (void)sortLecturesByVersionAndTime
+{
+    NSMutableArray *mondayList = [[NSMutableArray alloc] init];
+    NSMutableArray *tuesdayList = [[NSMutableArray alloc] init];
+    NSMutableArray *wednesdayList = [[NSMutableArray alloc] init];
+    NSMutableArray *thursdayList = [[NSMutableArray alloc] init];
+    NSMutableArray *fridayList = [[NSMutableArray alloc] init];
+    NSMutableArray *lecturesDays = [[NSMutableArray alloc]
+                                    initWithObjects:mondayList, tuesdayList, wednesdayList, thursdayList, fridayList, nil];
+    // SELECT BY VERSION
+    for (int day=0; day<5; day++) {
         int top = 0;
-        for (CBLecture* lec in [lectures objectForKey:weekDay]){  // EACH LECTURE IN CURRENT DAY - CHECK ID COUNT
+        for (CBLecture* lec in [[weekLectures objectAtIndex:day] objectForKey:@"LECTURES"]) {
             if ([[lec courseID] intValue]>top) {
                 top = [[lec courseID] intValue];
             }
         }
-        //FINDS TOP VERSION OF EACH COURSE FOR THE DAY
-        NSInteger COURSESNUM = top;
-        for (NSInteger CURRENTCOURSE=1; CURRENTCOURSE<=COURSESNUM; CURRENTCOURSE++){
-            // CHECKS DIFFERENT COURSES
+        NSInteger COURSENUM = top;
+        for (NSInteger CURRENTCOURSE=1; CURRENTCOURSE<=COURSENUM; CURRENTCOURSE++) {
             int versionTop = 0;
-            CBLecture* lecture = [CBLecture alloc];
-            for (CBLecture* lec in [lectures objectForKey:weekDay]){  // EACH LECTURE IN CURRENT DAY
-                if([[lec courseID]isEqualToString:[NSString stringWithFormat:@"%d", CURRENTCOURSE]]
-                   &&[[lec version] intValue]>versionTop) { // IS SPECIFIC COURSE AND VERSION IS HIGHER THAN PREVIOUS
+            CBLecture *lecture = [CBLecture alloc];
+            for (CBLecture *lec in [[weekLectures objectAtIndex:day] objectForKey:@"LECTURES"]) {
+                if ([[lec courseID]isEqualToString:[NSString stringWithFormat:@"%d",CURRENTCOURSE]]
+                    &&[[lec version] intValue]>versionTop) {
                     versionTop = [[lec version] intValue];
                     lecture = [lecture initCourseWithName:[lec course]
                                                     grade:[lec grade]
@@ -138,193 +200,67 @@
                                                couchDBRev:[lec couchDBRev]];
                 }
             }
-            if([lecture courseID]) {
-                [[lecturesDays objectForKey:weekDay] addObject:lecture];
-            }
-            
-        }
-        
-    }
-    return lecturesDays;
-}
-
-/*********************************************************************
- METHOD : GET ALL LECTURE OBJECTS SORTED NEWEST VERSION IN MONDAY - FRIDAY
- ACCEPTS: NSArray with Lecture objects
- RETURNS: NSDictionary with Lecture objects sorted only newest version in KEYS MONDAY - FRIDAY
- *********************************************************************/
--(NSDictionary*)getLecturesPerDaysRefined:(NSArray*)lectures {
-    NSDictionary* tempSort = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                              [NSMutableArray array], @"MONDAY",
-                              [NSMutableArray array], @"TUESDAY",
-                              [NSMutableArray array], @"WEDNESDAY",
-                              [NSMutableArray array], @"THURSDAY",
-                              [NSMutableArray array], @"FRIDAY",nil];
-    NSDictionary* lecturesDays = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                  [NSMutableArray array], @"MONDAY",
-                                  [NSMutableArray array], @"TUESDAY",
-                                  [NSMutableArray array], @"WEDNESDAY",
-                                  [NSMutableArray array], @"THURSDAY",
-                                  [NSMutableArray array], @"FRIDAY",nil];
-    for(NSArray* day in tempSort) {
-        for(CBLecture* lecture in lectures) {
-            for(NSString* weekDay in [lecture daysOfWeek]) {
-                if(![weekDay caseInsensitiveCompare:[NSString stringWithFormat:@"%@", day]]) {
-                    [[tempSort objectForKey:day] addObject:lecture];
-                }
+            if ([lecture courseID]) {
+                [[lecturesDays objectAtIndex:day] addObject:lecture];
             }
         }
     }
-    
-    for (NSString* weekDay in tempSort) {    // EACH WEEKDAY
-        // CHECKS NUMBER OF DIFFERENT COURSES FOR EACH DAY
-        int top = 0;
-        for (CBLecture* lec in [tempSort objectForKey:weekDay]){ // EACH LECTURE IN CURRENT DAY - CHECK ID COUNT
-            if ([[lec courseID] intValue]>top) {
-                top = [[lec courseID] intValue];
-            }
-        }
-        //FINDS TOP VERSION OF EACH COURSE FOR THE DAY
-        NSInteger COURSESNUM = top;
-        for (NSInteger CURRENTCOURSE=1; CURRENTCOURSE<=COURSESNUM; CURRENTCOURSE++){
-            // CHECKS DIFFERENT COURSES
-            int versionTop = 0;
-            CBLecture* lecture = [CBLecture alloc];
-            for (CBLecture* lec in [tempSort objectForKey:weekDay]){  // EACH LECTURE IN CURRENT DAY
-                if([[lec courseID]isEqualToString:[NSString stringWithFormat:@"%d", CURRENTCOURSE]]
-                   &&[[lec version] intValue]>versionTop) { // IS SPECIFIC COURSE AND VERSION IS HIGHER THAN PREVIOUS
-                    versionTop = [[lec version] intValue];
-                    lecture = [lecture initCourseWithName:[lec course]
-                                                    grade:[lec grade]
-                                                  teacher:[lec teacher]
-                                                     room:[lec room]
-                                                 courseID:[lec courseID]
-                                                  version:[lec version]
-                                                startTime:[lec startTime]
-                                                 stopTime:[lec stopTime]
-                                               lunchStart:[lec lunchStart]
-                                                lunchStop:[lec lunchStop]
-                                                     year:[lec year]
-                                               daysOfWeek:[lec daysOfWeek]
-                                                    weeks:[lec weeks]
-                                                couchDBId:[lec couchDBId]
-                                               couchDBRev:[lec couchDBRev]];
-                }
-            }
-            if([lecture courseID]) {
-                [[lecturesDays objectForKey:weekDay] addObject:lecture];
-            }
-            
-        }
-        
+    for (int b =0; b<5; b++) {
+        [[weekLectures objectAtIndex:b] removeObjectForKey:@"LECTURES"];
     }
-    return lecturesDays;
+    // SORT BY TIME
+    for (int i=0; i<5; i++) {
+        NSArray *list = [[lecturesDays objectAtIndex:i] sortedArrayUsingComparator:^(CBLecture* lec1, CBLecture* lec2) {
+            int time1 = [self timeStringToTimeInt:[lec1 startTime]];
+            int time2 = [self timeStringToTimeInt:[lec2 startTime]];
+            return time1>time2;
+        }];
+        [[weekLectures objectAtIndex:i] setObject:list forKey:@"LECTURES"];
+    }
 }
 
 /*********************************************************************
- METHOD : GET LECTURE OBJECTS FROM USER-DATA AND CALCULATED CURRENT DAY
- ACCEPTS: Student/Admin object and NSDictionary with Lecture objects sorted in KEYS MONDAY - FRIDAY
- RETURNS: NSSet with Lecture objects
+ METHOD : GET ALL USER'S NOTE OBJECTS BY USER-DATA AND CURRENT WEEK AND MESSAGES
+ ACCEPTS: Student/Admin object, NSUInteger of current week
+ RESULT : weekNotes has NOTES sorts in MONDAY - FRIDAY, messages is populated
  *********************************************************************/
--(NSSet*)getLecturesOfDay:(NSDictionary*)lectures {
-    NSDate *date = [NSDate date];
-    NSDateFormatter *weekDay = [[NSDateFormatter alloc] init];
-    [weekDay setDateFormat:@"EEEE"];
-    
-    NSSet* lecturesOfDay = [lectures objectForKey:[[weekDay stringFromDate:date] uppercaseString]];
-    
-    return lecturesOfDay;
-}
-
-/*********************************************************************
- METHOD : GET ALL USER'S NOTE OBJECTS FROM USER-DATA AND CURRENT WEEK
- ACCEPTS: Student/Admin object, NSArray of Note objects, NSUInteger of current week
- RETURNS: NSArray with Note objects
- *********************************************************************/
--(NSArray*)getNotesOfWeek:(CBUser*)user
-              currentWeek:(NSUInteger)currentWeek {
-    NSArray* notes = [[db getNotifications]objectForKey:@"NOTES"];
+- (void)getNotesOfWeekAndMessages:(CBUser *)user currentWeek:(NSUInteger)currentWeek
+{
+    NSDictionary *notifications = [db getNotifications];
+    NSArray* notes = [notifications objectForKey:@"NOTES"];
+    messages = [notifications objectForKey:@"MESSAGES"];
     NSMutableArray* userNotes = [NSMutableArray array];
-    
-    for(id course in [user courses]) {
+    // SORT OUT WEEK NOTES
+    for(NSString* courseID in [user courses]) {
         for(CBNote* note in notes) {
-            if([[note courseID]isEqualToString:course]) {
-                [userNotes addObject:note];
+            if([courseID isEqualToString:[note courseID]]) {
+                if([[note week] isEqualToString:[NSString stringWithFormat:@"%d", currentWeek]]) {
+                    [userNotes addObject:note];
+                }
             }
         }
     }
-    return userNotes;
-}
-
-/*********************************************************************
- METHOD : GET ALL NOTE OBJECTS SORTED IN MONDAY - FRIDAY
- ACCEPTS: NSArray with Note objects
- RETURNS: NSDictionary with Note objects sorted in KEYS MONDAY - FRIDAY
- *********************************************************************/
--(NSDictionary*)getNotesPerDays:(NSArray *)notes {
-    NSDictionary* notesDays = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                               [NSMutableArray array], @"MONDAY",
-                               [NSMutableArray array], @"TUESDAY",
-                               [NSMutableArray array], @"WEDNESDAY",
-                               [NSMutableArray array], @"THURSDAY",
-                               [NSMutableArray array], @"FRIDAY",nil];
-    for(NSArray* day in notesDays) {
-        for(CBNote* note in notes) {
-            if(![[note day]caseInsensitiveCompare:[NSString stringWithFormat:@"%@", day]]) {
-                [[notesDays objectForKey:day] addObject:note];
+    // SORT NOTES TO DAYS
+    for (int day=0; day<5; day++) {
+        for (CBNote* note in userNotes) {
+            if(![[note day] caseInsensitiveCompare:[[weekNotes objectAtIndex:day] objectForKey:@"DAY"]]) {
+                [[[weekNotes objectAtIndex:day] objectForKey:@"NOTES"] addObject:note];
             }
         }
     }
-    return notesDays;
+    
 }
 
 /*********************************************************************
- METHOD : GET NOTE OBJECTS FROM USER-DATA AND CALCULATED CURRENT DAY
- ACCEPTS: Student/Admin object and NSDictionary with Note objects sorted in KEYS MONDAY - FRIDAY
- RETURNS: NSSet with Note objects
+ METHOD : CREATE LECTURE TEMPLATE OBJECT
+ ACCEPTS: CBLECTURE object
+ RESULT:  Send LECTURE object to DATABASE
  *********************************************************************/
--(NSSet*)getNotesOfDay:(NSDictionary*) notes {
-    NSDate *date = [NSDate date];
-    NSDateFormatter *weekDay = [[NSDateFormatter alloc] init];
-    [weekDay setDateFormat:@"EEEE"];
-    
-    NSSet* notesOfDay = [notes objectForKey:[[weekDay stringFromDate:date] uppercaseString]];
-    
-    return notesOfDay;
-}
-
-/*********************************************************************
- METHOD : GET ALL MESSAGE OBJECTS FROM USER-DATA
- ACCEPTS: NSDictionary with at least NSSet of Message objects
- RETURNS: NSArray with Message objects for User
- *********************************************************************/
--(NSArray*)getUserMessages:(CBUser*)user {
-    NSArray* messages = [[db getNotifications]objectForKey:@"MESSAGES"];
-    NSMutableArray* inbox = [NSMutableArray array];
-    
-    for(CBMessage* message in messages) {
-        for(NSString* email in [message receiver]) {
-            if([[user mailAddress]isEqualToString:email]) {
-                [inbox addObject:message];
-            }
-        }
-    }
-    return inbox;
-}
-
-/*********************************************************************
- METHOD : CREATE LECTURE TEMPLATE OBJECT - SUPPLY WITH JSON
- ACCEPTS: NSString PATH to JSON DATA
- RETURNS: NONE
- *********************************************************************/
--(void)createLecture:(NSString *)jsonPath {
-    NSData *data = [NSData dataWithContentsOfFile:jsonPath];
-    NSMutableDictionary *dict = [NSJSONSerialization JSONObjectWithData:data
-                                                                options:NSJSONReadingMutableContainers
-                                                                  error:NULL];
-    NSArray* lectures = [db getLectures];
+- (void)createLecture:(NSDictionary*)dict
+{
     int objID = 1;
-    for(CBLecture* lec in lectures) {
+    NSArray* lectures = [db getLectures];
+    for (CBLecture* lec in lectures) {
         if([[lec courseID] intValue]>objID) {
             objID = [[lec courseID] intValue];
         }
@@ -332,43 +268,55 @@
     int idInt = objID;
     idInt +=1;
     objID = idInt;
-    [dict setObject:[NSString stringWithFormat:@"%d", objID] forKey:@"courseID"];
-    [dict setObject:@"1" forKey:@"version"];
-    NSLog(@"CREATE ID: %@", [dict objectForKey:@"courseID"]);
-    [db lectureToDataBase:dict];
+    CBLecture *lecture = [[CBLecture alloc] initCourseWithName:[dict objectForKey:@"COURSE"]
+                                                         grade:[dict objectForKey:@"GRADE"]
+                                                       teacher:[dict objectForKey:@"TEACHER"]
+                                                          room:[dict objectForKey:@"ROOM"]
+                                                      courseID:[NSString stringWithFormat:@"%d", objID]
+                                                       version:@"1"
+                                                     startTime:[dict objectForKey:@"START"]
+                                                      stopTime:[dict objectForKey:@"STOP"]
+                                                    lunchStart:[dict objectForKey:@"LUNCHSTART"]
+                                                     lunchStop:[dict objectForKey:@"LUNCHSTOP"]
+                                                          year:[dict objectForKey:@"YEAR"]
+                                                    daysOfWeek:[dict objectForKey:@"DAYS"]
+                                                         weeks:[dict objectForKey:@"WEEKS"]];
+    NSString* result = [db lectureToDataBase:lecture];
+    NSLog(@"CREATE ID: %@ RESULT: %@", [lecture courseID], result);
 }
 
 /*********************************************************************
- METHOD : CREATE NOTE OBJECT - SUPPLY WITH JSON
- ACCEPTS: NSString PATH to JSON DATA
- RETURNS: NONE
+ METHOD : CREATE NOTE OBJECT
+ ACCEPTS: CBNOTE object
+ RESULT:  Send NOTE object to DATABASE
  *********************************************************************/
--(void)createNote:(NSString *)jsonPath {
-    NSData *data = [NSData dataWithContentsOfFile:jsonPath];
-    NSMutableDictionary *dict = [NSJSONSerialization JSONObjectWithData:data
-                                                                options:NSJSONReadingMutableContainers
-                                                                  error:NULL];
-    [dict setObject:@"note" forKey:@"type"];
-    [db notificationToDataBase:dict];
+- (void)createNote:(NSDictionary *)dict
+{
+    CBNote *note = [CBNote noteWithText:[dict objectForKey:@"TEXT"]
+                                   week:[dict objectForKey:@"WEEK"]
+                                    day:[dict objectForKey:@"DAY"]
+                               courseID:[dict objectForKey:@"COURSEID"]];
+    NSString* result = [db noteToDataBase:note];
+    NSLog(@"RESULT: %@", result);
 }
 
 /*********************************************************************
- METHOD : CREATE MESSAGE OBJECT - SUPPLY WITH JSON
- ACCEPTS: NSString PATH to JSON DATA
- RETURNS: NONE
+ METHOD : CREATE MESSAGE OBJECT
+ ACCEPTS: CBMESSAGE object
+ RESULT:  Send MESSAGE object to DATABASE
  *********************************************************************/
--(void)createMessage:(NSString *)jsonPath {
-    NSData *data = [NSData dataWithContentsOfFile:jsonPath];
-    NSMutableDictionary *dict = [NSJSONSerialization JSONObjectWithData:data
-                                                                options:NSJSONReadingMutableContainers
-                                                                  error:NULL];
-    [dict setObject:@"message" forKey:@"type"];
-    [db notificationToDataBase:dict];
+- (void)createMessage:(NSDictionary *)dict
+{
+    CBMessage *message = [CBMessage messageWithSender:[dict objectForKey:@"SENDER"]
+                                             receiver:[dict objectForKey:@"RECEIVER"]
+                                                 text:[dict objectForKey:@"TEXT"]];
+    NSString* result = [db messageToDataBase:message];
+    NSLog(@"RESULT: %@", result);
 }
+
 
 -(void)updateLectureTemplate:(CBLecture*)lecture
-{
-}
+{}
 
 -(void)updateLectureEvent:(CBLecture*)lecture
 {}
@@ -442,5 +390,17 @@
  }
  }
  }*/
+
+/*********************************************************************
+ METHOD : CONVERT STRING TIME XX:XX to INT TIME XXXX
+ ACCEPTS: NSString with time separated with comma
+ RETURNS: int with time in digits
+ *********************************************************************/
+- (int)timeStringToTimeInt:(NSString *)stringNum
+{
+    NSArray *timeArray = [stringNum componentsSeparatedByString:@":"];
+    NSString *time = [[timeArray objectAtIndex:0] stringByAppendingString:[timeArray objectAtIndex:1]];
+    return [time intValue];
+}
 
 @end

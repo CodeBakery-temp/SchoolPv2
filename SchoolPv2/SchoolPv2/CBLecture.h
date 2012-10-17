@@ -1,6 +1,6 @@
-#import <CoreData/CoreData.h>
+#import <Foundation/Foundation.h>
 
-@interface CBLecture : NSManagedObject
+@interface CBLecture : NSObject
 
 @property (nonatomic, copy) NSString *couchDBId;
 @property (nonatomic, copy) NSString *couchDBRev;
@@ -21,36 +21,50 @@
 // weeks
 
 + (id) courseWithName: (NSString *)course
-grade: (NSString *)grade
-teacher: (NSString *)teacher
-room: (NSString *)room
-courseID: (NSString *)courseID
-version: (NSString *)version
-startTime: (NSString *)startTime
-stopTime: (NSString *)stopTime
-lunchStart: (NSString *)lunchStart
-lunchStop: (NSString *)lunchStop
-year: (NSString *)year
-daysOfWeek: (NSArray *)daysOfWeek
-weeks: (NSArray *)weeks
-couchDBId: (NSString *) couchDBId
-couchDBRev: (NSString *) couchDBRev;
+                grade: (NSString *)grade
+              teacher: (NSString *)teacher
+                 room: (NSString *)room
+             courseID: (NSString *)courseID
+              version: (NSString *)version
+            startTime: (NSString *)startTime
+             stopTime: (NSString *)stopTime
+           lunchStart: (NSString *)lunchStart
+            lunchStop: (NSString *)lunchStop
+                 year: (NSString *)year
+           daysOfWeek: (NSArray *)daysOfWeek
+                weeks: (NSArray *)weeks
+            couchDBId: (NSString *) couchDBId
+           couchDBRev: (NSString *) couchDBRev;
 
 - (id) initCourseWithName: (NSString *)course
-grade: (NSString *)grade
-teacher: (NSString *)teacher
-room: (NSString *)room
-courseID: (NSString *)courseID
-version: (NSString *)version
-startTime: (NSString *)startTime
-stopTime: (NSString *)stopTime
-lunchStart: (NSString *)lunchStart
-lunchStop: (NSString *)lunchStop
-year: (NSString *)year
-daysOfWeek: (NSArray *)daysOfWeek
-weeks: (NSArray *)weeks
-couchDBId: (NSString *) couchDBId
-couchDBRev: (NSString *) couchDBRev;
+                    grade: (NSString *)grade
+                  teacher: (NSString *)teacher
+                     room: (NSString *)room
+                 courseID: (NSString *)courseID
+                  version: (NSString *)version
+                startTime: (NSString *)startTime
+                 stopTime: (NSString *)stopTime
+               lunchStart: (NSString *)lunchStart
+                lunchStop: (NSString *)lunchStop
+                     year: (NSString *)year
+               daysOfWeek: (NSArray *)daysOfWeek
+                    weeks: (NSArray *)weeks;
+
+- (id) initCourseWithName: (NSString *)course
+                    grade: (NSString *)grade
+                  teacher: (NSString *)teacher
+                     room: (NSString *)room
+                 courseID: (NSString *)courseID
+                  version: (NSString *)version
+                startTime: (NSString *)startTime
+                 stopTime: (NSString *)stopTime
+               lunchStart: (NSString *)lunchStart
+                lunchStop: (NSString *)lunchStop
+                     year: (NSString *)year
+               daysOfWeek: (NSArray *)daysOfWeek
+                    weeks: (NSArray *)weeks
+                couchDBId: (NSString *) couchDBId
+               couchDBRev: (NSString *) couchDBRev;
 
 -(NSDictionary*) asDictionary;
 
@@ -61,4 +75,3 @@ couchDBRev: (NSString *) couchDBRev;
 -(void)printLecture;
 
 @end
-
