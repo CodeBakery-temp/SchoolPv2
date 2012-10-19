@@ -59,6 +59,11 @@
     dayNotes = [[CBDayNoteViewController alloc] init];
     [_lectureTable addSubview:dayLectures.view];
     [_noteTable addSubview:dayNotes.view];
+    
+    UIFont *crayonFont = [UIFont fontWithName:@"DK Crayon Crumble" size:30];
+//    UIFont *handwritingFont = [UIFont fontWithName:@"Brasserie" size:30];
+    _dayLabel.font = crayonFont;
+    
 }
 
 - (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation

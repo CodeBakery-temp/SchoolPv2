@@ -28,6 +28,8 @@
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
     [[cell textLabel] setBackgroundColor:[UIColor clearColor]];
     [[cell detailTextLabel] setBackgroundColor:[UIColor clearColor]];
+    //cell.textLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    
 }
 
 @end

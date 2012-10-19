@@ -26,8 +26,8 @@
         list = [[NSMutableDictionary alloc] init];
         [list setObject:@"THURSDAY" forKey:@"DAY"];
         NSMutableArray *array = [[NSMutableArray alloc] init];
-        for (int i=0; i<5; i++) {
-            CBNote *note = [[CBNote alloc] initNoteWithText:@"HEJ" week:@"42" day:@"Thursday" courseID:@"3"];
+        for (int i=0; i<1; i++) {
+            CBNote *note = [[CBNote alloc] initNoteWithText:@"Läs kapitel 24 tills i morgon. Bonus: gör övningarna till kapittlet" week:@"42" day:@"Thursday" courseID:@"3"];
             [array addObject:note];
         }
         [list setObject:array forKey:@"NOTES"];
@@ -43,6 +43,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
     UINib *nib = [UINib nibWithNibName:@"CBDayNoteCell" bundle:nil];
     [[self tableView] registerNib:nib forCellReuseIdentifier:@"CBDayNoteCell"];
 }
@@ -50,7 +51,7 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    CGSize noteView = CGSizeMake(320, (([[list objectForKey:@"NOTES"] count])*20));
+    CGSize noteView = CGSizeMake(320, (([[list objectForKey:@"NOTES"] count])*10));
     [self.tableView setContentSize:noteView];
 }
 
@@ -64,12 +65,16 @@
     CBDayNoteCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CBDayNoteCell"];
     CBNote *note = [[list objectForKey:@"NOTES"] objectAtIndex:[indexPath row]];
     [[cell noteLabel] setText:[note text]];
-    return cell;
+    
+    UIFont *handwritingFont = [UIFont fontWithName:@"Brasserie" size:15];
+    cell.noteLabel.font = handwritingFont;
+    
+	return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 20;
+    return 10;
 }
 
 @end

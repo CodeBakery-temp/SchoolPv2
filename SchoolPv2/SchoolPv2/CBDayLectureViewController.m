@@ -47,7 +47,6 @@
 {
     [super viewDidAppear:animated];
     CGSize lectureView;
-    NSLog(@"Postit: %d", postit);
     lectureView = CGSizeMake(320, (([[list objectForKey:@"LECTURES"] count])*70)+500);
     [self.tableView setContentSize:lectureView];
 }
@@ -66,12 +65,24 @@
     [[cell roomLabel] setText:[lec room]];
     [[cell startLabel] setText: [lec startTime]];
     [[cell stopLabel] setText: [lec stopTime]];
+    
+    UIFont *crayonFont = [UIFont fontWithName:@"DK Crayon Crumble" size:20];
+    //UIFont *handwritingFont = [UIFont fontWithName:@"Brasserie" size:30];
+    cell.courseLabel.font = crayonFont;
+    cell.teacherLabel.font = crayonFont;
+    cell.roomLabel.font = crayonFont;
+    cell.startLabel.font = crayonFont;
+    cell.stopLabel.font = crayonFont;
+    cell.startTextLabel.font = crayonFont;
+    cell.stopTextLabel.font = crayonFont;
+    
+    
     return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 70;
+    return 90;
 }
 
 @end

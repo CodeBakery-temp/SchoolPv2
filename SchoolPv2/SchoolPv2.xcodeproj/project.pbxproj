@@ -45,6 +45,10 @@
 		06C239F116313ABB00ADD838 /* CBWeekViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 06C239E316313ABB00ADD838 /* CBWeekViewCell.m */; };
 		06C239F216313ABB00ADD838 /* CBWeekViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 06C239E416313ABB00ADD838 /* CBWeekViewCell.xib */; };
 		06C239F316313ABB00ADD838 /* CBWeekViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06C239E616313ABB00ADD838 /* CBWeekViewController.m */; };
+		15964B3B1631783C002F3AEB /* bottom2.png in Resources */ = {isa = PBXBuildFile; fileRef = 15964B3A1631783C002F3AEB /* bottom2.png */; };
+		15964B4016317CB0002F3AEB /* postitICON.png in Resources */ = {isa = PBXBuildFile; fileRef = 15964B3F16317CB0002F3AEB /* postitICON.png */; };
+		15E3830716315C9600D8BBCA /* Brasserie.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 15E3830516315C9600D8BBCA /* Brasserie.ttf */; };
+		15E3830816315C9600D8BBCA /* DK Crayon Crumble.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 15E3830616315C9600D8BBCA /* DK Crayon Crumble.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -104,6 +108,10 @@
 		06C239E416313ABB00ADD838 /* CBWeekViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CBWeekViewCell.xib; sourceTree = "<group>"; };
 		06C239E516313ABB00ADD838 /* CBWeekViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBWeekViewController.h; sourceTree = "<group>"; };
 		06C239E616313ABB00ADD838 /* CBWeekViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBWeekViewController.m; sourceTree = "<group>"; };
+		15964B3A1631783C002F3AEB /* bottom2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bottom2.png; sourceTree = "<group>"; };
+		15964B3F16317CB0002F3AEB /* postitICON.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = postitICON.png; sourceTree = "<group>"; };
+		15E3830516315C9600D8BBCA /* Brasserie.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Brasserie.ttf; sourceTree = "<group>"; };
+		15E3830616315C9600D8BBCA /* DK Crayon Crumble.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DK Crayon Crumble.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +136,8 @@
 				06C239AD1631388600ADD838 /* chalkboard.jpg */,
 				06C239AE1631388600ADD838 /* mail-closed.png */,
 				06C239AF1631388600ADD838 /* mail-open.png */,
+				15964B3A1631783C002F3AEB /* bottom2.png */,
+				15964B3F16317CB0002F3AEB /* postitICON.png */,
 				06C239B01631388600ADD838 /* postit.png */,
 				06C239B11631388600ADD838 /* letter.png */,
 				06C239B21631388600ADD838 /* sync.png */,
@@ -174,6 +184,8 @@
 		06AA445716256504002DDB8F /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				15E3830516315C9600D8BBCA /* Brasserie.ttf */,
+				15E3830616315C9600D8BBCA /* DK Crayon Crumble.ttf */,
 				06AA445816256504002DDB8F /* SchoolPv2-Info.plist */,
 				06AA445916256504002DDB8F /* InfoPlist.strings */,
 				06AA445C16256504002DDB8F /* main.m */,
@@ -308,6 +320,10 @@
 				06C239EE16313ABB00ADD838 /* CBDayViewController.xib in Resources */,
 				06C239F016313ABB00ADD838 /* CBWeekLayerViewController.xib in Resources */,
 				06C239F216313ABB00ADD838 /* CBWeekViewCell.xib in Resources */,
+				15E3830716315C9600D8BBCA /* Brasserie.ttf in Resources */,
+				15E3830816315C9600D8BBCA /* DK Crayon Crumble.ttf in Resources */,
+				15964B3B1631783C002F3AEB /* bottom2.png in Resources */,
+				15964B4016317CB0002F3AEB /* postitICON.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
