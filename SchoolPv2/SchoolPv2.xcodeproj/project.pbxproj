@@ -50,6 +50,8 @@
 		15964B4E16318046002F3AEB /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15964B4D16318046002F3AEB /* QuartzCore.framework */; };
 		15E3830716315C9600D8BBCA /* Brasserie.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 15E3830516315C9600D8BBCA /* Brasserie.ttf */; };
 		15E3830816315C9600D8BBCA /* DK Crayon Crumble.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 15E3830616315C9600D8BBCA /* DK Crayon Crumble.ttf */; };
+		CEF356C5163186B3008CD16D /* CBCourseFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEF356C3163186B3008CD16D /* CBCourseFormViewController.m */; };
+		CEF356C6163186B3008CD16D /* CBCourseFormViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEF356C4163186B3008CD16D /* CBCourseFormViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -114,6 +116,9 @@
 		15964B4D16318046002F3AEB /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		15E3830516315C9600D8BBCA /* Brasserie.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Brasserie.ttf; sourceTree = "<group>"; };
 		15E3830616315C9600D8BBCA /* DK Crayon Crumble.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DK Crayon Crumble.ttf"; sourceTree = "<group>"; };
+		CEF356C2163186B3008CD16D /* CBCourseFormViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBCourseFormViewController.h; sourceTree = "<group>"; };
+		CEF356C3163186B3008CD16D /* CBCourseFormViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBCourseFormViewController.m; sourceTree = "<group>"; };
+		CEF356C4163186B3008CD16D /* CBCourseFormViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CBCourseFormViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -216,6 +221,9 @@
 		06AA44711625655C002DDB8F /* View */ = {
 			isa = PBXGroup;
 			children = (
+				CEF356C2163186B3008CD16D /* CBCourseFormViewController.h */,
+				CEF356C3163186B3008CD16D /* CBCourseFormViewController.m */,
+				CEF356C4163186B3008CD16D /* CBCourseFormViewController.xib */,
 				06C239DF16313ABB00ADD838 /* CBWeekLayerViewController.h */,
 				06C239E016313ABB00ADD838 /* CBWeekLayerViewController.m */,
 				06C239E116313ABB00ADD838 /* CBWeekLayerViewController.xib */,
@@ -328,6 +336,7 @@
 				15E3830816315C9600D8BBCA /* DK Crayon Crumble.ttf in Resources */,
 				15964B3B1631783C002F3AEB /* bottom2.png in Resources */,
 				15964B4016317CB0002F3AEB /* postitICON.png in Resources */,
+				CEF356C6163186B3008CD16D /* CBCourseFormViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -355,6 +364,7 @@
 				06C239EF16313ABB00ADD838 /* CBWeekLayerViewController.m in Sources */,
 				06C239F116313ABB00ADD838 /* CBWeekViewCell.m in Sources */,
 				06C239F316313ABB00ADD838 /* CBWeekViewController.m in Sources */,
+				CEF356C5163186B3008CD16D /* CBCourseFormViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
