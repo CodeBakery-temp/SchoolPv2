@@ -265,19 +265,19 @@
     idInt +=1;
     objID = idInt;
     NSDictionary *lecture = [[NSDictionary alloc] initWithObjectsAndKeys:
-                          [dict objectForKey:@"COURSE"], @"COURSE",
-                          [dict objectForKey:@"GRADE"], @"GRADE",
-                          [dict objectForKey:@"TEACHER"], @"TEACHER",
-                          [dict objectForKey:@"ROOM"], @"ROOM",
-                          [NSString stringWithFormat:@"%d", objID], @"COURSEID",
-                          @"1", @"VERSION",
-                          [dict objectForKey:@"START"], @"START",
-                          [dict objectForKey:@"STOP"], @"STOP",
-                          [dict objectForKey:@"LUNCHSTART"], @"LUNCHSTART",
-                          [dict objectForKey:@"LUNCHSTOP"], @"LUNCHSTOP",
-                          [dict objectForKey:@"YEAR"], @"YEAR",
-                          [dict objectForKey:@"DAYS"], @"DAYS",
-                          [dict objectForKey:@"WEEKS"], @"WEEKS",
+                          [dict objectForKey:@"COURSE"], @"course",
+                          [dict objectForKey:@"GRADE"], @"grade",
+                          [dict objectForKey:@"TEACHER"], @"teacher",
+                          [dict objectForKey:@"ROOM"], @"room",
+                          [NSString stringWithFormat:@"%d", objID], @"courseID",
+                          @"1", @"version",
+                          [dict objectForKey:@"START"], @"startTime",
+                          [dict objectForKey:@"STOP"], @"stopTime",
+                          [dict objectForKey:@"LUNCHSTART"], @"lunchStart",
+                          [dict objectForKey:@"LUNCHSTOP"], @"lunchStop",
+                          [dict objectForKey:@"YEAR"], @"year",
+                          [dict objectForKey:@"DAYS"], @"daysOfWeek",
+                          [dict objectForKey:@"WEEKS"], @"weeks",
                           nil];
     NSString* result = [db lectureToDataBase:lecture];
     NSLog(@"CREATE ID: %@ RESULT: %@", [lecture objectForKey:@"COURSEID"], result);
@@ -291,10 +291,10 @@
 - (void)createNote:(NSDictionary *)dict
 {
     NSDictionary *note = [[NSDictionary alloc] initWithObjectsAndKeys:
-                          [dict objectForKey:@"TEXT"], @"TEXT",
-                          [dict objectForKey:@"WEEK"], @"WEEK",
-                          [dict objectForKey:@"DAY"], @"DAY",
-                          [dict objectForKey:@"COURSEID"], @"COURSEID",
+                          [dict objectForKey:@"TEXT"], @"text",
+                          [dict objectForKey:@"WEEK"], @"week",
+                          [dict objectForKey:@"DAY"], @"day",
+                          [dict objectForKey:@"COURSEID"], @"courseID",
                           nil];
     NSString* result = [db noteToDataBase:note];
     NSLog(@"RESULT: %@", result);
@@ -308,9 +308,9 @@
 - (void)createMessage:(NSDictionary *)dict
 {
     NSDictionary *message = [[NSDictionary alloc] initWithObjectsAndKeys:
-                          [dict objectForKey:@"SENDER"], @"SENDER",
-                          [dict objectForKey:@"RECEIVER"], @"RECEIVER",
-                          [dict objectForKey:@"TEXT"], @"TEXT",
+                          [dict objectForKey:@"SENDER"], @"sender",
+                          [dict objectForKey:@"RECEIVER"], @"receiver",
+                          [dict objectForKey:@"TEXT"], @"text",
                           nil];
     NSString* result = [db messageToDataBase:message];
     NSLog(@"RESULT: %@", result);
