@@ -45,10 +45,10 @@
 		06C239F116313ABB00ADD838 /* CBWeekViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 06C239E316313ABB00ADD838 /* CBWeekViewCell.m */; };
 		06C239F216313ABB00ADD838 /* CBWeekViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 06C239E416313ABB00ADD838 /* CBWeekViewCell.xib */; };
 		06C239F316313ABB00ADD838 /* CBWeekViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06C239E616313ABB00ADD838 /* CBWeekViewController.m */; };
+		151E4D8C16318AC20054E358 /* Schoolbell.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 151E4D8B16318AC20054E358 /* Schoolbell.ttf */; };
 		15964B3B1631783C002F3AEB /* bottom2.png in Resources */ = {isa = PBXBuildFile; fileRef = 15964B3A1631783C002F3AEB /* bottom2.png */; };
 		15964B4016317CB0002F3AEB /* postitICON.png in Resources */ = {isa = PBXBuildFile; fileRef = 15964B3F16317CB0002F3AEB /* postitICON.png */; };
 		15964B4E16318046002F3AEB /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15964B4D16318046002F3AEB /* QuartzCore.framework */; };
-		15E3830716315C9600D8BBCA /* Brasserie.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 15E3830516315C9600D8BBCA /* Brasserie.ttf */; };
 		15E3830816315C9600D8BBCA /* DK Crayon Crumble.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 15E3830616315C9600D8BBCA /* DK Crayon Crumble.ttf */; };
 		CEF356C5163186B3008CD16D /* CBCourseFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEF356C3163186B3008CD16D /* CBCourseFormViewController.m */; };
 		CEF356C6163186B3008CD16D /* CBCourseFormViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEF356C4163186B3008CD16D /* CBCourseFormViewController.xib */; };
@@ -111,10 +111,10 @@
 		06C239E416313ABB00ADD838 /* CBWeekViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CBWeekViewCell.xib; sourceTree = "<group>"; };
 		06C239E516313ABB00ADD838 /* CBWeekViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBWeekViewController.h; sourceTree = "<group>"; };
 		06C239E616313ABB00ADD838 /* CBWeekViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBWeekViewController.m; sourceTree = "<group>"; };
+		151E4D8B16318AC20054E358 /* Schoolbell.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Schoolbell.ttf; sourceTree = "<group>"; };
 		15964B3A1631783C002F3AEB /* bottom2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bottom2.png; sourceTree = "<group>"; };
 		15964B3F16317CB0002F3AEB /* postitICON.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = postitICON.png; sourceTree = "<group>"; };
 		15964B4D16318046002F3AEB /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		15E3830516315C9600D8BBCA /* Brasserie.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Brasserie.ttf; sourceTree = "<group>"; };
 		15E3830616315C9600D8BBCA /* DK Crayon Crumble.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DK Crayon Crumble.ttf"; sourceTree = "<group>"; };
 		CEF356C2163186B3008CD16D /* CBCourseFormViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBCourseFormViewController.h; sourceTree = "<group>"; };
 		CEF356C3163186B3008CD16D /* CBCourseFormViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBCourseFormViewController.m; sourceTree = "<group>"; };
@@ -193,7 +193,7 @@
 		06AA445716256504002DDB8F /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				15E3830516315C9600D8BBCA /* Brasserie.ttf */,
+				151E4D8B16318AC20054E358 /* Schoolbell.ttf */,
 				15E3830616315C9600D8BBCA /* DK Crayon Crumble.ttf */,
 				06AA445816256504002DDB8F /* SchoolPv2-Info.plist */,
 				06AA445916256504002DDB8F /* InfoPlist.strings */,
@@ -332,11 +332,11 @@
 				06C239EE16313ABB00ADD838 /* CBDayViewController.xib in Resources */,
 				06C239F016313ABB00ADD838 /* CBWeekLayerViewController.xib in Resources */,
 				06C239F216313ABB00ADD838 /* CBWeekViewCell.xib in Resources */,
-				15E3830716315C9600D8BBCA /* Brasserie.ttf in Resources */,
 				15E3830816315C9600D8BBCA /* DK Crayon Crumble.ttf in Resources */,
 				15964B3B1631783C002F3AEB /* bottom2.png in Resources */,
 				15964B4016317CB0002F3AEB /* postitICON.png in Resources */,
 				CEF356C6163186B3008CD16D /* CBCourseFormViewController.xib in Resources */,
+				151E4D8C16318AC20054E358 /* Schoolbell.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

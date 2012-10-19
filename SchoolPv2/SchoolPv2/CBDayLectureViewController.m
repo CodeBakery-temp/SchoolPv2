@@ -67,7 +67,7 @@
     [[cell stopLabel] setText: [lec stopTime]];
     
     UIFont *crayonFont = [UIFont fontWithName:@"DK Crayon Crumble" size:20];
-    //UIFont *handwritingFont = [UIFont fontWithName:@"Brasserie" size:30];
+    //UIFont *handwritingFont = [UIFont fontWithName:@"Schoolbell" size:30];
     cell.courseLabel.font = crayonFont;
     cell.teacherLabel.font = crayonFont;
     cell.roomLabel.font = crayonFont;

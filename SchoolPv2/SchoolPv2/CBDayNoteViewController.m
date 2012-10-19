@@ -66,7 +66,7 @@
     CBNote *note = [[list objectForKey:@"NOTES"] objectAtIndex:[indexPath row]];
     [[cell noteLabel] setText:[note text]];
     
-    UIFont *handwritingFont = [UIFont fontWithName:@"Brasserie" size:15];
+    UIFont *handwritingFont = [UIFont fontWithName:@"Schoolbell" size:15];
     cell.noteLabel.font = handwritingFont;
     
 	return cell;
