@@ -5,6 +5,7 @@
 #import "CBScheduleService.h"
 #import "CBDatabaseService.h"
 #import "CBUser.h"
+#import <QuartzCore/QuartzCore.h>
 
 @interface CBDayViewController ()
 {
@@ -94,7 +95,14 @@
 }
 
 - (IBAction)doSync:(id)sender {
-    NSLog(@"Sync");
+    CABasicAnimation *halfTurn;
+    halfTurn = [CABasicAnimation animationWithKeyPath:@"transform.rotation"];
+    halfTurn.fromValue = [NSNumber numberWithFloat:0];
+    halfTurn.toValue = [NSNumber numberWithFloat:((360*M_PI)/180)];
+    halfTurn.duration = 1.2;
+    halfTurn.repeatCount = 1;
+    [sender addAnimation:halfTurn forKey:@"180"];
+
 }
 
 @end

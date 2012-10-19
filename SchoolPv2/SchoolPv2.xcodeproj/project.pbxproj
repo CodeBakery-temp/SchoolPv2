@@ -47,6 +47,7 @@
 		06C239F316313ABB00ADD838 /* CBWeekViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06C239E616313ABB00ADD838 /* CBWeekViewController.m */; };
 		15964B3B1631783C002F3AEB /* bottom2.png in Resources */ = {isa = PBXBuildFile; fileRef = 15964B3A1631783C002F3AEB /* bottom2.png */; };
 		15964B4016317CB0002F3AEB /* postitICON.png in Resources */ = {isa = PBXBuildFile; fileRef = 15964B3F16317CB0002F3AEB /* postitICON.png */; };
+		15964B4E16318046002F3AEB /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15964B4D16318046002F3AEB /* QuartzCore.framework */; };
 		15E3830716315C9600D8BBCA /* Brasserie.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 15E3830516315C9600D8BBCA /* Brasserie.ttf */; };
 		15E3830816315C9600D8BBCA /* DK Crayon Crumble.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 15E3830616315C9600D8BBCA /* DK Crayon Crumble.ttf */; };
 /* End PBXBuildFile section */
@@ -110,6 +111,7 @@
 		06C239E616313ABB00ADD838 /* CBWeekViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBWeekViewController.m; sourceTree = "<group>"; };
 		15964B3A1631783C002F3AEB /* bottom2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bottom2.png; sourceTree = "<group>"; };
 		15964B3F16317CB0002F3AEB /* postitICON.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = postitICON.png; sourceTree = "<group>"; };
+		15964B4D16318046002F3AEB /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		15E3830516315C9600D8BBCA /* Brasserie.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Brasserie.ttf; sourceTree = "<group>"; };
 		15E3830616315C9600D8BBCA /* DK Crayon Crumble.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DK Crayon Crumble.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -119,6 +121,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				15964B4E16318046002F3AEB /* QuartzCore.framework in Frameworks */,
 				06AA444F16256504002DDB8F /* UIKit.framework in Frameworks */,
 				06AA445116256504002DDB8F /* Foundation.framework in Frameworks */,
 				06AA445316256504002DDB8F /* CoreGraphics.framework in Frameworks */,
@@ -160,6 +163,7 @@
 		06AA444D16256504002DDB8F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				15964B4D16318046002F3AEB /* QuartzCore.framework */,
 				06AA444E16256504002DDB8F /* UIKit.framework */,
 				06AA445016256504002DDB8F /* Foundation.framework */,
 				06AA445216256504002DDB8F /* CoreGraphics.framework */,
