@@ -1,22 +1,24 @@
 #import "CBWeekLayerViewController.h"
-#import "CBDayViewController.h"
-#import "CBDayLectureViewController.h"
-#import "CBDayNoteViewController.h"
-#import "CBScheduleService.h"
 #import "CBDatabaseService.h"
+#import "CBScheduleService.h"
+#import "CBWeekViewController.h"
+#import "CBDayViewController.h"
+#import "CBLecture.h"
+#import "CBNote.h"
 #import "CBUser.h"
+#import "CBMessage.h"
+#import "CBWeekViewCell.h"
 
-@interface CBDayViewController ()
+@interface CBWeekLayerViewController ()
 {
-    CBDayLectureViewController *dayLectures;
-    CBDayNoteViewController *dayNotes;
     CBScheduleService *schedule;
+    CBWeekViewController *weekSchedule;
     CBUser *user;
 }
 
 @end
 
-@implementation CBDayViewController
+@implementation CBWeekLayerViewController
 
 @synthesize delegate;
 
@@ -25,7 +27,7 @@
     self = [super init];
     if (self) {
         // TEST GET YOU
-        userName = @"nordin.christoffer@gmail.com";
+        /*userName = @"nordin.christoffer@gmail.com";
         CBDatabaseService *db = [CBDatabaseService database];
         NSMutableArray *users = [[db getUsers] objectForKey:@"STUDENT"];
         for(CBUser* u in users) {
@@ -40,13 +42,13 @@
         
         schedule = [CBScheduleService schedule];
         [schedule getLecturesOfWeek:user currentWeek:[components week]];
-        [schedule getNotesOfWeekAndMessages:user currentWeek:[components week]];
         [schedule sortLecturesByVersionAndTime];
+        //[schedule getNotesOfWeekAndMessages:user currentWeek:[components week]];
         NSLog(@"%d %d %d %d %d", [[[[schedule getWeekLectures] objectAtIndex:0] objectForKey:@"LECTURES"] count],
               [[[[schedule getWeekLectures] objectAtIndex:1] objectForKey:@"LECTURES"] count],
               [[[[schedule getWeekLectures] objectAtIndex:2] objectForKey:@"LECTURES"] count],
               [[[[schedule getWeekLectures] objectAtIndex:3] objectForKey:@"LECTURES"] count],
-              [[[[schedule getWeekLectures] objectAtIndex:4] objectForKey:@"LECTURES"] count]);
+              [[[[schedule getWeekLectures] objectAtIndex:4] objectForKey:@"LECTURES"] count]);*/
     }
     return self;
 }
@@ -54,42 +56,24 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [_dayLabel setText:[[schedule getDayLectures] objectForKey:@"DAY"]];
-    dayLectures = [[CBDayLectureViewController alloc] init];
-    dayNotes = [[CBDayNoteViewController alloc] init];
-    [_lectureTable addSubview:dayLectures.view];
-    [_noteTable addSubview:dayNotes.view];
+    weekSchedule = [[CBWeekViewController alloc] init];
+    [_weekTable addSubview:weekSchedule.view];
 }
 
 - (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
 {
-    if (fromInterfaceOrientation==UIInterfaceOrientationPortrait||
-        fromInterfaceOrientation==UIInterfaceOrientationPortraitUpsideDown) {
-        NSLog(@"WEEK VIEW");
-        CBWeekLayerViewController *weekController = [[CBWeekLayerViewController alloc] init];
-        weekController.delegate = delegate;
-        [delegate setRootViewController:weekController];
+    if (fromInterfaceOrientation==UIInterfaceOrientationLandscapeLeft||
+        fromInterfaceOrientation==UIInterfaceOrientationLandscapeRight) {
+        NSLog(@"DAY VIEW");
+        CBDayViewController *dayController = [[CBDayViewController alloc] init];
+        dayController.delegate = delegate;
+        [delegate setRootViewController:dayController];
     }
 }
 
 - (NSUInteger)supportedInterfaceOrientations
 {
     return UIInterfaceOrientationMaskAll;
-}
-
-- (IBAction)showNotes:(id)sender {
-    if (_noteView.hidden)
-        _noteView.hidden =NO;
-    else
-        _noteView.hidden =YES;
-}
-
-- (IBAction)toInbox:(id)sender {
-    NSLog(@"Inbox");
-}
-
-- (IBAction)doSync:(id)sender {
-    NSLog(@"Sync");
 }
 
 @end

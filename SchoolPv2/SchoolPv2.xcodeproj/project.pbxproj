@@ -24,10 +24,27 @@
 		06AA448A16256644002DDB8F /* CBMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 06AA448916256644002DDB8F /* CBMessage.m */; };
 		06AA448D16256777002DDB8F /* CBDatabaseService.m in Sources */ = {isa = PBXBuildFile; fileRef = 06AA448C16256777002DDB8F /* CBDatabaseService.m */; };
 		06AA4490162567EB002DDB8F /* CBScheduleService.m in Sources */ = {isa = PBXBuildFile; fileRef = 06AA448F162567EB002DDB8F /* CBScheduleService.m */; };
-		06AA449316256877002DDB8F /* CBWeekViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06AA449216256877002DDB8F /* CBWeekViewController.m */; };
-		06AA4496162568A9002DDB8F /* CBDayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06AA4495162568A9002DDB8F /* CBDayViewController.m */; };
-		06AA44B6162C4409002DDB8F /* CBWeekViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 06AA44B5162C4409002DDB8F /* CBWeekViewCell.m */; };
-		06AA44B9162C4466002DDB8F /* CBWeekViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 06AA44B8162C4466002DDB8F /* CBWeekViewCell.xib */; };
+		06C239B41631388600ADD838 /* bottom.png in Resources */ = {isa = PBXBuildFile; fileRef = 06C239AC1631388600ADD838 /* bottom.png */; };
+		06C239B51631388600ADD838 /* chalkboard.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 06C239AD1631388600ADD838 /* chalkboard.jpg */; };
+		06C239B61631388600ADD838 /* mail-closed.png in Resources */ = {isa = PBXBuildFile; fileRef = 06C239AE1631388600ADD838 /* mail-closed.png */; };
+		06C239B71631388600ADD838 /* mail-open.png in Resources */ = {isa = PBXBuildFile; fileRef = 06C239AF1631388600ADD838 /* mail-open.png */; };
+		06C239B81631388600ADD838 /* postit.png in Resources */ = {isa = PBXBuildFile; fileRef = 06C239B01631388600ADD838 /* postit.png */; };
+		06C239B91631388600ADD838 /* letter.png in Resources */ = {isa = PBXBuildFile; fileRef = 06C239B11631388600ADD838 /* letter.png */; };
+		06C239BA1631388600ADD838 /* sync.png in Resources */ = {isa = PBXBuildFile; fileRef = 06C239B21631388600ADD838 /* sync.png */; };
+		06C239BB1631388600ADD838 /* weekview.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 06C239B31631388600ADD838 /* weekview.jpg */; };
+		06C239E716313ABB00ADD838 /* CBDayLectureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06C239D316313ABB00ADD838 /* CBDayLectureViewController.m */; };
+		06C239E816313ABB00ADD838 /* CBDayNoteCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 06C239D516313ABB00ADD838 /* CBDayNoteCell.m */; };
+		06C239E916313ABB00ADD838 /* CBDayNoteCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 06C239D616313ABB00ADD838 /* CBDayNoteCell.xib */; };
+		06C239EA16313ABB00ADD838 /* CBDayNoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06C239D816313ABB00ADD838 /* CBDayNoteViewController.m */; };
+		06C239EB16313ABB00ADD838 /* CBDayViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 06C239DA16313ABB00ADD838 /* CBDayViewCell.m */; };
+		06C239EC16313ABB00ADD838 /* CBDayViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 06C239DB16313ABB00ADD838 /* CBDayViewCell.xib */; };
+		06C239ED16313ABB00ADD838 /* CBDayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06C239DD16313ABB00ADD838 /* CBDayViewController.m */; };
+		06C239EE16313ABB00ADD838 /* CBDayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 06C239DE16313ABB00ADD838 /* CBDayViewController.xib */; };
+		06C239EF16313ABB00ADD838 /* CBWeekLayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06C239E016313ABB00ADD838 /* CBWeekLayerViewController.m */; };
+		06C239F016313ABB00ADD838 /* CBWeekLayerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 06C239E116313ABB00ADD838 /* CBWeekLayerViewController.xib */; };
+		06C239F116313ABB00ADD838 /* CBWeekViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 06C239E316313ABB00ADD838 /* CBWeekViewCell.m */; };
+		06C239F216313ABB00ADD838 /* CBWeekViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 06C239E416313ABB00ADD838 /* CBWeekViewCell.xib */; };
+		06C239F316313ABB00ADD838 /* CBWeekViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06C239E616313ABB00ADD838 /* CBWeekViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,13 +75,35 @@
 		06AA448C16256777002DDB8F /* CBDatabaseService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBDatabaseService.m; sourceTree = "<group>"; };
 		06AA448E162567EB002DDB8F /* CBScheduleService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBScheduleService.h; sourceTree = "<group>"; };
 		06AA448F162567EB002DDB8F /* CBScheduleService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBScheduleService.m; sourceTree = "<group>"; };
-		06AA449116256877002DDB8F /* CBWeekViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBWeekViewController.h; sourceTree = "<group>"; };
-		06AA449216256877002DDB8F /* CBWeekViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBWeekViewController.m; sourceTree = "<group>"; };
-		06AA4494162568A9002DDB8F /* CBDayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBDayViewController.h; sourceTree = "<group>"; };
-		06AA4495162568A9002DDB8F /* CBDayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBDayViewController.m; sourceTree = "<group>"; };
-		06AA44B4162C4409002DDB8F /* CBWeekViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBWeekViewCell.h; sourceTree = "<group>"; };
-		06AA44B5162C4409002DDB8F /* CBWeekViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBWeekViewCell.m; sourceTree = "<group>"; };
-		06AA44B8162C4466002DDB8F /* CBWeekViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CBWeekViewCell.xib; sourceTree = "<group>"; };
+		06C239AC1631388600ADD838 /* bottom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bottom.png; sourceTree = "<group>"; };
+		06C239AD1631388600ADD838 /* chalkboard.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = chalkboard.jpg; sourceTree = "<group>"; };
+		06C239AE1631388600ADD838 /* mail-closed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mail-closed.png"; sourceTree = "<group>"; };
+		06C239AF1631388600ADD838 /* mail-open.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mail-open.png"; sourceTree = "<group>"; };
+		06C239B01631388600ADD838 /* postit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = postit.png; sourceTree = "<group>"; };
+		06C239B11631388600ADD838 /* letter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = letter.png; sourceTree = "<group>"; };
+		06C239B21631388600ADD838 /* sync.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sync.png; sourceTree = "<group>"; };
+		06C239B31631388600ADD838 /* weekview.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = weekview.jpg; sourceTree = "<group>"; };
+		06C239D216313ABA00ADD838 /* CBDayLectureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBDayLectureViewController.h; sourceTree = "<group>"; };
+		06C239D316313ABB00ADD838 /* CBDayLectureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBDayLectureViewController.m; sourceTree = "<group>"; };
+		06C239D416313ABB00ADD838 /* CBDayNoteCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBDayNoteCell.h; sourceTree = "<group>"; };
+		06C239D516313ABB00ADD838 /* CBDayNoteCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBDayNoteCell.m; sourceTree = "<group>"; };
+		06C239D616313ABB00ADD838 /* CBDayNoteCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CBDayNoteCell.xib; sourceTree = "<group>"; };
+		06C239D716313ABB00ADD838 /* CBDayNoteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBDayNoteViewController.h; sourceTree = "<group>"; };
+		06C239D816313ABB00ADD838 /* CBDayNoteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBDayNoteViewController.m; sourceTree = "<group>"; };
+		06C239D916313ABB00ADD838 /* CBDayViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBDayViewCell.h; sourceTree = "<group>"; };
+		06C239DA16313ABB00ADD838 /* CBDayViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBDayViewCell.m; sourceTree = "<group>"; };
+		06C239DB16313ABB00ADD838 /* CBDayViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CBDayViewCell.xib; sourceTree = "<group>"; };
+		06C239DC16313ABB00ADD838 /* CBDayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBDayViewController.h; sourceTree = "<group>"; };
+		06C239DD16313ABB00ADD838 /* CBDayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBDayViewController.m; sourceTree = "<group>"; };
+		06C239DE16313ABB00ADD838 /* CBDayViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CBDayViewController.xib; sourceTree = "<group>"; };
+		06C239DF16313ABB00ADD838 /* CBWeekLayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBWeekLayerViewController.h; sourceTree = "<group>"; };
+		06C239E016313ABB00ADD838 /* CBWeekLayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBWeekLayerViewController.m; sourceTree = "<group>"; };
+		06C239E116313ABB00ADD838 /* CBWeekLayerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CBWeekLayerViewController.xib; sourceTree = "<group>"; };
+		06C239E216313ABB00ADD838 /* CBWeekViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBWeekViewCell.h; sourceTree = "<group>"; };
+		06C239E316313ABB00ADD838 /* CBWeekViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBWeekViewCell.m; sourceTree = "<group>"; };
+		06C239E416313ABB00ADD838 /* CBWeekViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CBWeekViewCell.xib; sourceTree = "<group>"; };
+		06C239E516313ABB00ADD838 /* CBWeekViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBWeekViewController.h; sourceTree = "<group>"; };
+		06C239E616313ABB00ADD838 /* CBWeekViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBWeekViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +124,14 @@
 		06AA443F16256504002DDB8F = {
 			isa = PBXGroup;
 			children = (
+				06C239AC1631388600ADD838 /* bottom.png */,
+				06C239AD1631388600ADD838 /* chalkboard.jpg */,
+				06C239AE1631388600ADD838 /* mail-closed.png */,
+				06C239AF1631388600ADD838 /* mail-open.png */,
+				06C239B01631388600ADD838 /* postit.png */,
+				06C239B11631388600ADD838 /* letter.png */,
+				06C239B21631388600ADD838 /* sync.png */,
+				06C239B31631388600ADD838 /* weekview.jpg */,
 				06AA445616256504002DDB8F /* SchoolPv2 */,
 				06AA444D16256504002DDB8F /* Frameworks */,
 				06AA444B16256504002DDB8F /* Products */,
@@ -153,13 +200,27 @@
 		06AA44711625655C002DDB8F /* View */ = {
 			isa = PBXGroup;
 			children = (
-				06AA449116256877002DDB8F /* CBWeekViewController.h */,
-				06AA449216256877002DDB8F /* CBWeekViewController.m */,
-				06AA4494162568A9002DDB8F /* CBDayViewController.h */,
-				06AA4495162568A9002DDB8F /* CBDayViewController.m */,
-				06AA44B4162C4409002DDB8F /* CBWeekViewCell.h */,
-				06AA44B5162C4409002DDB8F /* CBWeekViewCell.m */,
-				06AA44B8162C4466002DDB8F /* CBWeekViewCell.xib */,
+				06C239DF16313ABB00ADD838 /* CBWeekLayerViewController.h */,
+				06C239E016313ABB00ADD838 /* CBWeekLayerViewController.m */,
+				06C239E116313ABB00ADD838 /* CBWeekLayerViewController.xib */,
+				06C239E516313ABB00ADD838 /* CBWeekViewController.h */,
+				06C239E616313ABB00ADD838 /* CBWeekViewController.m */,
+				06C239E216313ABB00ADD838 /* CBWeekViewCell.h */,
+				06C239E316313ABB00ADD838 /* CBWeekViewCell.m */,
+				06C239E416313ABB00ADD838 /* CBWeekViewCell.xib */,
+				06C239DC16313ABB00ADD838 /* CBDayViewController.h */,
+				06C239DD16313ABB00ADD838 /* CBDayViewController.m */,
+				06C239DE16313ABB00ADD838 /* CBDayViewController.xib */,
+				06C239D216313ABA00ADD838 /* CBDayLectureViewController.h */,
+				06C239D316313ABB00ADD838 /* CBDayLectureViewController.m */,
+				06C239D916313ABB00ADD838 /* CBDayViewCell.h */,
+				06C239DA16313ABB00ADD838 /* CBDayViewCell.m */,
+				06C239DB16313ABB00ADD838 /* CBDayViewCell.xib */,
+				06C239D716313ABB00ADD838 /* CBDayNoteViewController.h */,
+				06C239D816313ABB00ADD838 /* CBDayNoteViewController.m */,
+				06C239D416313ABB00ADD838 /* CBDayNoteCell.h */,
+				06C239D516313ABB00ADD838 /* CBDayNoteCell.m */,
+				06C239D616313ABB00ADD838 /* CBDayNoteCell.xib */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -234,7 +295,19 @@
 				06AA446316256504002DDB8F /* Default.png in Resources */,
 				06AA446516256504002DDB8F /* Default@2x.png in Resources */,
 				06AA446716256504002DDB8F /* Default-568h@2x.png in Resources */,
-				06AA44B9162C4466002DDB8F /* CBWeekViewCell.xib in Resources */,
+				06C239B41631388600ADD838 /* bottom.png in Resources */,
+				06C239B51631388600ADD838 /* chalkboard.jpg in Resources */,
+				06C239B61631388600ADD838 /* mail-closed.png in Resources */,
+				06C239B71631388600ADD838 /* mail-open.png in Resources */,
+				06C239B81631388600ADD838 /* postit.png in Resources */,
+				06C239B91631388600ADD838 /* letter.png in Resources */,
+				06C239BA1631388600ADD838 /* sync.png in Resources */,
+				06C239BB1631388600ADD838 /* weekview.jpg in Resources */,
+				06C239E916313ABB00ADD838 /* CBDayNoteCell.xib in Resources */,
+				06C239EC16313ABB00ADD838 /* CBDayViewCell.xib in Resources */,
+				06C239EE16313ABB00ADD838 /* CBDayViewController.xib in Resources */,
+				06C239F016313ABB00ADD838 /* CBWeekLayerViewController.xib in Resources */,
+				06C239F216313ABB00ADD838 /* CBWeekViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -254,9 +327,14 @@
 				06AA448A16256644002DDB8F /* CBMessage.m in Sources */,
 				06AA448D16256777002DDB8F /* CBDatabaseService.m in Sources */,
 				06AA4490162567EB002DDB8F /* CBScheduleService.m in Sources */,
-				06AA449316256877002DDB8F /* CBWeekViewController.m in Sources */,
-				06AA4496162568A9002DDB8F /* CBDayViewController.m in Sources */,
-				06AA44B6162C4409002DDB8F /* CBWeekViewCell.m in Sources */,
+				06C239E716313ABB00ADD838 /* CBDayLectureViewController.m in Sources */,
+				06C239E816313ABB00ADD838 /* CBDayNoteCell.m in Sources */,
+				06C239EA16313ABB00ADD838 /* CBDayNoteViewController.m in Sources */,
+				06C239EB16313ABB00ADD838 /* CBDayViewCell.m in Sources */,
+				06C239ED16313ABB00ADD838 /* CBDayViewController.m in Sources */,
+				06C239EF16313ABB00ADD838 /* CBWeekLayerViewController.m in Sources */,
+				06C239F116313ABB00ADD838 /* CBWeekViewCell.m in Sources */,
+				06C239F316313ABB00ADD838 /* CBWeekViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

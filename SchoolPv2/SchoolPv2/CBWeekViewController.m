@@ -11,39 +11,15 @@
 @implementation CBWeekViewController
 {
     CBScheduleService *schedule;
-    CBUser *user;
 }
-@synthesize delegate;
 
 - (id)init
 {
-    self = [super initWithStyle:UITableViewStyleGrouped];
+    self = [super initWithStyle:UITableViewStylePlain];
     if (self) {
+        self.tableView.backgroundColor = [UIColor clearColor];
         self.tableView.separatorColor = [UIColor clearColor];
-        
-        NSLog(@"GET USER");
-        userName = @"nordin.christoffer@gmail.com";
-        CBDatabaseService *db = [CBDatabaseService database];
-        NSMutableArray *users = [[db getUsers] objectForKey:@"STUDENT"];
-        for(CBUser* u in users) {
-            if ([[u mailAddress] isEqualToString:userName]) {
-                user = u;
-            }
-        }
-        NSDate *date = [NSDate date];
-        NSCalendar *calendar = [NSCalendar currentCalendar];
-        NSInteger units = NSWeekCalendarUnit;
-        NSDateComponents *components = [calendar components:units fromDate:date];
-        
         schedule = [CBScheduleService schedule];
-        [schedule getLecturesOfWeek:user currentWeek:[components week]];
-        [schedule sortLecturesByVersionAndTime];
-        //[schedule getNotesOfWeekAndMessages:user currentWeek:[components week]];
-        NSLog(@"%d %d %d %d %d", [[[[schedule getWeekLectures] objectAtIndex:0] objectForKey:@"LECTURES"] count],
-              [[[[schedule getWeekLectures] objectAtIndex:1] objectForKey:@"LECTURES"] count],
-              [[[[schedule getWeekLectures] objectAtIndex:2] objectForKey:@"LECTURES"] count],
-              [[[[schedule getWeekLectures] objectAtIndex:3] objectForKey:@"LECTURES"] count],
-              [[[[schedule getWeekLectures] objectAtIndex:4] objectForKey:@"LECTURES"] count]);
     }
     return self;
 }
@@ -95,19 +71,9 @@
     return nil;
 }
 
-- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (fromInterfaceOrientation==UIInterfaceOrientationLandscapeLeft||
-        fromInterfaceOrientation==UIInterfaceOrientationLandscapeRight) {
-        CBDayViewController *dayController = [[CBDayViewController alloc] init];
-        dayController.delegate = delegate;
-        [delegate setRootViewController:dayController];
-    }
-}
-
-- (NSUInteger)supportedInterfaceOrientations
-{
-    return UIInterfaceOrientationMaskAll;
+    return 30;
 }
 
 @end

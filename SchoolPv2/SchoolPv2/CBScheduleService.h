@@ -14,9 +14,9 @@
 -(id)initSchedule;
 
 - (NSArray*)getWeekLectures;
-- (NSArray*)getDayLectures;
+- (NSDictionary*)getDayLectures;
 - (NSArray*)getWeekNotes;
-- (NSArray*)getDayNotes;
+- (NSDictionary*)getDayNotes;
 - (NSArray*)getMessages;
 
 - (void)getLecturesOfWeek:(CBUser*)user

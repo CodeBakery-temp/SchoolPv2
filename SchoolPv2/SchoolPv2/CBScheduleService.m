@@ -14,11 +14,7 @@
     // Singleton
     static CBScheduleService *schedule = nil;
     if (!schedule) {
-        NSLog(@"NEW SCHEDULESERVICE");
         schedule = [[super allocWithZone:nil] init];
-    }
-    else {
-        NSLog(@"EXISTING SCHEDULESERVICE");
     }
     return schedule;
 }
@@ -88,13 +84,13 @@
     return weekLectures;
 }
 
-- (NSArray *)getDayLectures
+- (NSDictionary *)getDayLectures
 {
     NSDate *date = [NSDate date];
     NSCalendar *calendar = [NSCalendar currentCalendar];
     NSInteger units = NSWeekdayCalendarUnit;
     NSDateComponents *components = [calendar components:units fromDate:date];
-    return [[weekLectures objectAtIndex:([components weekday]-1)] objectForKey:@"LECTURES"];
+    return [weekLectures objectAtIndex:([components weekday]-2)];
 }
 
 - (NSArray *)getWeekNotes
@@ -102,13 +98,13 @@
     return weekNotes;
 }
 
-- (NSArray *)getDayNotes
+- (NSDictionary *)getDayNotes
 {
     NSDate *date = [NSDate date];
     NSCalendar *calendar = [NSCalendar currentCalendar];
     NSInteger units = NSWeekdayCalendarUnit;
     NSDateComponents *components = [calendar components:units fromDate:date];
-    return [[weekNotes objectAtIndex:([components weekday]-1)] objectForKey:@"NOTES"];
+    return [weekNotes objectAtIndex:([components weekday]-2)];
 }
 
 - (NSArray *)getMessages
@@ -268,21 +264,23 @@
     int idInt = objID;
     idInt +=1;
     objID = idInt;
-    CBLecture *lecture = [[CBLecture alloc] initCourseWithName:[dict objectForKey:@"COURSE"]
-                                                         grade:[dict objectForKey:@"GRADE"]
-                                                       teacher:[dict objectForKey:@"TEACHER"]
-                                                          room:[dict objectForKey:@"ROOM"]
-                                                      courseID:[NSString stringWithFormat:@"%d", objID]
-                                                       version:@"1"
-                                                     startTime:[dict objectForKey:@"START"]
-                                                      stopTime:[dict objectForKey:@"STOP"]
-                                                    lunchStart:[dict objectForKey:@"LUNCHSTART"]
-                                                     lunchStop:[dict objectForKey:@"LUNCHSTOP"]
-                                                          year:[dict objectForKey:@"YEAR"]
-                                                    daysOfWeek:[dict objectForKey:@"DAYS"]
-                                                         weeks:[dict objectForKey:@"WEEKS"]];
+    NSDictionary *lecture = [[NSDictionary alloc] initWithObjectsAndKeys:
+                          [dict objectForKey:@"COURSE"], @"COURSE",
+                          [dict objectForKey:@"GRADE"], @"GRADE",
+                          [dict objectForKey:@"TEACHER"], @"TEACHER",
+                          [dict objectForKey:@"ROOM"], @"ROOM",
+                          [NSString stringWithFormat:@"%d", objID], @"COURSEID",
+                          @"1", @"VERSION",
+                          [dict objectForKey:@"START"], @"START",
+                          [dict objectForKey:@"STOP"], @"STOP",
+                          [dict objectForKey:@"LUNCHSTART"], @"LUNCHSTART",
+                          [dict objectForKey:@"LUNCHSTOP"], @"LUNCHSTOP",
+                          [dict objectForKey:@"YEAR"], @"YEAR",
+                          [dict objectForKey:@"DAYS"], @"DAYS",
+                          [dict objectForKey:@"WEEKS"], @"WEEKS",
+                          nil];
     NSString* result = [db lectureToDataBase:lecture];
-    NSLog(@"CREATE ID: %@ RESULT: %@", [lecture courseID], result);
+    NSLog(@"CREATE ID: %@ RESULT: %@", [lecture objectForKey:@"COURSEID"], result);
 }
 
 /*********************************************************************
@@ -292,10 +290,12 @@
  *********************************************************************/
 - (void)createNote:(NSDictionary *)dict
 {
-    CBNote *note = [CBNote noteWithText:[dict objectForKey:@"TEXT"]
-                                   week:[dict objectForKey:@"WEEK"]
-                                    day:[dict objectForKey:@"DAY"]
-                               courseID:[dict objectForKey:@"COURSEID"]];
+    NSDictionary *note = [[NSDictionary alloc] initWithObjectsAndKeys:
+                          [dict objectForKey:@"TEXT"], @"TEXT",
+                          [dict objectForKey:@"WEEK"], @"WEEK",
+                          [dict objectForKey:@"DAY"], @"DAY",
+                          [dict objectForKey:@"COURSEID"], @"COURSEID",
+                          nil];
     NSString* result = [db noteToDataBase:note];
     NSLog(@"RESULT: %@", result);
 }
@@ -307,56 +307,42 @@
  *********************************************************************/
 - (void)createMessage:(NSDictionary *)dict
 {
-    CBMessage *message = [CBMessage messageWithSender:[dict objectForKey:@"SENDER"]
-                                             receiver:[dict objectForKey:@"RECEIVER"]
-                                                 text:[dict objectForKey:@"TEXT"]];
+    NSDictionary *message = [[NSDictionary alloc] initWithObjectsAndKeys:
+                          [dict objectForKey:@"SENDER"], @"SENDER",
+                          [dict objectForKey:@"RECEIVER"], @"RECEIVER",
+                          [dict objectForKey:@"TEXT"], @"TEXT",
+                          nil];
     NSString* result = [db messageToDataBase:message];
     NSLog(@"RESULT: %@", result);
 }
 
-
+/*********************************************************************
+ METHOD : UPDATE LECTURE OBJECT TEMPLATE WITH VERSION 1
+ ACCEPTS: CBLECTURE object
+ RESULT: CBLECTURE template is updated in database
+ *********************************************************************/
 -(void)updateLectureTemplate:(CBLecture*)lecture
-{}
+{
+    /*if ([lecture couchDBId]&&[lecture couchDBRev]) {
+        [db lectureToDataBase:lecture];
+    }
+    else {
+        NSLog(@"Object is not previously registered in database.");
+    }*/
+}
 
+/*********************************************************************
+ METHOD : UPDATE LECTURE OBJECT - CREATE MODIFIED INSTANCE OR EDIT INSTANCE
+ ACCEPTS: CBLECTURE object
+ RESULT: Send CBLECTURE event to database
+ *********************************************************************/
 -(void)updateLectureEvent:(CBLecture*)lecture
-{}
+{
+    
+}
 
-/*********************************************************************
- METHOD : UPDATE LECTURE OBJECT TEMPLATE WITH VERSION 1 - SUPPLY WITH JSON
- ACCEPTS: NSString with number of ID, NSArray with Lecture objects, NSString PATH to JSON DATA
- RETURNS: NONE
- *********************************************************************/
-/*-(void)updateLectureTemplate:(NSString*)jsonPath {
- NSArray* lectures = [db getLectures];
- NSData *data = [NSData dataWithContentsOfFile:jsonPath];
- NSMutableDictionary *dict = [NSJSONSerialization JSONObjectWithData:data
- options:NSJSONReadingMutableContainers
- error:NULL];
- 
- for(CBLecture* lec in lectures) {
- if([[lec courseID]isEqualToString:[dict objectForKey:@"courseID"]]&&[[lec version]isEqualToString:@"1"]) {
- [dict setObject:[lec couchDBId] forKey:@"_id"];
- [dict setObject:[lec couchDBRev] forKey:@"_rev"];
- [dict setObject:[lec courseID] forKey:@"courseID"];
- [dict setObject:@"1" forKey:@"version"];
- [db lectureToDataBase:dict];
- 
- break;
- }
- }
- }*/
-
-/*********************************************************************
- METHOD : UPDATE LECTURE OBJECT - CREATE MODIFIED INSTANCE OR EDIT INSTANCE - SUPPLY WITH JSON
- ACCEPTS: NSString with number of ID, NSString with number of version, NSArray with Lecture objects, NSString PATH to JSON DATA
- RETURNS: NONE
- *********************************************************************/
 /*-(void)updateLectureEvent:(NSString*)jsonPath {
- NSArray* lectures = [db getLectures];
- NSData *data = [NSData dataWithContentsOfFile:jsonPath];
- NSMutableDictionary *dict = [NSJSONSerialization JSONObjectWithData:data
- options:NSJSONReadingMutableContainers
- error:NULL];
+ 
  NSLog(@"%@ %@", [dict objectForKey:@"courseID"], [dict objectForKey:@"version"]);
  for(CBLecture* lec in lectures) {
  if([[lec courseID]isEqualToString:[dict objectForKey:@"courseID"]]&&[[lec version]isEqualToString:[dict objectForKey:@"version"]]) {

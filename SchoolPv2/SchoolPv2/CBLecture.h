@@ -48,20 +48,6 @@
                 lunchStop: (NSString *)lunchStop
                      year: (NSString *)year
                daysOfWeek: (NSArray *)daysOfWeek
-                    weeks: (NSArray *)weeks;
-
-- (id) initCourseWithName: (NSString *)course
-                    grade: (NSString *)grade
-                  teacher: (NSString *)teacher
-                     room: (NSString *)room
-                 courseID: (NSString *)courseID
-                  version: (NSString *)version
-                startTime: (NSString *)startTime
-                 stopTime: (NSString *)stopTime
-               lunchStart: (NSString *)lunchStart
-                lunchStop: (NSString *)lunchStop
-                     year: (NSString *)year
-               daysOfWeek: (NSArray *)daysOfWeek
                     weeks: (NSArray *)weeks
                 couchDBId: (NSString *) couchDBId
                couchDBRev: (NSString *) couchDBRev;

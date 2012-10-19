@@ -60,7 +60,7 @@ NSString *const getAll = @"_all_docs?include_docs=true";
  ACCEPTS: Lecture object as NSDictionary
  RETURNS: Result NSString
  *********************************************************************/
--(NSString*) lectureToDataBase:(CBLecture *)lecture
+-(NSString*) lectureToDataBase:(NSDictionary*)lecture
 {
     NSData *tempData;
     if([NSJSONSerialization isValidJSONObject:lecture]) {
@@ -92,7 +92,7 @@ NSString *const getAll = @"_all_docs?include_docs=true";
  ACCEPTS: Note or Message object as NSDictionary
  RETURNS: Result NSString
  *********************************************************************/
--(NSString*) noteToDataBase:(CBNote *)note
+-(NSString*) noteToDataBase:(NSDictionary*)note
 {
     NSData *tempData;
     if([NSJSONSerialization isValidJSONObject:note]) {
@@ -124,7 +124,7 @@ NSString *const getAll = @"_all_docs?include_docs=true";
  ACCEPTS: Note or Message object as NSDictionary
  RETURNS: Result NSString
  *********************************************************************/
--(NSString*) messageToDataBase:(CBMessage *)message
+-(NSString*) messageToDataBase:(NSDictionary*)message
 {
     NSData *tempData;
     if([NSJSONSerialization isValidJSONObject:message]) {
