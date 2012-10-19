@@ -9,42 +9,33 @@
 @synthesize couchDBRev = _couchDBRev;
 
 @synthesize course = _course;
-@synthesize grade = _grade;
 @synthesize teacher = _teacher;
 @synthesize room = _room;
 @synthesize courseID = _courseID;
 @synthesize version = _version;
 @synthesize startTime = _startTime;
 @synthesize stopTime = _stopTime;
-@synthesize lunchStart = _lunchStart;
-@synthesize lunchStop = _lunchStop;
 @synthesize year = _year;
 
 +(id) courseWithName:(NSString *)course
-               grade:(NSString *)grade
              teacher: (NSString*)teacher
                 room: (NSString*)room
             courseID:(NSString *)courseID
              version:(NSString *)version
            startTime:(NSString *)startTime
             stopTime:(NSString *)stopTime
-          lunchStart:(NSString *)lunchStart
-           lunchStop:(NSString *)lunchStop
                 year:(NSString *)year
           daysOfWeek:(NSArray *)daysOfWeek
                weeks:(NSArray *)weeks
            couchDBId: (NSString *) couchDBId
           couchDBRev: (NSString *) couchDBRev{
     return [[self alloc]initCourseWithName:course
-                                     grade:grade
                                    teacher:teacher
                                       room:room
                                   courseID:courseID
                                    version:version
                                  startTime:startTime
                                   stopTime:stopTime
-                                lunchStart:lunchStart
-                                 lunchStop:lunchStop
                                       year:year
                                 daysOfWeek:daysOfWeek
                                      weeks:weeks
@@ -53,15 +44,12 @@
 }
 
 -(id) initCourseWithName:(NSString *)course
-                   grade:(NSString *)grade
                  teacher:(NSString*)teacher
                     room:(NSString*)room
                 courseID:(NSString *)courseID
                  version:(NSString *)version
                startTime:(NSString *)startTime
                 stopTime:(NSString *)stopTime
-              lunchStart:(NSString *)lunchStart
-               lunchStop:(NSString *)lunchStop
                     year:(NSString *)year
               daysOfWeek:(NSArray *)daysOfWeek
                    weeks:(NSArray *)weeks
@@ -79,15 +67,12 @@
         }
         
         _course = course;
-        _grade = grade;
         _teacher = teacher;
         _room = room;
         _courseID = courseID;
         _version = version;
         _startTime = startTime;
         _stopTime = stopTime;
-        _lunchStart = lunchStart;
-        _lunchStop = lunchStop;
         _year = year;
         _couchDBId = couchDBId;
         _couchDBRev = couchDBRev;
@@ -99,15 +84,12 @@
     
     if (self.couchDBId) {
         return [NSDictionary dictionaryWithObjectsAndKeys:self.course, @"course",
-                self.grade, @"grade",
                 self.teacher, @"teacher",
                 self.room, @"room",
                 self.courseID, @"courseID",
                 self.version, @"version",
                 self.startTime, @"startTime",
                 self.stopTime, @"stopTime",
-                self.lunchStart, @"lunchStart",
-                self.lunchStop, @"lunchStop",
                 self.year, @"year",
                 self.couchDBId, @"_id",
                 self.couchDBRev, @"_rev",
@@ -117,15 +99,12 @@
     }
     else {
         return [NSDictionary dictionaryWithObjectsAndKeys:self.course, @"course",
-                self.grade, @"grade",
                 self.teacher, @"teacher",
                 self.room, @"room",
                 self.courseID, @"courseID",
                 self.version, @"version",
                 self.startTime, @"startTime",
                 self.stopTime, @"stopTime",
-                self.lunchStart, @"lunchStart",
-                self.lunchStop, @"lunchStop",
                 self.year, @"year",
                 lessonDays, @"lessondays",
                 lessonWeeks, @"lessonWeeks",
@@ -143,31 +122,25 @@
 }
 
 -(NSString *)description {
-    return [NSString stringWithFormat:@"\nCourse: %@,\nGrade: %@, \nTeacher: %@, \nRoom: %@, \nCourseID: %@, \nVersion: %@, \nTime: %@-%@, \nLunch: %@-%@, \nYear: %@, \nDays: %@ \nWeeks: %@",
+    return [NSString stringWithFormat:@"\nCourse: %@, \nTeacher: %@, \nRoom: %@, \nCourseID: %@, \nVersion: %@, \nTime: %@-%@, \nYear: %@, \nDays: %@ \nWeeks: %@",
             self.course,
-            self.grade,
             self.teacher,
             self.room,
             self.courseID,
             self.version,
             self.startTime,
             self.stopTime,
-            self.lunchStart,
-            self.lunchStop,
             self.year,
             [lessonDays componentsJoinedByString:@", "], [lessonWeeks componentsJoinedByString:@", "]];
 }
 
 -(void)printLecture {
-    NSLog(@"\nCourse: %@, %@, \nTeacher: %@, \nRoom: %@, \nTime: %@-%@, \nLunch: %@-%@, \nYear: %@ \n\n",
+    NSLog(@"\nCourse: %@, \nTeacher: %@, \nRoom: %@, \nTime: %@-%@, \nYear: %@ \n\n",
           self.course,
-          self.grade,
           self.teacher,
           self.room,
           self.startTime,
           self.stopTime,
-          self.lunchStart,
-          self.lunchStop,
           self.year);
 }
 

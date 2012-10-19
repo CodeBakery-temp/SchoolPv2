@@ -236,16 +236,13 @@ NSString *const getAll = @"_all_docs?include_docs=true";
         usersDic = [usersDic objectForKey:@"rows"]; // Step into 'rows'
         for (NSDictionary *object in usersDic) {    // Step into JSON array (single index)
             NSDictionary* dict = [object objectForKey:@"doc"]; // Step into 'doc' (current object key/values)
-            CBLecture* lecture = [CBLecture courseWithName:[dict objectForKey:@"course"]
-                                                     grade:[dict objectForKey:@"grade"]
+            CBLecture* lecture = [CBLecture courseWithName:[dict objectForKey:@"course"]                                                    
                                                    teacher:[dict objectForKey:@"teacher"]
                                                       room:[dict objectForKey:@"room"]
                                                   courseID:[dict objectForKey:@"courseID"]
                                                    version:[dict objectForKey:@"version"]
                                                  startTime:[dict objectForKey:@"startTime"]
                                                   stopTime:[dict objectForKey:@"stopTime"]
-                                                lunchStart:[dict objectForKey:@"lunchStart"]
-                                                 lunchStop:[dict objectForKey:@"lunchStop"]
                                                       year:[dict objectForKey:@"year"]
                                                 daysOfWeek:[dict objectForKey:@"daysOfWeek"]
                                                      weeks:[dict objectForKey:@"weeks"]

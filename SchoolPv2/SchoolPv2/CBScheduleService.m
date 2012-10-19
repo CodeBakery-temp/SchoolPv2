@@ -179,16 +179,13 @@
                 if ([[lec courseID]isEqualToString:[NSString stringWithFormat:@"%d",CURRENTCOURSE]]
                     &&[[lec version] intValue]>versionTop) {
                     versionTop = [[lec version] intValue];
-                    lecture = [lecture initCourseWithName:[lec course]
-                                                    grade:[lec grade]
+                    lecture = [lecture initCourseWithName:[lec course]                                                    
                                                   teacher:[lec teacher]
                                                      room:[lec room]
                                                  courseID:[lec courseID]
                                                   version:[lec version]
                                                 startTime:[lec startTime]
                                                  stopTime:[lec stopTime]
-                                               lunchStart:[lec lunchStart]
-                                                lunchStop:[lec lunchStop]
                                                      year:[lec year]
                                                daysOfWeek:[lec daysOfWeek]
                                                     weeks:[lec weeks]
@@ -266,15 +263,12 @@
     objID = idInt;
     NSDictionary *lecture = [[NSDictionary alloc] initWithObjectsAndKeys:
                           [dict objectForKey:@"COURSE"], @"course",
-                          [dict objectForKey:@"GRADE"], @"grade",
                           [dict objectForKey:@"TEACHER"], @"teacher",
                           [dict objectForKey:@"ROOM"], @"room",
                           [NSString stringWithFormat:@"%d", objID], @"courseID",
                           @"1", @"version",
                           [dict objectForKey:@"START"], @"startTime",
                           [dict objectForKey:@"STOP"], @"stopTime",
-                          [dict objectForKey:@"LUNCHSTART"], @"lunchStart",
-                          [dict objectForKey:@"LUNCHSTOP"], @"lunchStop",
                           [dict objectForKey:@"YEAR"], @"year",
                           [dict objectForKey:@"DAYS"], @"daysOfWeek",
                           [dict objectForKey:@"WEEKS"], @"weeks",
