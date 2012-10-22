@@ -1,6 +1,4 @@
-#import <CoreData/CoreData.h>
-
-@interface CBMessage : NSManagedObject
+@interface CBMessage : NSObject
 
 @property (nonatomic, copy) NSString* sender;
 // receiver

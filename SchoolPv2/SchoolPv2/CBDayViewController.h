@@ -1,17 +1,19 @@
 #import <UIKit/UIKit.h>
 
 
-@interface CBDayViewController : UIViewController
+@interface CBDayViewController : UIViewController <UITextFieldDelegate>
 {
     NSString* userName;
 }
 
 @property (nonatomic, weak) id delegate;
+@property (strong, nonatomic) UIAlertView *alertView;
 
 @property (weak, nonatomic) IBOutlet UILabel *dayLabel;
 @property (weak, nonatomic) IBOutlet UIButton *noteButton;
 @property (weak, nonatomic) IBOutlet UIButton *inboxButton;
 @property (weak, nonatomic) IBOutlet UIButton *refreshButton;
+@property (weak, nonatomic) IBOutlet UIButton *adminButton;
 
 @property (weak, nonatomic) IBOutlet UIScrollView *lectureView;
 @property (weak, nonatomic) IBOutlet UIView *noteView;
@@ -21,5 +23,6 @@
 - (IBAction)showNotes:(id)sender;
 - (IBAction)toInbox:(id)sender;
 - (IBAction)doSync:(id)sender;
+- (IBAction)toAdmin:(id)sender;
 
 @end

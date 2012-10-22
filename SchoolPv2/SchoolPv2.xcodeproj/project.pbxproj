@@ -7,10 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		066538FC163552C000109A1B /* adminButton in Resources */ = {isa = PBXBuildFile; fileRef = 066538FB163552C000109A1B /* adminButton */; };
 		06AA444F16256504002DDB8F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06AA444E16256504002DDB8F /* UIKit.framework */; };
 		06AA445116256504002DDB8F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06AA445016256504002DDB8F /* Foundation.framework */; };
 		06AA445316256504002DDB8F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06AA445216256504002DDB8F /* CoreGraphics.framework */; };
-		06AA445516256504002DDB8F /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06AA445416256504002DDB8F /* CoreData.framework */; };
 		06AA445B16256504002DDB8F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 06AA445916256504002DDB8F /* InfoPlist.strings */; };
 		06AA445D16256504002DDB8F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 06AA445C16256504002DDB8F /* main.m */; };
 		06AA446116256504002DDB8F /* CBAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 06AA446016256504002DDB8F /* CBAppDelegate.m */; };
@@ -45,16 +45,19 @@
 		06C239F116313ABB00ADD838 /* CBWeekViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 06C239E316313ABB00ADD838 /* CBWeekViewCell.m */; };
 		06C239F216313ABB00ADD838 /* CBWeekViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 06C239E416313ABB00ADD838 /* CBWeekViewCell.xib */; };
 		06C239F316313ABB00ADD838 /* CBWeekViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06C239E616313ABB00ADD838 /* CBWeekViewController.m */; };
+		06C23A1A16353BAF00ADD838 /* CBAdminCourseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06C23A1916353BAF00ADD838 /* CBAdminCourseViewController.m */; };
+		06C23A1E1635460200ADD838 /* CBAdminSelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06C23A1C1635460100ADD838 /* CBAdminSelectViewController.m */; };
+		06C23A1F1635460200ADD838 /* CBAdminSelectViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 06C23A1D1635460100ADD838 /* CBAdminSelectViewController.xib */; };
 		151E4D8C16318AC20054E358 /* Schoolbell.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 151E4D8B16318AC20054E358 /* Schoolbell.ttf */; };
-		15964B3B1631783C002F3AEB /* bottom2.png in Resources */ = {isa = PBXBuildFile; fileRef = 15964B3A1631783C002F3AEB /* bottom2.png */; };
 		15964B4016317CB0002F3AEB /* postitICON.png in Resources */ = {isa = PBXBuildFile; fileRef = 15964B3F16317CB0002F3AEB /* postitICON.png */; };
 		15964B4E16318046002F3AEB /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15964B4D16318046002F3AEB /* QuartzCore.framework */; };
 		15E3830816315C9600D8BBCA /* DK Crayon Crumble.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 15E3830616315C9600D8BBCA /* DK Crayon Crumble.ttf */; };
-		CEF356C5163186B3008CD16D /* CBCourseFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEF356C3163186B3008CD16D /* CBCourseFormViewController.m */; };
-		CEF356C6163186B3008CD16D /* CBCourseFormViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEF356C4163186B3008CD16D /* CBCourseFormViewController.xib */; };
+		CEF356C5163186B3008CD16D /* CBAdminCourseFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEF356C3163186B3008CD16D /* CBAdminCourseFormViewController.m */; };
+		CEF356C6163186B3008CD16D /* CBAdminCourseFormViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEF356C4163186B3008CD16D /* CBAdminCourseFormViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		066538FB163552C000109A1B /* adminButton */ = {isa = PBXFileReference; lastKnownFileType = file; path = adminButton; sourceTree = "<group>"; };
 		06AA444A16256504002DDB8F /* SchoolPv2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SchoolPv2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		06AA444E16256504002DDB8F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		06AA445016256504002DDB8F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -111,14 +114,18 @@
 		06C239E416313ABB00ADD838 /* CBWeekViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CBWeekViewCell.xib; sourceTree = "<group>"; };
 		06C239E516313ABB00ADD838 /* CBWeekViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBWeekViewController.h; sourceTree = "<group>"; };
 		06C239E616313ABB00ADD838 /* CBWeekViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBWeekViewController.m; sourceTree = "<group>"; };
+		06C23A1816353BAF00ADD838 /* CBAdminCourseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBAdminCourseViewController.h; sourceTree = "<group>"; };
+		06C23A1916353BAF00ADD838 /* CBAdminCourseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBAdminCourseViewController.m; sourceTree = "<group>"; };
+		06C23A1B1635460000ADD838 /* CBAdminSelectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBAdminSelectViewController.h; sourceTree = "<group>"; };
+		06C23A1C1635460100ADD838 /* CBAdminSelectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBAdminSelectViewController.m; sourceTree = "<group>"; };
+		06C23A1D1635460100ADD838 /* CBAdminSelectViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CBAdminSelectViewController.xib; sourceTree = "<group>"; };
 		151E4D8B16318AC20054E358 /* Schoolbell.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Schoolbell.ttf; sourceTree = "<group>"; };
-		15964B3A1631783C002F3AEB /* bottom2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bottom2.png; sourceTree = "<group>"; };
 		15964B3F16317CB0002F3AEB /* postitICON.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = postitICON.png; sourceTree = "<group>"; };
 		15964B4D16318046002F3AEB /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		15E3830616315C9600D8BBCA /* DK Crayon Crumble.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DK Crayon Crumble.ttf"; sourceTree = "<group>"; };
-		CEF356C2163186B3008CD16D /* CBCourseFormViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBCourseFormViewController.h; sourceTree = "<group>"; };
-		CEF356C3163186B3008CD16D /* CBCourseFormViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBCourseFormViewController.m; sourceTree = "<group>"; };
-		CEF356C4163186B3008CD16D /* CBCourseFormViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CBCourseFormViewController.xib; sourceTree = "<group>"; };
+		CEF356C2163186B3008CD16D /* CBAdminCourseFormViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBAdminCourseFormViewController.h; sourceTree = "<group>"; };
+		CEF356C3163186B3008CD16D /* CBAdminCourseFormViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBAdminCourseFormViewController.m; sourceTree = "<group>"; };
+		CEF356C4163186B3008CD16D /* CBAdminCourseFormViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CBAdminCourseFormViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,7 +137,6 @@
 				06AA444F16256504002DDB8F /* UIKit.framework in Frameworks */,
 				06AA445116256504002DDB8F /* Foundation.framework in Frameworks */,
 				06AA445316256504002DDB8F /* CoreGraphics.framework in Frameworks */,
-				06AA445516256504002DDB8F /* CoreData.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -140,11 +146,11 @@
 		06AA443F16256504002DDB8F = {
 			isa = PBXGroup;
 			children = (
+				066538FB163552C000109A1B /* adminButton */,
 				06C239AC1631388600ADD838 /* bottom.png */,
 				06C239AD1631388600ADD838 /* chalkboard.jpg */,
 				06C239AE1631388600ADD838 /* mail-closed.png */,
 				06C239AF1631388600ADD838 /* mail-open.png */,
-				15964B3A1631783C002F3AEB /* bottom2.png */,
 				15964B3F16317CB0002F3AEB /* postitICON.png */,
 				06C239B01631388600ADD838 /* postit.png */,
 				06C239B11631388600ADD838 /* letter.png */,
@@ -221,9 +227,7 @@
 		06AA44711625655C002DDB8F /* View */ = {
 			isa = PBXGroup;
 			children = (
-				CEF356C2163186B3008CD16D /* CBCourseFormViewController.h */,
-				CEF356C3163186B3008CD16D /* CBCourseFormViewController.m */,
-				CEF356C4163186B3008CD16D /* CBCourseFormViewController.xib */,
+				06C23A1716353B6000ADD838 /* Admin */,
 				06C239DF16313ABB00ADD838 /* CBWeekLayerViewController.h */,
 				06C239E016313ABB00ADD838 /* CBWeekLayerViewController.m */,
 				06C239E116313ABB00ADD838 /* CBWeekLayerViewController.xib */,
@@ -262,6 +266,21 @@
 				06AA448916256644002DDB8F /* CBMessage.m */,
 			);
 			name = Model;
+			sourceTree = "<group>";
+		};
+		06C23A1716353B6000ADD838 /* Admin */ = {
+			isa = PBXGroup;
+			children = (
+				06C23A1B1635460000ADD838 /* CBAdminSelectViewController.h */,
+				06C23A1C1635460100ADD838 /* CBAdminSelectViewController.m */,
+				06C23A1D1635460100ADD838 /* CBAdminSelectViewController.xib */,
+				06C23A1816353BAF00ADD838 /* CBAdminCourseViewController.h */,
+				06C23A1916353BAF00ADD838 /* CBAdminCourseViewController.m */,
+				CEF356C2163186B3008CD16D /* CBAdminCourseFormViewController.h */,
+				CEF356C3163186B3008CD16D /* CBAdminCourseFormViewController.m */,
+				CEF356C4163186B3008CD16D /* CBAdminCourseFormViewController.xib */,
+			);
+			name = Admin;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -333,10 +352,11 @@
 				06C239F016313ABB00ADD838 /* CBWeekLayerViewController.xib in Resources */,
 				06C239F216313ABB00ADD838 /* CBWeekViewCell.xib in Resources */,
 				15E3830816315C9600D8BBCA /* DK Crayon Crumble.ttf in Resources */,
-				15964B3B1631783C002F3AEB /* bottom2.png in Resources */,
 				15964B4016317CB0002F3AEB /* postitICON.png in Resources */,
-				CEF356C6163186B3008CD16D /* CBCourseFormViewController.xib in Resources */,
+				CEF356C6163186B3008CD16D /* CBAdminCourseFormViewController.xib in Resources */,
 				151E4D8C16318AC20054E358 /* Schoolbell.ttf in Resources */,
+				06C23A1F1635460200ADD838 /* CBAdminSelectViewController.xib in Resources */,
+				066538FC163552C000109A1B /* adminButton in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -364,7 +384,9 @@
 				06C239EF16313ABB00ADD838 /* CBWeekLayerViewController.m in Sources */,
 				06C239F116313ABB00ADD838 /* CBWeekViewCell.m in Sources */,
 				06C239F316313ABB00ADD838 /* CBWeekViewController.m in Sources */,
-				CEF356C5163186B3008CD16D /* CBCourseFormViewController.m in Sources */,
+				CEF356C5163186B3008CD16D /* CBAdminCourseFormViewController.m in Sources */,
+				06C23A1A16353BAF00ADD838 /* CBAdminCourseViewController.m in Sources */,
+				06C23A1E1635460200ADD838 /* CBAdminSelectViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

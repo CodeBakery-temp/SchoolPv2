@@ -26,7 +26,7 @@
         self.tableView.separatorColor = [UIColor clearColor];
         schedule = [CBScheduleService schedule];
         
-        list = [schedule getDayLectures];
+        list = [schedule getDayLectures:0];
     }
     return self;
 }

@@ -84,13 +84,21 @@
     return weekLectures;
 }
 
-- (NSDictionary *)getDayLectures
+- (NSDictionary *)getDayLectures:(int)day
 {
-    NSDate *date = [NSDate date];
-    NSCalendar *calendar = [NSCalendar currentCalendar];
-    NSInteger units = NSWeekdayCalendarUnit;
-    NSDateComponents *components = [calendar components:units fromDate:date];
-    return [weekLectures objectAtIndex:([components weekday]-2)];
+    if (day==0) {
+        NSDate *date = [NSDate date];
+        NSCalendar *calendar = [NSCalendar currentCalendar];
+        NSInteger units = NSWeekdayCalendarUnit;
+        NSDateComponents *components = [calendar components:units fromDate:date];
+        day =([components weekday]-1);
+        if (day==0)
+            day =7;
+    }
+    if (day>5)
+        return [weekLectures objectAtIndex:4];
+    else
+        return [weekLectures objectAtIndex:(day-1)];
 }
 
 - (NSArray *)getWeekNotes
@@ -98,13 +106,21 @@
     return weekNotes;
 }
 
-- (NSDictionary *)getDayNotes
+- (NSDictionary *)getDayNotes:(int)day
 {
-    NSDate *date = [NSDate date];
-    NSCalendar *calendar = [NSCalendar currentCalendar];
-    NSInteger units = NSWeekdayCalendarUnit;
-    NSDateComponents *components = [calendar components:units fromDate:date];
-    return [weekNotes objectAtIndex:([components weekday]-2)];
+    if (day==0) {
+        NSDate *date = [NSDate date];
+        NSCalendar *calendar = [NSCalendar currentCalendar];
+        NSInteger units = NSWeekdayCalendarUnit;
+        NSDateComponents *components = [calendar components:units fromDate:date];
+        day =[components weekday]-1;
+        if (day==0)
+            day =7;
+    }
+    if (day>5)
+        return [weekNotes objectAtIndex:4];
+    else
+        return [weekNotes objectAtIndex:(day-1)];
 }
 
 - (NSArray *)getMessages

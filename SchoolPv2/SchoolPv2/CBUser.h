@@ -1,6 +1,4 @@
-#import <CoreData/CoreData.h>
-
-@interface CBUser : NSManagedObject
+@interface CBUser : NSObject
 
 @property (nonatomic, copy) NSString *firstName;
 @property (nonatomic, copy) NSString *lastName;

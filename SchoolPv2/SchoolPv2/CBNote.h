@@ -1,6 +1,4 @@
-#import <CoreData/CoreData.h>
-
-@interface CBNote : NSManagedObject
+@interface CBNote : NSObject
 
 @property (nonatomic, copy) NSString* text;
 @property (nonatomic, copy) NSString* week;

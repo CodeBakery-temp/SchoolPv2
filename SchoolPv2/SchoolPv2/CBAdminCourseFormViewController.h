@@ -1,6 +1,16 @@
 #import <UIKit/UIKit.h>
+@class CBLecture;
 
-@interface CBCourseFormViewController : UIViewController <UIScrollViewDelegate>
+@interface CBAdminCourseFormViewController : UIViewController <UIScrollViewDelegate>
+
+@property (nonatomic, strong)CBLecture* lecture;
+
+- (id)initNewTemplate;
+- (id)initEditTemplate;
+- (id)initEditEvent;
+- (void)setLecture:(CBLecture*)lecture;
+- (void)createEvent:(id)sender;
+
 @property (weak, nonatomic) IBOutlet UITextField *courseField;
 @property (weak, nonatomic) IBOutlet UITextField *teacherField;
 @property (weak, nonatomic) IBOutlet UITextField *roomField;
@@ -20,8 +30,5 @@
 - (IBAction)yearExit:(id)sender;
 - (IBAction)startExit:(id)sender;
 - (IBAction)stopExit:(id)sender;
-
-//- (IBAction)cancelButton:(id)sender;
-//- (IBAction)saveButton:(id)sender;
 
 @end
