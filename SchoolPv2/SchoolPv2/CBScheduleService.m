@@ -305,6 +305,7 @@
                           [dict objectForKey:@"WEEK"], @"week",
                           [dict objectForKey:@"DAY"], @"day",
                           [dict objectForKey:@"COURSEID"], @"courseID",
+                          @"note", @"type",
                           nil];
     NSString* result = [db noteToDataBase:note];
     NSLog(@"RESULT: %@", result);
@@ -318,10 +319,11 @@
 - (void)createMessage:(NSDictionary *)dict
 {
     NSDictionary *message = [[NSDictionary alloc] initWithObjectsAndKeys:
-                          [dict objectForKey:@"SENDER"], @"sender",
-                          [dict objectForKey:@"RECEIVER"], @"receiver",
-                          [dict objectForKey:@"TEXT"], @"text",
-                          nil];
+                             [dict objectForKey:@"SENDER"], @"sender",
+                             [dict objectForKey:@"RECEIVER"], @"receiver",
+                             [dict objectForKey:@"TEXT"], @"text",
+                             @"message", @"type",
+                             nil];
     NSString* result = [db messageToDataBase:message];
     NSLog(@"RESULT: %@", result);
 }

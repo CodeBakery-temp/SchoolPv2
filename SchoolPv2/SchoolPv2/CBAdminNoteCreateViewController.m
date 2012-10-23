@@ -13,6 +13,7 @@
     NSMutableArray *allectures;
     NSString *lectureName;
     CBDatabaseService *dataBase;
+    CBScheduleService *schedule;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -23,6 +24,7 @@
         dataBase = [CBDatabaseService database];
         allectures = [[NSMutableArray alloc] initWithArray:[dataBase getLectures]];
         notesDic = [[NSMutableDictionary alloc] init];
+        schedule = [CBScheduleService schedule];
         
         UINavigationItem *item = [self navigationItem];
         [item setTitle:@"Add note"];
@@ -83,7 +85,7 @@
             }
         }
         NSLog(@"%@", [notesDic allValues]);
-        [dataBase noteToDataBase:notesDic];
+        [schedule createNote:notesDic];
         
          
     }else{

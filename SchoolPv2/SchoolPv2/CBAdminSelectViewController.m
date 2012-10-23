@@ -1,6 +1,8 @@
 #import "CBAdminSelectViewController.h"
 #import "CBAdminCourseViewController.h"
 #import "CBDayViewController.h"
+#import "CBAdminNoteCreateViewController.h"
+#import "CBAdminCreateMessageViewController.h"
 
 @interface CBAdminSelectViewController ()
 
@@ -48,11 +50,15 @@
 
 - (IBAction)toNotes:(id)sender
 {
+    CBAdminNoteCreateViewController *noteCreate = [[CBAdminNoteCreateViewController alloc]init];
+    [[self navigationController] pushViewController:noteCreate animated:YES];
     NSLog(@"NOTES");
 }
 
 - (IBAction)toMessages:(id)sender
 {
+    CBAdminCreateMessageViewController *messageCreate = [[CBAdminCreateMessageViewController alloc]init];
+    [[self navigationController] pushViewController:messageCreate animated:YES];
     NSLog(@"MESSAGES");
 }
 @end
