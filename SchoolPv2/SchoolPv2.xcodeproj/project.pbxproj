@@ -52,6 +52,8 @@
 		15964B4016317CB0002F3AEB /* postitICON.png in Resources */ = {isa = PBXBuildFile; fileRef = 15964B3F16317CB0002F3AEB /* postitICON.png */; };
 		15964B4E16318046002F3AEB /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15964B4D16318046002F3AEB /* QuartzCore.framework */; };
 		15E3830816315C9600D8BBCA /* DK Crayon Crumble.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 15E3830616315C9600D8BBCA /* DK Crayon Crumble.ttf */; };
+		CE50B9311636837E00CAE153 /* CBAdminNoteCreateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE50B92F1636837E00CAE153 /* CBAdminNoteCreateViewController.m */; };
+		CE50B9321636837E00CAE153 /* CBAdminNoteCreateViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE50B9301636837E00CAE153 /* CBAdminNoteCreateViewController.xib */; };
 		CEF356C5163186B3008CD16D /* CBAdminCourseFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEF356C3163186B3008CD16D /* CBAdminCourseFormViewController.m */; };
 		CEF356C6163186B3008CD16D /* CBAdminCourseFormViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEF356C4163186B3008CD16D /* CBAdminCourseFormViewController.xib */; };
 /* End PBXBuildFile section */
@@ -123,6 +125,9 @@
 		15964B3F16317CB0002F3AEB /* postitICON.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = postitICON.png; sourceTree = "<group>"; };
 		15964B4D16318046002F3AEB /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		15E3830616315C9600D8BBCA /* DK Crayon Crumble.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DK Crayon Crumble.ttf"; sourceTree = "<group>"; };
+		CE50B92E1636837E00CAE153 /* CBAdminNoteCreateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBAdminNoteCreateViewController.h; sourceTree = "<group>"; };
+		CE50B92F1636837E00CAE153 /* CBAdminNoteCreateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBAdminNoteCreateViewController.m; sourceTree = "<group>"; };
+		CE50B9301636837E00CAE153 /* CBAdminNoteCreateViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CBAdminNoteCreateViewController.xib; sourceTree = "<group>"; };
 		CEF356C2163186B3008CD16D /* CBAdminCourseFormViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBAdminCourseFormViewController.h; sourceTree = "<group>"; };
 		CEF356C3163186B3008CD16D /* CBAdminCourseFormViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBAdminCourseFormViewController.m; sourceTree = "<group>"; };
 		CEF356C4163186B3008CD16D /* CBAdminCourseFormViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CBAdminCourseFormViewController.xib; sourceTree = "<group>"; };
@@ -271,6 +276,9 @@
 		06C23A1716353B6000ADD838 /* Admin */ = {
 			isa = PBXGroup;
 			children = (
+				CE50B92E1636837E00CAE153 /* CBAdminNoteCreateViewController.h */,
+				CE50B92F1636837E00CAE153 /* CBAdminNoteCreateViewController.m */,
+				CE50B9301636837E00CAE153 /* CBAdminNoteCreateViewController.xib */,
 				06C23A1B1635460000ADD838 /* CBAdminSelectViewController.h */,
 				06C23A1C1635460100ADD838 /* CBAdminSelectViewController.m */,
 				06C23A1D1635460100ADD838 /* CBAdminSelectViewController.xib */,
@@ -357,6 +365,7 @@
 				151E4D8C16318AC20054E358 /* Schoolbell.ttf in Resources */,
 				06C23A1F1635460200ADD838 /* CBAdminSelectViewController.xib in Resources */,
 				066538FC163552C000109A1B /* adminButton in Resources */,
+				CE50B9321636837E00CAE153 /* CBAdminNoteCreateViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -387,6 +396,7 @@
 				CEF356C5163186B3008CD16D /* CBAdminCourseFormViewController.m in Sources */,
 				06C23A1A16353BAF00ADD838 /* CBAdminCourseViewController.m in Sources */,
 				06C23A1E1635460200ADD838 /* CBAdminSelectViewController.m in Sources */,
+				CE50B9311636837E00CAE153 /* CBAdminNoteCreateViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
