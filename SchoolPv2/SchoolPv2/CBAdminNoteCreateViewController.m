@@ -22,6 +22,7 @@
         // Custom initialization
         dataBase = [CBDatabaseService database];
         allectures = [[NSMutableArray alloc] initWithArray:[dataBase getLectures]];
+        notesDic = [[NSMutableDictionary alloc] init];
         
         UINavigationItem *item = [self navigationItem];
         [item setTitle:@"Add note"];
@@ -67,22 +68,22 @@
 
 -(IBAction)newNote:(id)sender
 {
-    NSLog(@"%@", lectureName);
-    NSLog(@"%@", _noteTextView.text);
+    //NSLog(@"%@", lectureName);
+    //NSLog(@"%@", _noteTextView.text);
     
-    if (!([_noteTextView.text isEqualToString:@""] && !([_coursePickerView isEqual:NULL]) && !([_dayTextField.text isEqualToString:@""]) && !([_weekTextField.text isEqualToString:@""]))) {
+    if (!([_noteTextView.text isEqualToString:@""]) && !([_coursePickerView isEqual:NULL]) && !([_superDayTextField.text isEqualToString:@""]) && !([_superWeekTextField.text isEqualToString:@""])) {
         
         [notesDic setValue:_noteTextView.text forKey:@"TEXT"];
-        [notesDic setValue:_weekTextField.text forKey:@"WEEK"];
-        [notesDic setValue:_dayTextField.text forKey:@"DAY"];
+        [notesDic setValue:_superWeekTextField.text forKey:@"WEEK"];
+        [notesDic setValue:_superDayTextField.text forKey:@"DAY"];
         
         for (CBLecture *lec in allectures) {
             if (lec.course == lectureName) {
                 [notesDic setValue:lec.courseID forKey:@"COURSEID"];
             }
         }
-        NSLog(@"%@", notesDic.allValues);
-        //[dataBase noteToDataBase:notesDic];
+        NSLog(@"%@", [notesDic allValues]);
+        [dataBase noteToDataBase:notesDic];
         
          
     }else{
@@ -98,11 +99,21 @@
     //NSLog(@"Selected %@", lectureName);
 }
 
-- (IBAction)dayTextFieldAction:(id)sender {
+-(BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    return YES;
+}
+
+- (IBAction)superDayEnd:(id)sender {
     [sender resignFirstResponder];
 }
 
-- (IBAction)weekTextFieldAction:(id)sender {
+- (IBAction)superWeekEnd:(id)sender {
     [sender resignFirstResponder];
+}
+
+- (IBAction)clickBG:(id)sender {
+    [[self view] endEditing:YES];
 }
 @end

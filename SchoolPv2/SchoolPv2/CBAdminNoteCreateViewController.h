@@ -1,13 +1,15 @@
 #import <UIKit/UIKit.h>
 
-@interface CBAdminNoteCreateViewController : UIViewController <UIPickerViewDataSource, UIPickerViewDelegate>
+@interface CBAdminNoteCreateViewController : UIViewController <UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextView *noteTextView;
 @property (weak, nonatomic) IBOutlet UIPickerView *coursePickerView;
-@property (weak, nonatomic) IBOutlet UITextField *dayTextField;
-@property (weak, nonatomic) IBOutlet UITextField *weekTextField;
-- (IBAction)dayTextFieldAction:(id)sender;
-- (IBAction)weekTextFieldAction:(id)sender;
+
+@property (weak, nonatomic) IBOutlet UITextField *superDayTextField;
+@property (weak, nonatomic) IBOutlet UITextField *superWeekTextField;
+- (IBAction)superDayEnd:(id)sender;
+- (IBAction)superWeekEnd:(id)sender;
+- (IBAction)clickBG:(id)sender;
 
 
 @end
