@@ -78,6 +78,8 @@
         
         NSLog(@"%@", [messageDictionary allValues]);
         [schedule createMessage:messageDictionary];
+        _messageTextField.text = @"";
+        _mailTextField.text = @"";
         
     }else{
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Saving Failed" message:@"You need to fill out all the fields!" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];

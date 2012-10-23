@@ -7,6 +7,7 @@
 #import "CBUser.h"
 #import "CBAdminSelectViewController.h"
 #import "CBAdminCourseViewController.h"
+#import "CBMessageViewController.h"
 #import <QuartzCore/QuartzCore.h>
 
 @interface CBDayViewController ()
@@ -147,6 +148,11 @@
 }
 
 - (IBAction)toInbox:(id)sender {
+    CBMessageViewController *messageView = [[CBMessageViewController alloc] init];
+    messageView.delegate = delegate;
+    UINavigationController* navController = [[UINavigationController alloc] initWithRootViewController:messageView];
+    navController.navigationBar.tintColor = [UIColor blackColor];
+    [delegate setRootViewController:navController];
     NSLog(@"Inbox");
 }
 

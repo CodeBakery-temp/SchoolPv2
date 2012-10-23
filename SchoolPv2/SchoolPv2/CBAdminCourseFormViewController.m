@@ -130,7 +130,15 @@
         [courseInfo setValue:_stopField.text forKey:@"STOP"];
         NSLog(@"all values \n %@", [courseInfo allValues]);
         
-        //[scheduleService createLecture:courseInfo];
+        [scheduleService createLecture:courseInfo];
+        _yearField.text = @"";
+        _startField.text = @"";
+        _stopField.text = @"";
+        _weekField.text = @"";
+        _dayField.text = @"";
+        _teacherField.text = @"";
+        _courseField.text = @"";
+        _roomField.text = @"";
         [[self presentingViewController] dismissViewControllerAnimated:YES completion:nil];
     }
     else {
