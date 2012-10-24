@@ -4,6 +4,4 @@
 
 @property (nonatomic, strong) id delegate;
 
-- (void)exitAdmin:(id)sender;
-
 @end

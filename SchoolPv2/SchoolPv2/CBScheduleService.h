@@ -27,16 +27,15 @@
 - (void)getNotesOfWeekAndMessages: (CBUser*)user
                       currentWeek: (NSUInteger)currentWeek;
 
-- (void)createLecture:(NSDictionary*)dict;
+- (CBLecture*)createLecture:(NSDictionary*)dict;
+
+- (CBLecture*)createLectureEvent:(NSDictionary*)dict;
 
 - (void)createNote:(NSDictionary*)dict;
 
 - (void)createMessage:(NSDictionary*)dict;
 
-
-//-(void)updateLectureTemplate:(CBLecture*)lecture;
-
-//-(void)updateLectureEvent:(CBLecture*)lecture;
+- (CBLecture*)updateLecture:(NSDictionary*)dict;
 
 -(int)timeStringToTimeInt:(NSString *)stringNum;
 

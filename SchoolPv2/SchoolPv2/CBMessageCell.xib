@@ -44,11 +44,15 @@
 							<object class="IBUILabel" id="855320079">
 								<reference key="NSNextResponder" ref="478328022"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{27, 9}, {42, 21}}</string>
+								<string key="NSFrame">{{20, 9}, {42, 21}}</string>
 								<reference key="NSSuperview" ref="478328022"/>
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="966239876"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
+								<object class="NSColor" key="IBUIBackgroundColor" id="436365595">
+									<int key="NSColorSpace">3</int>
+									<bytes key="NSWhite">MCAwAA</bytes>
+								</object>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
 								<int key="IBUIContentMode">7</int>
@@ -79,17 +83,16 @@
 							<object class="IBUITextView" id="966239876">
 								<reference key="NSNextResponder" ref="478328022"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{27, 32}, {273, 133}}</string>
+								<string key="NSFrame">{{3, 32}, {273, 133}}</string>
 								<reference key="NSSuperview" ref="478328022"/>
 								<reference key="NSWindow"/>
+								<reference key="NSNextKeyView"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
-								<object class="NSColor" key="IBUIBackgroundColor">
-									<int key="NSColorSpace">1</int>
-									<bytes key="NSRGB">MSAxIDEAA</bytes>
-								</object>
+								<reference key="IBUIBackgroundColor" ref="436365595"/>
 								<bool key="IBUIClipsSubviews">YES</bool>
 								<bool key="IBUIMultipleTouchEnabled">YES</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+								<bool key="IBUIEditable">NO</bool>
 								<string key="IBUIText">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
 								<object class="IBUITextInputTraits" key="IBUITextInputTraits">
 									<int key="IBUIAutocapitalizationType">2</int>
@@ -106,15 +109,12 @@
 								</object>
 							</object>
 						</array>
-						<string key="NSFrameSize">{320, 179}</string>
+						<string key="NSFrameSize">{280, 179}</string>
 						<reference key="NSSuperview" ref="407577099"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="855320079"/>
 						<string key="NSReuseIdentifierKey">_NS:11</string>
-						<object class="NSColor" key="IBUIBackgroundColor">
-							<int key="NSColorSpace">3</int>
-							<bytes key="NSWhite">MCAwAA</bytes>
-						</object>
+						<reference key="IBUIBackgroundColor" ref="436365595"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
 						<int key="IBUIContentMode">4</int>
@@ -122,12 +122,14 @@
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 					</object>
 				</array>
-				<string key="NSFrameSize">{320, 180}</string>
+				<string key="NSFrameSize">{280, 180}</string>
 				<reference key="NSSuperview"/>
 				<reference key="NSWindow"/>
 				<reference key="NSNextKeyView" ref="478328022"/>
 				<string key="NSReuseIdentifierKey">_NS:9</string>
+				<reference key="IBUIBackgroundColor" ref="436365595"/>
 				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+				<int key="IBUISelectionStyle">0</int>
 				<reference key="IBUIContentView" ref="478328022"/>
 				<real value="179" key="IBUIRowHeight"/>
 			</object>
@@ -174,6 +176,22 @@
 						<int key="objectID">2</int>
 						<reference key="object" ref="407577099"/>
 						<array class="NSMutableArray" key="children">
+							<object class="IBNSLayoutConstraint" id="825372182">
+								<reference key="firstItem" ref="966239876"/>
+								<int key="firstAttribute">5</int>
+								<int key="relation">0</int>
+								<reference key="secondItem" ref="407577099"/>
+								<int key="secondAttribute">5</int>
+								<float key="multiplier">1</float>
+								<object class="IBLayoutConstant" key="constant">
+									<double key="value">3</double>
+								</object>
+								<float key="priority">1000</float>
+								<reference key="containingView" ref="407577099"/>
+								<int key="scoringType">3</int>
+								<float key="scoringTypeFloat">9</float>
+								<int key="contentType">3</int>
+							</object>
 							<object class="IBNSLayoutConstraint" id="591936673">
 								<reference key="firstItem" ref="966239876"/>
 								<int key="firstAttribute">3</int>
@@ -190,12 +208,12 @@
 								<float key="scoringTypeFloat">9</float>
 								<int key="contentType">3</int>
 							</object>
-							<object class="IBNSLayoutConstraint" id="989074954">
-								<reference key="firstItem" ref="407577099"/>
-								<int key="firstAttribute">6</int>
+							<object class="IBNSLayoutConstraint" id="949101774">
+								<reference key="firstItem" ref="855320079"/>
+								<int key="firstAttribute">5</int>
 								<int key="relation">0</int>
-								<reference key="secondItem" ref="966239876"/>
-								<int key="secondAttribute">6</int>
+								<reference key="secondItem" ref="407577099"/>
+								<int key="secondAttribute">5</int>
 								<float key="multiplier">1</float>
 								<object class="IBLayoutConstant" key="constant">
 									<double key="value">20</double>
@@ -205,22 +223,6 @@
 								<int key="scoringType">8</int>
 								<float key="scoringTypeFloat">29</float>
 								<int key="contentType">3</int>
-							</object>
-							<object class="IBNSLayoutConstraint" id="490453984">
-								<reference key="firstItem" ref="966239876"/>
-								<int key="firstAttribute">5</int>
-								<int key="relation">0</int>
-								<reference key="secondItem" ref="855320079"/>
-								<int key="secondAttribute">5</int>
-								<float key="multiplier">1</float>
-								<object class="IBLayoutConstant" key="constant">
-									<double key="value">0.0</double>
-								</object>
-								<float key="priority">1000</float>
-								<reference key="containingView" ref="407577099"/>
-								<int key="scoringType">6</int>
-								<float key="scoringTypeFloat">24</float>
-								<int key="contentType">2</int>
 							</object>
 							<object class="IBNSLayoutConstraint" id="142504024">
 								<reference key="firstItem" ref="855320079"/>
@@ -288,16 +290,6 @@
 						<reference key="parent" ref="407577099"/>
 					</object>
 					<object class="IBObjectRecord">
-						<int key="objectID">13</int>
-						<reference key="object" ref="490453984"/>
-						<reference key="parent" ref="407577099"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">14</int>
-						<reference key="object" ref="989074954"/>
-						<reference key="parent" ref="407577099"/>
-					</object>
-					<object class="IBObjectRecord">
 						<int key="objectID">15</int>
 						<reference key="object" ref="366305287"/>
 						<reference key="parent" ref="966239876"/>
@@ -317,40 +309,50 @@
 						<reference key="object" ref="591936673"/>
 						<reference key="parent" ref="407577099"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">50</int>
+						<reference key="object" ref="825372182"/>
+						<reference key="parent" ref="407577099"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">64</int>
+						<reference key="object" ref="949101774"/>
+						<reference key="parent" ref="407577099"/>
+					</object>
 				</array>
 			</object>
 			<dictionary class="NSMutableDictionary" key="flattenedProperties">
 				<string key="-1.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="-2.CustomClassName">UIResponder</string>
 				<string key="-2.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-				<string key="13.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-				<string key="14.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="15.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="18.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="2.CustomClassName">CBMessageCell</string>
 				<string key="2.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<array class="NSMutableArray" key="2.IBViewMetadataConstraints">
 					<reference ref="142504024"/>
-					<reference ref="490453984"/>
-					<reference ref="989074954"/>
+					<reference ref="949101774"/>
 					<reference ref="591936673"/>
+					<reference ref="825372182"/>
 				</array>
 				<string key="3.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<boolean value="NO" key="3.IBViewMetadataTranslatesAutoresizingMaskIntoConstraints"/>
 				<string key="31.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="42.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<string key="50.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="6.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<array class="NSMutableArray" key="6.IBViewMetadataConstraints">
 					<reference ref="366305287"/>
 					<reference ref="854249565"/>
 				</array>
 				<boolean value="NO" key="6.IBViewMetadataTranslatesAutoresizingMaskIntoConstraints"/>
+				<string key="64.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 			</dictionary>
 			<dictionary class="NSMutableDictionary" key="unlocalizedProperties"/>
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">44</int>
+			<int key="maxID">64</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">

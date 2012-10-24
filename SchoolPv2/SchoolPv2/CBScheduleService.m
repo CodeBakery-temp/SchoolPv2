@@ -265,7 +265,7 @@
  ACCEPTS: CBLECTURE object
  RESULT:  Send LECTURE object to DATABASE
  *********************************************************************/
-- (void)createLecture:(NSDictionary*)dict
+- (CBLecture*)createLecture:(NSDictionary*)dict
 {
     int objID = 1;
     NSArray* lectures = [db getLectures];
@@ -274,23 +274,88 @@
             objID = [[lec courseID] intValue];
         }
     }
-    int idInt = objID;
-    idInt +=1;
-    objID = idInt;
+    objID +=1;
     NSDictionary *lecture = [[NSDictionary alloc] initWithObjectsAndKeys:
-                          [dict objectForKey:@"COURSE"], @"course",
-                          [dict objectForKey:@"TEACHER"], @"teacher",
-                          [dict objectForKey:@"ROOM"], @"room",
-                          [NSString stringWithFormat:@"%d", objID], @"courseID",
-                          @"1", @"version",
-                          [dict objectForKey:@"START"], @"startTime",
-                          [dict objectForKey:@"STOP"], @"stopTime",
-                          [dict objectForKey:@"YEAR"], @"year",
-                          [dict objectForKey:@"DAYS"], @"daysOfWeek",
-                          [dict objectForKey:@"WEEKS"], @"weeks",
-                          nil];
-    NSString* result = [db lectureToDataBase:lecture];
-    NSLog(@"CREATE ID: %@ RESULT: %@", [lecture objectForKey:@"COURSEID"], result);
+                             [NSString stringWithFormat:@"%d", objID], @"courseID",
+                             @"1", @"version",
+                             [dict objectForKey:@"COURSE"], @"course",
+                             [dict objectForKey:@"TEACHER"], @"teacher",
+                             [dict objectForKey:@"ROOM"], @"room",
+                             [dict objectForKey:@"START"], @"startTime",
+                             [dict objectForKey:@"STOP"], @"stopTime",
+                             [dict objectForKey:@"YEAR"], @"year",
+                             [dict objectForKey:@"DAYS"], @"daysOfWeek",
+                             [dict objectForKey:@"WEEKS"], @"weeks",
+                             nil];
+    NSDictionary* result = [db lectureToDataBase:lecture];
+    NSLog(@"RESULT: %@", result);
+    if ([result objectForKey:@"ok"]) {
+        NSLog(@"CREATE ID: %@", [lecture objectForKey:@"courseID"]);
+        CBLecture *lec = [[CBLecture alloc] initCourseWithName:[dict objectForKey:@"COURSE"]
+                                                       teacher:[dict objectForKey:@"TEACHER"]
+                                                          room:[dict objectForKey:@"ROOM"]
+                                                      courseID:[NSString stringWithFormat:@"%d", objID]
+                                                       version:@"1"
+                                                     startTime:[dict objectForKey:@"START"]
+                                                      stopTime:[dict objectForKey:@"STOP"]
+                                                          year:[dict objectForKey:@"YEAR"]
+                                                    daysOfWeek:[dict objectForKey:@"DAYS"]
+                                                         weeks:[dict objectForKey:@"WEEKS"]
+                                                     couchDBId:[result objectForKey:@"id"]
+                                                    couchDBRev:[result objectForKey:@"rev"]];
+        return lec;
+    }
+    return nil;
+}
+
+/*********************************************************************
+ METHOD : CREATE LECTURE EVENT OBJECT
+ ACCEPTS: CBLECTURE object
+ RESULT:  Send LECTURE object to DATABASE
+ *********************************************************************/
+- (CBLecture*)createLectureEvent:(NSDictionary*)dict
+{
+    int objVer = 1;
+    NSArray* lectures = [db getLectures];
+    for (CBLecture* lec in lectures) {
+        if([[lec courseID] isEqualToString:[dict objectForKey:@"COURSEID"]]&&[[lec version] intValue]>objVer) {
+            objVer = [[lec version] intValue];
+        }
+    }
+    objVer +=1;
+    NSDictionary *lecture = [[NSDictionary alloc] initWithObjectsAndKeys:
+                             [dict objectForKey:@"COURSE"], @"course",
+                             [dict objectForKey:@"TEACHER"], @"teacher",
+                             [dict objectForKey:@"ROOM"], @"room",
+                             [dict objectForKey:@"COURSEID"], @"courseID",
+                             [NSString stringWithFormat:@"%d", objVer], @"version",
+                             [dict objectForKey:@"START"], @"startTime",
+                             [dict objectForKey:@"STOP"], @"stopTime",
+                             [dict objectForKey:@"YEAR"], @"year",
+                             [dict objectForKey:@"DAYS"], @"daysOfWeek",
+                             [dict objectForKey:@"WEEKS"], @"weeks",
+                             [dict objectForKey:@"COUCHID"], @"_id",
+                             [dict objectForKey:@"COUCHREV"], @"_rev",
+                             nil];
+    NSDictionary* result = [db lectureToDataBase:lecture];
+    NSLog(@"RESULT: %@", result);
+    if ([result objectForKey:@"ok"]) {
+        NSLog(@"CREATE ID: %@.%@", [lecture objectForKey:@"courseID"], [lecture objectForKey:@"version"]);
+        CBLecture *lec = [[CBLecture alloc] initCourseWithName:[dict objectForKey:@"COURSE"]
+                                                       teacher:[dict objectForKey:@"TEACHER"]
+                                                          room:[dict objectForKey:@"ROOM"]
+                                                      courseID:[dict objectForKey:@"COURSEID"]
+                                                       version:[NSString stringWithFormat:@"%d", objVer]
+                                                     startTime:[dict objectForKey:@"START"]
+                                                      stopTime:[dict objectForKey:@"STOP"]
+                                                          year:[dict objectForKey:@"YEAR"]
+                                                    daysOfWeek:[dict objectForKey:@"DAYS"]
+                                                         weeks:[dict objectForKey:@"WEEKS"]
+                                                     couchDBId:[result objectForKey:@"id"]
+                                                    couchDBRev:[result objectForKey:@"rev"]];
+        return lec;
+    }
+    return nil;
 }
 
 /*********************************************************************
@@ -307,7 +372,7 @@
                           [dict objectForKey:@"COURSEID"], @"courseID",
                           @"note", @"type",
                           nil];
-    NSString* result = [db noteToDataBase:note];
+    NSDictionary* result = [db noteToDataBase:note];
     NSLog(@"RESULT: %@", result);
 }
 
@@ -324,70 +389,57 @@
                              [dict objectForKey:@"TEXT"], @"text",
                              @"message", @"type",
                              nil];
-    NSString* result = [db messageToDataBase:message];
+    NSDictionary* result = [db messageToDataBase:message];
     NSLog(@"RESULT: %@", result);
 }
 
 /*********************************************************************
- METHOD : UPDATE LECTURE OBJECT TEMPLATE WITH VERSION 1
+ METHOD : UPDATE LECTURE OBJECT
  ACCEPTS: CBLECTURE object
- RESULT: CBLECTURE template is updated in database
+ RESULT: CBLECTURE updated in database
  *********************************************************************/
--(void)updateLectureTemplate:(CBLecture*)lecture
+-(CBLecture*)updateLecture:(NSDictionary*)dict
 {
-    /*if ([lecture couchDBId]&&[lecture couchDBRev]) {
-        [db lectureToDataBase:lecture];
+    if ([dict objectForKey:@"COURSEID"]&&[dict objectForKey:@"VERSION"]) {
+        NSDictionary *lecture = [[NSDictionary alloc] initWithObjectsAndKeys:
+                                 [dict objectForKey:@"COURSE"], @"course",
+                                 [dict objectForKey:@"TEACHER"], @"teacher",
+                                 [dict objectForKey:@"ROOM"], @"room",
+                                 [dict objectForKey:@"COURSEID"], @"courseID",
+                                 [dict objectForKey:@"VERSION"], @"version",
+                                 [dict objectForKey:@"START"], @"startTime",
+                                 [dict objectForKey:@"STOP"], @"stopTime",
+                                 [dict objectForKey:@"YEAR"], @"year",
+                                 [dict objectForKey:@"DAYS"], @"daysOfWeek",
+                                 [dict objectForKey:@"WEEKS"], @"weeks",
+                                 [dict objectForKey:@"COUCHID"], @"_id",
+                                 [dict objectForKey:@"COUCHREV"], @"_rev",
+                                 nil];
+        NSLog(@"DICT: %@ LECTURE: %@", dict, lecture);
+        NSDictionary* result = [db lectureToDataBase:lecture];
+        NSLog(@"RESULT: %@", result);
+        if ([result objectForKey:@"ok"]) {
+            NSLog(@"UPDATE ID: %@.%@", [lecture objectForKey:@"courseID"], [lecture objectForKey:@"version"]);
+            CBLecture *lec = [[CBLecture alloc] initCourseWithName:[dict objectForKey:@"COURSE"]
+                                                           teacher:[dict objectForKey:@"TEACHER"]
+                                                              room:[dict objectForKey:@"ROOM"]
+                                                          courseID:[dict objectForKey:@"COURSEID"]
+                                                           version:[dict objectForKey:@"VERSION"]
+                                                         startTime:[dict objectForKey:@"START"]
+                                                          stopTime:[dict objectForKey:@"STOP"]
+                                                              year:[dict objectForKey:@"YEAR"]
+                                                        daysOfWeek:[dict objectForKey:@"DAYS"]
+                                                             weeks:[dict objectForKey:@"WEEKS"]
+                                                         couchDBId:[result objectForKey:@"id"]
+                                                        couchDBRev:[result objectForKey:@"rev"]];
+            return lec;
+        }
     }
     else {
         NSLog(@"Object is not previously registered in database.");
-    }*/
+    }
+    return nil;
 }
-
-/*********************************************************************
- METHOD : UPDATE LECTURE OBJECT - CREATE MODIFIED INSTANCE OR EDIT INSTANCE
- ACCEPTS: CBLECTURE object
- RESULT: Send CBLECTURE event to database
- *********************************************************************/
--(void)updateLectureEvent:(CBLecture*)lecture
-{
-    
-}
-
-/*-(void)updateLectureEvent:(NSString*)jsonPath {
- 
- NSLog(@"%@ %@", [dict objectForKey:@"courseID"], [dict objectForKey:@"version"]);
- for(CBLecture* lec in lectures) {
- if([[lec courseID]isEqualToString:[dict objectForKey:@"courseID"]]&&[[lec version]isEqualToString:[dict objectForKey:@"version"]]) {
- if([[dict objectForKey:@"version"]isEqualToString:@"1"]) {
- // CREATE NEW EVENT
- // VERSION STAMP
- NSString* ver = @"1";
- for(CBLecture* lec in lectures) {
- if([[lec courseID]isEqualToString:[dict objectForKey:@"courseID"]]&&[[lec version]isGreaterThan:ver]) {
- ver = [lec version];
- }
- }
- int verInt = [ver intValue];
- verInt +=1;
- ver = [NSString stringWithFormat:@"%d", verInt];
- [dict setObject:[lec courseID] forKey:@"courseID"];
- [dict setObject:ver forKey:@"version"];
- NSLog(@"ID: %@ WITH VERSION: %@", [dict objectForKey:@"courseID"], [dict objectForKey:@"version"]);
- [db lectureToDataBase:dict];
- 
- }
- else {
- // EDIT EXISTING EVENT
- [dict setObject:[lec couchDBId] forKey:@"_id"];
- [dict setObject:[lec couchDBRev] forKey:@"_rev"];
- [dict setObject:[lec courseID] forKey:@"courseID"];
- [dict setObject:[lec version] forKey:@"version"];
- [db lectureToDataBase:dict];
- }
- break;
- }
- }
- }*/
 
 /*********************************************************************
  METHOD : CONVERT STRING TIME XX:XX to INT TIME XXXX

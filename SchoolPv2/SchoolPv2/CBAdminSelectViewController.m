@@ -50,15 +50,15 @@
 
 - (IBAction)toNotes:(id)sender
 {
+    NSLog(@"NOTES");
     CBAdminNoteCreateViewController *noteCreate = [[CBAdminNoteCreateViewController alloc]init];
     [[self navigationController] pushViewController:noteCreate animated:YES];
-    NSLog(@"NOTES");
 }
 
 - (IBAction)toMessages:(id)sender
 {
+    NSLog(@"MESSAGES");
     CBAdminCreateMessageViewController *messageCreate = [[CBAdminCreateMessageViewController alloc]init];
     [[self navigationController] pushViewController:messageCreate animated:YES];
-    NSLog(@"MESSAGES");
 }
 @end

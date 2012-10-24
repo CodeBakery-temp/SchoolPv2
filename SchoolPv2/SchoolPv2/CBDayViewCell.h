@@ -1,11 +1,3 @@
-//
-//  CBDayViewCell.h
-//  Scheduler
-//
-//  Created by Christoffer Nordin on 10/12/12.
-//
-//
-
 #import <UIKit/UIKit.h>
 
 @interface CBDayViewCell : UITableViewCell

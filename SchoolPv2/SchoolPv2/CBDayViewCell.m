@@ -1,11 +1,3 @@
-//
-//  CBDayViewCell.m
-//  Scheduler
-//
-//  Created by Christoffer Nordin on 10/12/12.
-//
-//
-
 #import "CBDayViewCell.h"
 
 @implementation CBDayViewCell

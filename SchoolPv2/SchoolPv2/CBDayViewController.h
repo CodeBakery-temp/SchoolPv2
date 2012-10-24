@@ -8,6 +8,7 @@
 
 @property (nonatomic, weak) id delegate;
 @property (strong, nonatomic) UIAlertView *alertView;
+@property (nonatomic, copy) void (^refreshBlock)(void);
 
 @property (weak, nonatomic) IBOutlet UILabel *dayLabel;
 @property (weak, nonatomic) IBOutlet UIButton *noteButton;

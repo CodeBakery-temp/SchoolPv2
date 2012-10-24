@@ -8,9 +8,9 @@
 +(id)createDatabase;
 -(id)initDatabase;
 
--(NSString*) lectureToDataBase: (NSDictionary*)lecture;
--(NSString*) noteToDataBase: (NSDictionary*)note;
--(NSString*) messageToDataBase: (NSDictionary*)note;
+-(NSDictionary*) lectureToDataBase: (NSDictionary*)lecture;
+-(NSDictionary*) noteToDataBase: (NSDictionary*)note;
+-(NSDictionary*) messageToDataBase: (NSDictionary*)note;
 
 -(NSDictionary *) getUsers;
 -(NSMutableArray *) getLectures;

@@ -13,17 +13,24 @@
 {
     NSMutableDictionary *courseInfo;
     NSMutableArray *days;
+    NSArray *validDays;
     NSMutableArray *weeks;
     UITextField *activeField;
     
     UIBarButtonItem *cancelButton;
     UIBarButtonItem *doneButton;
+    
+    BOOL eventable;
 }
+
+@synthesize addBlock;
+@synthesize editBlock;
 
 - (id)init
 {
     self = [super init];
     if (self) {
+        validDays = [[NSArray alloc] initWithObjects:@"Monday", @"Tuesday", @"Wednesday", @"Thursday", @"Friday", nil];
         scheduleService = [CBScheduleService schedule];
         UINavigationItem *item = [self navigationItem];
         [item setTitle:@"TEMPLATE"];
@@ -59,11 +66,13 @@
 - (id)initEditTemplate {
     self = [self init];
     if(self) {
-        doneButton = [[UIBarButtonItem alloc] initWithTitle:@"Event"
+        doneButton = [[UIBarButtonItem alloc] initWithTitle:@"Update"
                                                       style:UIBarButtonItemStyleBordered
                                                      target:self
-                                                     action:@selector(createEvent:)];
+                                                     action:@selector(updateLecture:)];
         [[self navigationItem] setRightBarButtonItem:doneButton];
+        eventable =TRUE;
+        
     }
     return self;
 }
@@ -71,13 +80,20 @@
 - (id)initEditEvent {
     self = [self init];
     if(self) {
+        doneButton = [[UIBarButtonItem alloc] initWithTitle:@"Update"
+                                                      style:UIBarButtonItemStyleBordered
+                                                     target:self
+                                                     action:@selector(updateLecture:)];
+        [[self navigationItem] setRightBarButtonItem:doneButton];
     }
     return self;
 }
 
-- (void)viewDidLoad
+- (void)viewWillAppear:(BOOL)animated
 {
-    [super viewDidLoad];
+    [super viewWillAppear:animated];
+    if (eventable)
+        self.eventButton.hidden =FALSE;
     if (_lecture) {
         [_courseField setText:[_lecture course]];
         [_teacherField setText:[_lecture teacher]];
@@ -101,7 +117,6 @@
 
 - (void)setLecture:(CBLecture *)lec
 {
-    NSLog(@"Set template");
     _lecture = lec;
     NSString *t = [NSString stringWithFormat:@"%@.%@ %@", [_lecture courseID], [_lecture version], [_lecture course]];
     [[self navigationItem] setTitle:t];
@@ -112,33 +127,40 @@
     NSLog(@"CREATE");
     if (!([_teacherField.text isEqualToString:@""]) && !([_courseField.text isEqualToString:@""]) && !([_roomField.text isEqualToString:@""]) && !([_dayField.text isEqualToString:@""]) && !([_weekField.text isEqualToString:@""]) && !([_yearField.text isEqualToString:@""]) && !([_startField.text isEqualToString:@""]) && !([_stopField.text isEqualToString:@""]))
     {
-        [courseInfo setValue:_teacherField.text forKey:@"TEACHER"];
         [courseInfo setValue:_courseField.text forKey:@"COURSE"];
+        [courseInfo setValue:_teacherField.text forKey:@"TEACHER"];
         [courseInfo setValue:_roomField.text forKey:@"ROOM"];
-        
-        days = [[NSMutableArray alloc] init];
-        days = [[[[_dayField.text stringByReplacingOccurrencesOfString:@" " withString:@""] capitalizedString] componentsSeparatedByString:@","] mutableCopy];
-        
-        [courseInfo setValue:days forKey:@"DAYS"];
-        
-        weeks = [[NSMutableArray alloc] init];
-        weeks = [[[_weekField.text stringByReplacingOccurrencesOfString:@" " withString:@""] componentsSeparatedByString:@","] mutableCopy];
-        [courseInfo setValue:weeks forKey:@"WEEKS"];
-        
         [courseInfo setValue:_yearField.text forKey:@"YEAR"];
         [courseInfo setValue:_startField.text forKey:@"START"];
         [courseInfo setValue:_stopField.text forKey:@"STOP"];
-        NSLog(@"all values \n %@", [courseInfo allValues]);
-        
-        [scheduleService createLecture:courseInfo];
-        _yearField.text = @"";
-        _startField.text = @"";
-        _stopField.text = @"";
-        _weekField.text = @"";
-        _dayField.text = @"";
-        _teacherField.text = @"";
-        _courseField.text = @"";
-        _roomField.text = @"";
+        // Validate days monday-friday
+        NSMutableArray *temp = [[NSMutableArray alloc] init];
+        temp = [[[[_dayField.text stringByReplacingOccurrencesOfString:@" " withString:@""] capitalizedString] componentsSeparatedByString:@","] mutableCopy];
+        days = [[NSMutableArray alloc] init];
+        for (NSString *day in temp) {
+            for (NSString *validDay in validDays) {
+                if ([day isEqualToString:validDay]) {
+                    [days addObject:day];
+                }
+            }
+        }
+        // Validate weeks 1-53
+        [courseInfo setValue:days forKey:@"DAYS"];
+        temp = [[NSMutableArray alloc] init];
+        temp = [[[_weekField.text stringByReplacingOccurrencesOfString:@" " withString:@""] componentsSeparatedByString:@","] mutableCopy];
+        weeks = [[NSMutableArray alloc] init];
+        for (NSString *week in temp) {
+            for (int w=1; w<54; w++) {
+                if ([week isEqualToString:[NSString stringWithFormat:@"%d",w]]) {
+                    [weeks addObject:week];
+                }
+            }
+        }
+        [courseInfo setValue:weeks forKey:@"WEEKS"];
+        CBLecture *lec = [scheduleService createLecture:courseInfo];
+        if (lec) {
+            addBlock(lec);
+        }
         [[self presentingViewController] dismissViewControllerAnimated:YES completion:nil];
     }
     else {
@@ -147,10 +169,103 @@
     }
 }
 
-- (void)createEvent:(id)sender
+- (IBAction)createEvent:(id)sender
 {
     NSLog(@"EVENT");
-    [[self presentingViewController] dismissViewControllerAnimated:YES completion:nil];
+    if (!([_teacherField.text isEqualToString:@""]) && !([_courseField.text isEqualToString:@""]) && !([_roomField.text isEqualToString:@""]) && !([_dayField.text isEqualToString:@""]) && !([_weekField.text isEqualToString:@""]) && !([_yearField.text isEqualToString:@""]) && !([_startField.text isEqualToString:@""]) && !([_stopField.text isEqualToString:@""]))
+    {
+        [courseInfo setValue:_courseField.text forKey:@"COURSE"];
+        [courseInfo setValue:[_lecture courseID] forKey:@"COURSEID"];
+        [courseInfo setValue:_teacherField.text forKey:@"TEACHER"];
+        [courseInfo setValue:_roomField.text forKey:@"ROOM"];
+        [courseInfo setValue:_yearField.text forKey:@"YEAR"];
+        [courseInfo setValue:_startField.text forKey:@"START"];
+        [courseInfo setValue:_stopField.text forKey:@"STOP"];
+        // Validate days monday-friday
+        NSMutableArray *temp = [[NSMutableArray alloc] init];
+        temp = [[[[_dayField.text stringByReplacingOccurrencesOfString:@" " withString:@""] capitalizedString] componentsSeparatedByString:@","] mutableCopy];
+        days = [[NSMutableArray alloc] init];
+        for (NSString *day in temp) {
+            for (NSString *validDay in validDays) {
+                if ([day isEqualToString:validDay]) {
+                    [days addObject:day];
+                }
+            }
+        }
+        // Validate weeks 1-53
+        [courseInfo setValue:days forKey:@"DAYS"];
+        temp = [[NSMutableArray alloc] init];
+        temp = [[[_weekField.text stringByReplacingOccurrencesOfString:@" " withString:@""] componentsSeparatedByString:@","] mutableCopy];
+        weeks = [[NSMutableArray alloc] init];
+        for (NSString *week in temp) {
+            for (int w=1; w<54; w++) {
+                if ([week isEqualToString:[NSString stringWithFormat:@"%d",w]]) {
+                    [weeks addObject:week];
+                }
+            }
+        }
+        [courseInfo setValue:weeks forKey:@"WEEKS"];
+        CBLecture *lec = [scheduleService createLectureEvent:courseInfo];
+        if (lec) {
+            addBlock(lec);
+        }
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+    else {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Saving Failed" message:@"You need to fill out all the fields!" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alert show];
+    }
+}
+
+- (void)updateLecture:(id)sender
+{
+    NSLog(@"UPDATE");
+    if (!([_teacherField.text isEqualToString:@""]) && !([_courseField.text isEqualToString:@""]) && !([_roomField.text isEqualToString:@""]) && !([_dayField.text isEqualToString:@""]) && !([_weekField.text isEqualToString:@""]) && !([_yearField.text isEqualToString:@""]) && !([_startField.text isEqualToString:@""]) && !([_stopField.text isEqualToString:@""]))
+    {
+        [courseInfo setObject:[_lecture couchDBId] forKey:@"COUCHID"];
+        [courseInfo setObject:[_lecture couchDBRev] forKey:@"COUCHREV"];
+        [courseInfo setValue:[_lecture courseID] forKey:@"COURSEID"];
+        [courseInfo setValue:[_lecture version] forKey:@"VERSION"];
+        [courseInfo setValue:_courseField.text forKey:@"COURSE"];
+        [courseInfo setValue:_teacherField.text forKey:@"TEACHER"];
+        [courseInfo setValue:_roomField.text forKey:@"ROOM"];
+        [courseInfo setValue:_yearField.text forKey:@"YEAR"];
+        [courseInfo setValue:_startField.text forKey:@"START"];
+        [courseInfo setValue:_stopField.text forKey:@"STOP"];
+        // Validate days monday-friday
+        NSMutableArray *temp = [[NSMutableArray alloc] init];
+        temp = [[[[_dayField.text stringByReplacingOccurrencesOfString:@" " withString:@""] capitalizedString] componentsSeparatedByString:@","] mutableCopy];
+        days = [[NSMutableArray alloc] init];
+        for (NSString *day in temp) {
+            for (NSString *validDay in validDays) {
+                if ([day isEqualToString:validDay]) {
+                    [days addObject:day];
+                }
+            }
+        }
+        // Validate weeks 1-53
+        [courseInfo setValue:days forKey:@"DAYS"];
+        temp = [[NSMutableArray alloc] init];
+        temp = [[[_weekField.text stringByReplacingOccurrencesOfString:@" " withString:@""] componentsSeparatedByString:@","] mutableCopy];
+        weeks = [[NSMutableArray alloc] init];
+        for (NSString *week in temp) {
+            for (int w=1; w<54; w++) {
+                if ([week isEqualToString:[NSString stringWithFormat:@"%d",w]]) {
+                    [weeks addObject:week];
+                }
+            }
+        }
+        [courseInfo setValue:weeks forKey:@"WEEKS"];
+        CBLecture* lec = [scheduleService updateLecture:courseInfo];
+        if (lec) {
+            editBlock(lec);
+        }
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+    else {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Saving Failed" message:@"You need to fill out all the fields!" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alert show];
+    }
 }
 
 - (void)cancelTemplate:(id)sender
@@ -238,14 +353,5 @@
 {
     activeField = nil;
 }
-
-//- (void)keyboardWasShown:(NSNotification*)aNotification {
-//    NSDictionary* info = [aNotification userInfo];
-//    CGSize kbSize = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
-//    CGRect bkgndRect = activeField.superview.frame;
-//    bkgndRect.size.height += kbSize.height;
-//    [activeField.superview setFrame:bkgndRect];
-//    [_superHejScroll setContentOffset:CGPointMake(0.0, activeField.frame.origin.y-kbSize.height) animated:YES];
-//}
 
 @end

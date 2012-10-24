@@ -58,9 +58,9 @@ NSString *const getAll = @"_all_docs?include_docs=true";
 /*********************************************************************
  METHOD : POST LECTURE OBJECT TO LECTURE DATABASE
  ACCEPTS: Lecture object as NSDictionary
- RETURNS: Result NSString
+ RETURNS: Result NSDictionary response
  *********************************************************************/
--(NSString*) lectureToDataBase:(NSDictionary*)lecture
+-(NSDictionary*) lectureToDataBase:(NSDictionary*)lecture
 {
     NSData *tempData;
     if([NSJSONSerialization isValidJSONObject:lecture]) {
@@ -80,19 +80,23 @@ NSString *const getAll = @"_all_docs?include_docs=true";
     [request setHTTPBody:postBody];
     
     //RESPONSE
+    //RESPONSE
     NSHTTPURLResponse* urlResponse = nil;
     NSError *error = [[NSError alloc] init];
     NSData *responseData = [NSURLConnection sendSynchronousRequest:request returningResponse:&urlResponse error:&error];
-    NSString *result = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
+    NSMutableDictionary *result = [NSJSONSerialization
+                                   JSONObjectWithData:responseData
+                                   options:NSJSONReadingMutableContainers
+                                   error:NULL];
     return result;
 }
 
 /*********************************************************************
- METHOD : POST NOTE OR MESSAGE OBJECT TO NOTIFICATION DATABASE
- ACCEPTS: Note or Message object as NSDictionary
- RETURNS: Result NSString
+ METHOD : POST NOTE OBJECT TO NOTIFICATION DATABASE
+ ACCEPTS: Note object as NSDictionary
+ RETURNS: Result NSDictionary response
  *********************************************************************/
--(NSString*) noteToDataBase:(NSDictionary*)note
+-(NSDictionary*) noteToDataBase:(NSDictionary*)note
 {
     NSData *tempData;
     if([NSJSONSerialization isValidJSONObject:note]) {
@@ -112,19 +116,23 @@ NSString *const getAll = @"_all_docs?include_docs=true";
     [request setHTTPBody:postBody];
     
     //RESPONSE
+    //RESPONSE
     NSHTTPURLResponse* urlResponse = nil;
     NSError *error = [[NSError alloc] init];
     NSData *responseData = [NSURLConnection sendSynchronousRequest:request returningResponse:&urlResponse error:&error];
-    NSString *result = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
+    NSMutableDictionary *result = [NSJSONSerialization
+                                   JSONObjectWithData:responseData
+                                   options:NSJSONReadingMutableContainers
+                                   error:NULL];
     return result;
 }
 
 /*********************************************************************
- METHOD : POST NOTE OR MESSAGE OBJECT TO NOTIFICATION DATABASE
- ACCEPTS: Note or Message object as NSDictionary
- RETURNS: Result NSString
+ METHOD : POST MESSAGE OBJECT TO NOTIFICATION DATABASE
+ ACCEPTS: Message object as NSDictionary
+ RETURNS: Result NSDictionary response
  *********************************************************************/
--(NSString*) messageToDataBase:(NSDictionary*)message
+-(NSDictionary*) messageToDataBase:(NSDictionary*)message
 {
     NSData *tempData;
     if([NSJSONSerialization isValidJSONObject:message]) {
@@ -144,10 +152,14 @@ NSString *const getAll = @"_all_docs?include_docs=true";
     [request setHTTPBody:postBody];
     
     //RESPONSE
+    //RESPONSE
     NSHTTPURLResponse* urlResponse = nil;
     NSError *error = [[NSError alloc] init];
     NSData *responseData = [NSURLConnection sendSynchronousRequest:request returningResponse:&urlResponse error:&error];
-    NSString *result = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
+    NSMutableDictionary *result = [NSJSONSerialization
+                                   JSONObjectWithData:responseData
+                                   options:NSJSONReadingMutableContainers
+                                   error:NULL];
     return result;
 }
 

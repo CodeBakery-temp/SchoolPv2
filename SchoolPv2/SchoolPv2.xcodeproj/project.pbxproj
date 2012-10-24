@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		066538FC163552C000109A1B /* adminButton in Resources */ = {isa = PBXBuildFile; fileRef = 066538FB163552C000109A1B /* adminButton */; };
 		06AA444F16256504002DDB8F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06AA444E16256504002DDB8F /* UIKit.framework */; };
 		06AA445116256504002DDB8F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06AA445016256504002DDB8F /* Foundation.framework */; };
 		06AA445316256504002DDB8F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06AA445216256504002DDB8F /* CoreGraphics.framework */; };
@@ -24,6 +23,9 @@
 		06AA448A16256644002DDB8F /* CBMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 06AA448916256644002DDB8F /* CBMessage.m */; };
 		06AA448D16256777002DDB8F /* CBDatabaseService.m in Sources */ = {isa = PBXBuildFile; fileRef = 06AA448C16256777002DDB8F /* CBDatabaseService.m */; };
 		06AA4490162567EB002DDB8F /* CBScheduleService.m in Sources */ = {isa = PBXBuildFile; fileRef = 06AA448F162567EB002DDB8F /* CBScheduleService.m */; };
+		06B0607F1637343A00294CB7 /* adminButton in Resources */ = {isa = PBXBuildFile; fileRef = 06B0607E1637343A00294CB7 /* adminButton */; };
+		06B060831637421500294CB7 /* CBMessageLayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06B060811637421400294CB7 /* CBMessageLayerViewController.m */; };
+		06B060841637421500294CB7 /* CBMessageLayerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 06B060821637421400294CB7 /* CBMessageLayerViewController.xib */; };
 		06C239B41631388600ADD838 /* bottom.png in Resources */ = {isa = PBXBuildFile; fileRef = 06C239AC1631388600ADD838 /* bottom.png */; };
 		06C239B51631388600ADD838 /* chalkboard.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 06C239AD1631388600ADD838 /* chalkboard.jpg */; };
 		06C239B61631388600ADD838 /* mail-closed.png in Resources */ = {isa = PBXBuildFile; fileRef = 06C239AE1631388600ADD838 /* mail-closed.png */; };
@@ -64,7 +66,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		066538FB163552C000109A1B /* adminButton */ = {isa = PBXFileReference; lastKnownFileType = file; path = adminButton; sourceTree = "<group>"; };
 		06AA444A16256504002DDB8F /* SchoolPv2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SchoolPv2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		06AA444E16256504002DDB8F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		06AA445016256504002DDB8F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -92,6 +93,10 @@
 		06AA448C16256777002DDB8F /* CBDatabaseService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBDatabaseService.m; sourceTree = "<group>"; };
 		06AA448E162567EB002DDB8F /* CBScheduleService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBScheduleService.h; sourceTree = "<group>"; };
 		06AA448F162567EB002DDB8F /* CBScheduleService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBScheduleService.m; sourceTree = "<group>"; };
+		06B0607E1637343A00294CB7 /* adminButton */ = {isa = PBXFileReference; lastKnownFileType = file; path = adminButton; sourceTree = "<group>"; };
+		06B060801637421400294CB7 /* CBMessageLayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBMessageLayerViewController.h; sourceTree = "<group>"; };
+		06B060811637421400294CB7 /* CBMessageLayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBMessageLayerViewController.m; sourceTree = "<group>"; };
+		06B060821637421400294CB7 /* CBMessageLayerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CBMessageLayerViewController.xib; sourceTree = "<group>"; };
 		06C239AC1631388600ADD838 /* bottom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bottom.png; sourceTree = "<group>"; };
 		06C239AD1631388600ADD838 /* chalkboard.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = chalkboard.jpg; sourceTree = "<group>"; };
 		06C239AE1631388600ADD838 /* mail-closed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mail-closed.png"; sourceTree = "<group>"; };
@@ -236,10 +241,10 @@
 		06AA44711625655C002DDB8F /* View */ = {
 			isa = PBXGroup;
 			children = (
-				CE8FE5751636D37E0028EB61 /* MessageView */,
 				06C23A1716353B6000ADD838 /* Admin */,
 				CE8FE5771636D3C50028EB61 /* DayView */,
 				CE8FE5781636D3FD0028EB61 /* WeekView */,
+				CE8FE5751636D37E0028EB61 /* MessageView */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -262,10 +267,10 @@
 		06C23A1716353B6000ADD838 /* Admin */ = {
 			isa = PBXGroup;
 			children = (
-				CE8FE5731636D3200028EB61 /* AdminCourse */,
-				CE8FE5701636D2920028EB61 /* AdminMessage */,
-				CE8FE56E1636D26E0028EB61 /* AdminNote */,
 				CE8FE5711636D2B10028EB61 /* AdminSelectView */,
+				CE8FE5731636D3200028EB61 /* AdminCourse */,
+				CE8FE56E1636D26E0028EB61 /* AdminNote */,
+				CE8FE5701636D2920028EB61 /* AdminMessage */,
 			);
 			name = Admin;
 			sourceTree = "<group>";
@@ -315,6 +320,9 @@
 		CE8FE5751636D37E0028EB61 /* MessageView */ = {
 			isa = PBXGroup;
 			children = (
+				06B060801637421400294CB7 /* CBMessageLayerViewController.h */,
+				06B060811637421400294CB7 /* CBMessageLayerViewController.m */,
+				06B060821637421400294CB7 /* CBMessageLayerViewController.xib */,
 				CE8FE5671636D0950028EB61 /* CBMessageViewController.h */,
 				CE8FE5681636D0950028EB61 /* CBMessageViewController.m */,
 				CE8FE5611636D08A0028EB61 /* CBMessageCell.h */,
@@ -327,13 +335,13 @@
 		CE8FE5761636D3A00028EB61 /* Image */ = {
 			isa = PBXGroup;
 			children = (
+				06B0607E1637343A00294CB7 /* adminButton */,
 				06C239AF1631388600ADD838 /* mail-open.png */,
 				15964B3F16317CB0002F3AEB /* postitICON.png */,
 				06C239B01631388600ADD838 /* postit.png */,
 				06C239B11631388600ADD838 /* letter.png */,
 				06C239B21631388600ADD838 /* sync.png */,
 				06C239B31631388600ADD838 /* weekview.jpg */,
-				066538FB163552C000109A1B /* adminButton */,
 				06C239AC1631388600ADD838 /* bottom.png */,
 				06C239AD1631388600ADD838 /* chalkboard.jpg */,
 				06C239AE1631388600ADD838 /* mail-closed.png */,
@@ -449,10 +457,11 @@
 				CEF356C6163186B3008CD16D /* CBAdminCourseFormViewController.xib in Resources */,
 				151E4D8C16318AC20054E358 /* Schoolbell.ttf in Resources */,
 				06C23A1F1635460200ADD838 /* CBAdminSelectViewController.xib in Resources */,
-				066538FC163552C000109A1B /* adminButton in Resources */,
 				CE2163791636B349009FA04B /* CBAdminCreateMessageViewController.xib in Resources */,
 				CE21637E1636B373009FA04B /* CBAdminNoteCreateViewController.xib in Resources */,
 				CE8FE5651636D08A0028EB61 /* CBMessageCell.xib in Resources */,
+				06B0607F1637343A00294CB7 /* adminButton in Resources */,
+				06B060841637421500294CB7 /* CBMessageLayerViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -487,6 +496,7 @@
 				CE21637D1636B373009FA04B /* CBAdminNoteCreateViewController.m in Sources */,
 				CE8FE5641636D08A0028EB61 /* CBMessageCell.m in Sources */,
 				CE8FE5691636D0950028EB61 /* CBMessageViewController.m in Sources */,
+				06B060831637421500294CB7 /* CBMessageLayerViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

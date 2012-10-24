@@ -14,6 +14,7 @@
     NSString *lectureName;
     CBDatabaseService *dataBase;
     CBScheduleService *schedule;
+    NSArray *validDays;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -21,6 +22,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        validDays = [[NSArray alloc] initWithObjects:@"Monday", @"Tuesday", @"Wednesday", @"Thursday", @"Friday", nil];
         dataBase = [CBDatabaseService database];
         allectures = [[NSMutableArray alloc] initWithArray:[dataBase getLectures]];
         notesDic = [[NSMutableDictionary alloc] init];
@@ -68,13 +70,29 @@
     return [[allectures objectAtIndex:row] course];    
 }
 
--(IBAction)newNote:(id)sender
+-(void)newNote:(id)sender
 {
-    //NSLog(@"%@", lectureName);
-    //NSLog(@"%@", _noteTextView.text);
+    // Validate day monday-friday
+    BOOL isValid =FALSE;
+    NSString *temp = [[_superDayTextField.text stringByReplacingOccurrencesOfString:@" " withString:@""] capitalizedString];;
+    for (NSString *validDay in validDays) {
+        if ([temp isEqualToString:validDay])
+            isValid =TRUE;
+    }
+    if (!isValid)
+        [_superDayTextField setText:@""];
+    // Validate weeks 1-53
+    isValid =FALSE;
+    temp = [[_superWeekTextField.text stringByReplacingOccurrencesOfString:@" " withString:@""] capitalizedString];
+    for (int w=1; w<54; w++) {
+        if ([temp isEqualToString:[NSString stringWithFormat:@"%d",w]])
+            isValid =TRUE;
+    }
+    if (!isValid)
+        [_superWeekTextField setText:@""];
     
-    if (!([_noteTextView.text isEqualToString:@""]) && !([_coursePickerView isEqual:NULL]) && !([_superDayTextField.text isEqualToString:@""]) && !([_superWeekTextField.text isEqualToString:@""])) {
-        
+    if (!([_noteTextView.text isEqualToString:@""]) && !([_coursePickerView isEqual:NULL]) &&
+        !([_superDayTextField.text isEqualToString:@""]) && !([_superWeekTextField.text isEqualToString:@""])) {        
         [notesDic setValue:_noteTextView.text forKey:@"TEXT"];
         [notesDic setValue:_superWeekTextField.text forKey:@"WEEK"];
         [notesDic setValue:_superDayTextField.text forKey:@"DAY"];
@@ -89,9 +107,8 @@
         _noteTextView.text = @"Write a note here...";
         _superDayTextField.text = @"";
         _superWeekTextField.text = @"";
-        
-         
-    }else{
+    }
+    else {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Saving Failed" message:@"You need to fill out all the fields!" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [alert show];
     }

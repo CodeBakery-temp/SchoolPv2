@@ -7,7 +7,7 @@
 #import "CBUser.h"
 #import "CBAdminSelectViewController.h"
 #import "CBAdminCourseViewController.h"
-#import "CBMessageViewController.h"
+#import "CBMessageLayerViewController.h"
 #import <QuartzCore/QuartzCore.h>
 
 @interface CBDayViewController ()
@@ -26,6 +26,7 @@
 
 @synthesize delegate;
 @synthesize alertView;
+@synthesize refreshBlock;
 
 - (id)init
 {
@@ -55,6 +56,10 @@
             }
             if (user) {
                 [self fetchData];
+                if (isAdmin)
+                    _adminButton.hidden =FALSE;
+                else
+                    _adminButton.hidden =TRUE;
             }
         }
     }
@@ -75,18 +80,16 @@
         [[self.alertView textFieldAtIndex:0] setDelegate:self];
         [alertView show];
     }
-    else {
+    else
         [_dayLabel setText:[[schedule getDayLectures:0] objectForKey:@"DAY"]];
-        dayLectures = [[CBDayLectureViewController alloc] init];
-        dayNotes = [[CBDayNoteViewController alloc] init];
-        [_lectureTable addSubview:dayLectures.view];
-        [_noteTable addSubview:dayNotes.view];
-    }
+    dayLectures = [[CBDayLectureViewController alloc] init];
+    dayNotes = [[CBDayNoteViewController alloc] init];
+    [_lectureTable addSubview:dayLectures.view];
+    [_noteTable addSubview:dayNotes.view];
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
-    NSLog(@"%@ %@", [[alertView textFieldAtIndex:0] text], [[alertView textFieldAtIndex:1] text]);
     for (CBUser *admin in [allUsersDict objectForKey:@"ADMIN"]) {
         if ([[[alertView textFieldAtIndex:0] text] isEqualToString:[admin mailAddress]]&&
             [[[alertView textFieldAtIndex:1] text] isEqualToString:[admin password]]) {
@@ -142,18 +145,20 @@
 
 - (IBAction)showNotes:(id)sender {
     if (_noteView.hidden)
-        _noteView.hidden =NO;
+        _noteView.hidden =FALSE;
     else
-        _noteView.hidden =YES;
+        _noteView.hidden =TRUE;
 }
 
 - (IBAction)toInbox:(id)sender {
-    CBMessageViewController *messageView = [[CBMessageViewController alloc] init];
+    NSLog(@"Inbox");
+    CBMessageLayerViewController *messageView = [[CBMessageLayerViewController alloc] init];
     messageView.delegate = delegate;
     UINavigationController* navController = [[UINavigationController alloc] initWithRootViewController:messageView];
     navController.navigationBar.tintColor = [UIColor blackColor];
+    navController.navigationBar.alpha =0.8f;
+    navController.navigationBar.translucent = YES;
     [delegate setRootViewController:navController];
-    NSLog(@"Inbox");
 }
 
 - (IBAction)doSync:(id)sender {
@@ -193,6 +198,12 @@
               [[[[schedule getWeekLectures] objectAtIndex:2] objectForKey:@"LECTURES"] count],
               [[[[schedule getWeekLectures] objectAtIndex:3] objectForKey:@"LECTURES"] count],
               [[[[schedule getWeekLectures] objectAtIndex:4] objectForKey:@"LECTURES"] count]);
+        if ([[[schedule getDayNotes:0] objectForKey:@"NOTES"] count]>0)
+            _noteButton.hidden =FALSE;
+        else {
+            _noteView.hidden =TRUE;
+            _noteButton.hidden =TRUE;
+        }
     }
     else {
         NSLog(@"User or ScheduleService not initiated");
