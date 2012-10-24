@@ -1,5 +1,4 @@
 #import "CBDayLectureViewController.h"
-#import "CBDayNoteViewController.h"
 #import "CBScheduleService.h"
 #import "CBDayViewCell.h"
 #import "CBLecture.h"
@@ -7,10 +6,7 @@
 @interface CBDayLectureViewController ()
 {
     CBScheduleService *schedule;
-    CBDayNoteViewController *noteTable;
-    CBDayNoteViewController *dayNotes;
     NSDictionary *list;
-    BOOL postit;
 }
 
 @end

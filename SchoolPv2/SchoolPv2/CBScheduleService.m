@@ -262,6 +262,10 @@
             }
         }
     }
+    for (int i=0; i<5; i++) {
+        NSMutableArray *list = [[NSMutableArray alloc] init];
+        [[weekNotes objectAtIndex:i] setObject:list forKey:@"NOTES"];
+    }
     // SORT NOTES TO DAYS
     for (int day=0; day<5; day++) {
         for (CBNote* note in userNotes) {

@@ -2,9 +2,6 @@
 
 
 @interface CBDayViewController : UIViewController <UITextFieldDelegate>
-{
-    NSString* userName;
-}
 
 @property (nonatomic, weak) id delegate;
 @property (strong, nonatomic) UIAlertView *alertView;
