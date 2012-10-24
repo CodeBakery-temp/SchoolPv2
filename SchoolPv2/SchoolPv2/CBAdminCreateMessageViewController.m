@@ -72,7 +72,7 @@
         [messageDictionary setValue:[[NSUserDefaults standardUserDefaults]objectForKey:@"SchoolP_user"] forKey:@"SENDER"];
         
         allReceivers = [[NSMutableArray alloc] init];
-        allReceivers = [[[[_mailTextField.text stringByReplacingOccurrencesOfString:@" " withString:@""] capitalizedString] componentsSeparatedByString:@","] mutableCopy];
+        allReceivers = [[[_mailTextField.text stringByReplacingOccurrencesOfString:@" " withString:@""] componentsSeparatedByString:@","] mutableCopy];
             [messageDictionary setValue:allReceivers forKey:@"RECEIVER"];
         
         

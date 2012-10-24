@@ -83,7 +83,8 @@
         [_superDayTextField setText:@""];
     // Validate weeks 1-53
     isValid =FALSE;
-    temp = [[_superWeekTextField.text stringByReplacingOccurrencesOfString:@" " withString:@""] capitalizedString];
+    temp =
+    [_superWeekTextField.text stringByReplacingOccurrencesOfString:@" " withString:@""];
     for (int w=1; w<54; w++) {
         if ([temp isEqualToString:[NSString stringWithFormat:@"%d",w]])
             isValid =TRUE;
