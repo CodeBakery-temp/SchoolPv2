@@ -53,6 +53,9 @@
 		151E4D8C16318AC20054E358 /* Schoolbell.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 151E4D8B16318AC20054E358 /* Schoolbell.ttf */; };
 		15964B4016317CB0002F3AEB /* postitICON.png in Resources */ = {isa = PBXBuildFile; fileRef = 15964B3F16317CB0002F3AEB /* postitICON.png */; };
 		15964B4E16318046002F3AEB /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15964B4D16318046002F3AEB /* QuartzCore.framework */; };
+		15BE97E716380EFA005A7D7E /* cogweel.png in Resources */ = {isa = PBXBuildFile; fileRef = 15BE97E416380EFA005A7D7E /* cogweel.png */; };
+		15BE97E816380EFA005A7D7E /* postIT2.png in Resources */ = {isa = PBXBuildFile; fileRef = 15BE97E516380EFA005A7D7E /* postIT2.png */; };
+		15BE97E916380EFA005A7D7E /* syncArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 15BE97E616380EFA005A7D7E /* syncArrow.png */; };
 		15E3830816315C9600D8BBCA /* DK Crayon Crumble.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 15E3830616315C9600D8BBCA /* DK Crayon Crumble.ttf */; };
 		CE2163781636B349009FA04B /* CBAdminCreateMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE2163761636B349009FA04B /* CBAdminCreateMessageViewController.m */; };
 		CE2163791636B349009FA04B /* CBAdminCreateMessageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE2163771636B349009FA04B /* CBAdminCreateMessageViewController.xib */; };
@@ -134,6 +137,9 @@
 		151E4D8B16318AC20054E358 /* Schoolbell.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Schoolbell.ttf; sourceTree = "<group>"; };
 		15964B3F16317CB0002F3AEB /* postitICON.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = postitICON.png; sourceTree = "<group>"; };
 		15964B4D16318046002F3AEB /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		15BE97E416380EFA005A7D7E /* cogweel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = cogweel.png; path = SchoolPv2/cogweel.png; sourceTree = "<group>"; };
+		15BE97E516380EFA005A7D7E /* postIT2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = postIT2.png; path = SchoolPv2/postIT2.png; sourceTree = "<group>"; };
+		15BE97E616380EFA005A7D7E /* syncArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = syncArrow.png; path = SchoolPv2/syncArrow.png; sourceTree = "<group>"; };
 		15E3830616315C9600D8BBCA /* DK Crayon Crumble.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DK Crayon Crumble.ttf"; sourceTree = "<group>"; };
 		CE2163751636B349009FA04B /* CBAdminCreateMessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBAdminCreateMessageViewController.h; sourceTree = "<group>"; };
 		CE2163761636B349009FA04B /* CBAdminCreateMessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBAdminCreateMessageViewController.m; sourceTree = "<group>"; };
@@ -335,6 +341,9 @@
 		CE8FE5761636D3A00028EB61 /* Image */ = {
 			isa = PBXGroup;
 			children = (
+				15BE97E416380EFA005A7D7E /* cogweel.png */,
+				15BE97E516380EFA005A7D7E /* postIT2.png */,
+				15BE97E616380EFA005A7D7E /* syncArrow.png */,
 				06B0607E1637343A00294CB7 /* adminButton */,
 				06C239AF1631388600ADD838 /* mail-open.png */,
 				15964B3F16317CB0002F3AEB /* postitICON.png */,
@@ -462,6 +471,9 @@
 				CE8FE5651636D08A0028EB61 /* CBMessageCell.xib in Resources */,
 				06B0607F1637343A00294CB7 /* adminButton in Resources */,
 				06B060841637421500294CB7 /* CBMessageLayerViewController.xib in Resources */,
+				15BE97E716380EFA005A7D7E /* cogweel.png in Resources */,
+				15BE97E816380EFA005A7D7E /* postIT2.png in Resources */,
+				15BE97E916380EFA005A7D7E /* syncArrow.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
