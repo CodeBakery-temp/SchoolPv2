@@ -13,6 +13,7 @@
 +(id)createSchedule;
 -(id)initSchedule;
 
+- (int)getWeekDay;
 - (NSArray*)getWeekLectures;
 - (NSDictionary*)getDayLectures:(int)day;
 - (NSArray*)getWeekNotes;

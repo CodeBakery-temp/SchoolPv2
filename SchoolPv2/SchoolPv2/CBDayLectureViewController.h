@@ -2,4 +2,6 @@
 
 @interface CBDayLectureViewController : UITableViewController <UITableViewDataSource>
 
+- (void)refreshTable:(int)day;
+
 @end

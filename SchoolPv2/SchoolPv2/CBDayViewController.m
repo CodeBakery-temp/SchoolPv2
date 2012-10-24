@@ -18,6 +18,7 @@
     NSDictionary *allUsersDict;
     CBUser *user;
     BOOL isAdmin;
+    int displayedDay;
 }
 
 @end
@@ -34,6 +35,9 @@
     if (self) {
         CBDatabaseService *db = [CBDatabaseService database];
         schedule = [CBScheduleService schedule];
+        dayLectures = [[CBDayLectureViewController alloc] init];
+        dayNotes = [[CBDayNoteViewController alloc] init];
+        
         allUsersDict = [db getUsers];
         userName = [[NSUserDefaults standardUserDefaults] objectForKey:@"SchoolP_user"];
         if (userName) {
@@ -80,10 +84,7 @@
         [[self.alertView textFieldAtIndex:0] setDelegate:self];
         [alertView show];
     }
-    else
-        [_dayLabel setText:[[schedule getDayLectures:0] objectForKey:@"DAY"]];
-    dayLectures = [[CBDayLectureViewController alloc] init];
-    dayNotes = [[CBDayNoteViewController alloc] init];
+    [_dayLabel setText:[[schedule getDayLectures:0] objectForKey:@"DAY"]];
     [_lectureTable addSubview:dayLectures.view];
     [_noteTable addSubview:dayNotes.view];
     UIFont *crayonFont = [UIFont fontWithName:@"DK Crayon Crumble" size:20];
@@ -182,6 +183,25 @@
     UINavigationController* navController = [[UINavigationController alloc] initWithRootViewController:adminController];
     navController.navigationBar.tintColor = [UIColor blackColor];
     [delegate setRootViewController:navController];
+}
+
+- (IBAction)handleSwipe:(UIGestureRecognizer*)sender {
+    UISwipeGestureRecognizerDirection direction = [(UISwipeGestureRecognizer *) sender direction];
+    if (direction==UISwipeGestureRecognizerDirectionLeft) {
+        if (displayedDay<5) {
+            NSLog(@"HELLO LEFT");
+            displayedDay +=1;
+        }
+    }
+    else if (direction==UISwipeGestureRecognizerDirectionRight) {
+        if (displayedDay>1) {
+            NSLog(@"HELLO RIGHT");
+            displayedDay -=1;
+        }
+    }
+    [_dayLabel setText:[[schedule getDayLectures:displayedDay] objectForKey:@"DAY"]];
+    [dayLectures refreshTable:displayedDay];
+    [dayNotes refreshTable:displayedDay];
 }
 
 - (void)fetchData {

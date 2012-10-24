@@ -2,4 +2,6 @@
 
 @interface CBDayNoteViewController : UITableViewController <UITableViewDataSource>
 
+- (void)refreshTable:(int)day;
+
 @end

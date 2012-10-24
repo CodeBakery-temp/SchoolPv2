@@ -79,6 +79,18 @@
     return self;
 }
 
+- (int)getWeekDay
+{
+    NSDate *date = [NSDate date];
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSInteger units = NSWeekdayCalendarUnit;
+    NSDateComponents *components = [calendar components:units fromDate:date];
+    int day =([components weekday]-1);
+    if (day==0)
+        day =7;
+    return day;
+}
+
 - (NSArray *)getWeekLectures
 {
     return weekLectures;

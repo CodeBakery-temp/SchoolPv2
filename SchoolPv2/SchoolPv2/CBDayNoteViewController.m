@@ -6,7 +6,7 @@
 @interface CBDayNoteViewController ()
 {
     CBScheduleService *schedule;
-    NSMutableDictionary *list;
+    NSDictionary *list;
 }
 
 @end
@@ -20,18 +20,8 @@
     if (self) {
         self.tableView.backgroundColor = [UIColor clearColor];
         self.tableView.separatorColor = [UIColor clearColor];
-        //schedule = [CBScheduleService schedule];
-        //list = [schedule getDayNotes];
-        
-        list = [[NSMutableDictionary alloc] init];
-        [list setObject:@"THURSDAY" forKey:@"DAY"];
-        NSMutableArray *array = [[NSMutableArray alloc] init];
-        for (int i=0; i<1; i++) {
-            CBNote *note = [[CBNote alloc] initNoteWithText:@"Läs kapitel 24 tills i morgon. Bonus: gör övningarna till kapittlet" week:@"42" day:@"Thursday" courseID:@"3"];
-            [array addObject:note];
-        }
-        [list setObject:array forKey:@"NOTES"];
-        NSLog(@"NOTES: %d", [[list objectForKey:@"NOTES"] count]);
+        schedule = [CBScheduleService schedule];
+        list = [schedule getDayNotes:0];
     }
     return self;
 }
@@ -53,6 +43,12 @@
     [super viewDidAppear:animated];
     CGSize noteView = CGSizeMake(320, (([[list objectForKey:@"NOTES"] count])*10));
     [self.tableView setContentSize:noteView];
+}
+
+- (void)refreshTable:(int)day
+{
+    list = [schedule getDayNotes:day];
+    [self.tableView reloadData];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section

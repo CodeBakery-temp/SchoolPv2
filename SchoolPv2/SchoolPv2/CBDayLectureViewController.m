@@ -51,6 +51,12 @@
     [self.tableView setContentSize:lectureView];
 }
 
+- (void)refreshTable:(int)day
+{
+    list = [schedule getDayLectures:day];
+    [self.tableView reloadData];
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return [[list objectForKey:@"LECTURES"] count];

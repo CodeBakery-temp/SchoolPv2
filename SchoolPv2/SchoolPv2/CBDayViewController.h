@@ -25,5 +25,6 @@
 - (IBAction)toInbox:(id)sender;
 - (IBAction)doSync:(id)sender;
 - (IBAction)toAdmin:(id)sender;
+- (IBAction)handleSwipe:(id)sender;
 
 @end
