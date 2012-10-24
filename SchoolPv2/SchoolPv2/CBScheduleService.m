@@ -195,7 +195,7 @@
                 if ([[lec courseID]isEqualToString:[NSString stringWithFormat:@"%d",CURRENTCOURSE]]
                     &&[[lec version] intValue]>versionTop) {
                     versionTop = [[lec version] intValue];
-                    lecture = [lecture initCourseWithName:[lec course]                                                    
+                    lecture = [lecture initCourseWithName:[lec course]
                                                   teacher:[lec teacher]
                                                      room:[lec room]
                                                  courseID:[lec courseID]
@@ -237,8 +237,9 @@
 {
     NSDictionary *notifications = [db getNotifications];
     NSArray* notes = [notifications objectForKey:@"NOTES"];
-    messages = [notifications objectForKey:@"MESSAGES"];
+    NSArray* allMessages = [notifications objectForKey:@"MESSAGES"];
     NSMutableArray* userNotes = [NSMutableArray array];
+    messages = [[NSMutableArray alloc] init];
     // SORT OUT WEEK NOTES
     for(NSString* courseID in [user courses]) {
         for(CBNote* note in notes) {
@@ -254,6 +255,13 @@
         for (CBNote* note in userNotes) {
             if(![[note day] caseInsensitiveCompare:[[weekNotes objectAtIndex:day] objectForKey:@"DAY"]]) {
                 [[[weekNotes objectAtIndex:day] objectForKey:@"NOTES"] addObject:note];
+            }
+        }
+    }
+    for (CBMessage* message in allMessages) {
+        for (NSString *rece in [message receiver]) {
+            if ([rece isEqual:[user mailAddress]]) {
+                [messages addObject:message];
             }
         }
     }

@@ -22,6 +22,10 @@
         schedule = [CBScheduleService schedule];
         messages = [[NSMutableArray alloc] init];
         messages = [[schedule getMessages] mutableCopy];
+        for (CBMessage *message in messages) {
+            NSLog(@"%@", message);
+        }
+        
     }
     return self;
 }
@@ -33,7 +37,7 @@
     self.tableView.separatorColor = [UIColor clearColor];
     UINib *nib = [UINib nibWithNibName:@"CBMessageCell" bundle:nil];
     [[self tableView] registerNib:nib forCellReuseIdentifier:@"CBMessageCell"];
-
+    
 }
 
 #pragma mark - Table view data source
@@ -45,6 +49,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    
     return [messages count];
 }
 
@@ -54,6 +59,9 @@
     CBMessage *message = [messages objectAtIndex:[indexPath row]];
     [[cell senderTextLabel] setText:[message sender]];
     [[cell messageTextField] setText:[message text]];
+    //CBMessage *message = [messages objectAtIndex:[indexPath row]];
+    
+    
     return cell;
 }
 
