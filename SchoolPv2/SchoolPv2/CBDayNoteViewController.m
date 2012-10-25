@@ -41,7 +41,7 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    CGSize noteView = CGSizeMake(320, (([[list objectForKey:@"NOTES"] count])*10));
+    CGSize noteView = CGSizeMake(320, (([[list objectForKey:@"NOTES"] count])*20));
     [self.tableView setContentSize:noteView];
 }
 
@@ -70,7 +70,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 10;
+    return 17;
 }
 
 @end

@@ -15,6 +15,7 @@
     CBDatabaseService *dataBase;
     CBScheduleService *schedule;
     NSArray *validDays;
+    NSMutableArray *templateLectures;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -27,6 +28,13 @@
         allectures = [[NSMutableArray alloc] initWithArray:[dataBase getLectures]];
         notesDic = [[NSMutableDictionary alloc] init];
         schedule = [CBScheduleService schedule];
+        templateLectures = [[NSMutableArray alloc] init];
+        
+        for (CBLecture *lec in allectures) {
+            if ([lec.version isEqual:@"1"]) {
+                [templateLectures addObject:lec];
+            }
+        }
         
         UINavigationItem *item = [self navigationItem];
         [item setTitle:@"Add note"];
@@ -50,7 +58,7 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
+}   
 
 
 
@@ -62,12 +70,12 @@
 // returns the # of rows in each component..
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
 {    
-    return [allectures count];
+    return [templateLectures count];
 }
 
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
 {
-    return [[allectures objectAtIndex:row] course];    
+    return [[templateLectures objectAtIndex:row] course];
 }
 
 -(void)newNote:(id)sender
@@ -98,7 +106,7 @@
         [notesDic setValue:_superWeekTextField.text forKey:@"WEEK"];
         [notesDic setValue:_superDayTextField.text forKey:@"DAY"];
         
-        for (CBLecture *lec in allectures) {
+        for (CBLecture *lec in templateLectures) {
             if (lec.course == lectureName) {
                 [notesDic setValue:lec.courseID forKey:@"COURSEID"];
             }
@@ -118,8 +126,7 @@
 
 -(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
 {
-    lectureName = [[allectures objectAtIndex:row] course];
-    //NSLog(@"Selected %@", lectureName);
+    lectureName = [[templateLectures objectAtIndex:row] course];
 }
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField
