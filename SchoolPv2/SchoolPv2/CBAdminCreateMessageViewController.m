@@ -65,7 +65,7 @@
 {
     if (!([_mailTextField.text isEqualToString:@""]) && !([_messageTextField.text isEqualToString:@""])) {
         [messageDictionary setValue:_messageTextField.text forKey:@"TEXT"];
-        [messageDictionary setValue:[[NSUserDefaults standardUserDefaults]objectForKey:@"SchoolP_user"] forKey:@"SENDER"];
+        [messageDictionary setValue:[[[NSUserDefaults standardUserDefaults]objectForKey:@"SchoolP_user"] objectForKey:@"MAIL"] forKey:@"SENDER"];
         
         allReceivers = [[NSMutableArray alloc] init];
         allReceivers = [[[_mailTextField.text stringByReplacingOccurrencesOfString:@" " withString:@""] componentsSeparatedByString:@","] mutableCopy];
