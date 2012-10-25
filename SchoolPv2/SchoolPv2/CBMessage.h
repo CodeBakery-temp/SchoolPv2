@@ -1,7 +1,8 @@
-@interface CBMessage : NSObject
+#import <Foundation/Foundation.h>
+
+@interface CBMessage : NSObject <NSCoding>
 
 @property (nonatomic, copy) NSString* sender;
-// receiver
 @property (nonatomic, copy) NSString* text;
 
 +(id) messageWithSender: (NSString *)sender

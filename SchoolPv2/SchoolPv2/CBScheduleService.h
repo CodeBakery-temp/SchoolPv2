@@ -4,6 +4,7 @@
 
 @interface CBScheduleService : NSObject
 {
+    NSDictionary *storage;
     NSMutableArray *weekLectures;
     NSMutableArray *weekNotes;
     NSMutableArray *messages;
@@ -20,12 +21,12 @@
 - (NSDictionary*)getDayNotes:(int)day;
 - (NSArray*)getMessages;
 
-- (void)getLecturesOfWeek:(CBUser*)user
+- (void)getLecturesOfWeek:(NSDictionary*)user
               currentWeek:(NSUInteger)currentWeek;
 
 - (void)sortLecturesByVersionAndTime;
 
-- (void)getNotesOfWeekAndMessages: (CBUser*)user
+- (void)getNotesOfWeekAndMessages: (NSDictionary*)user
                       currentWeek: (NSUInteger)currentWeek;
 
 - (CBLecture*)createLecture:(NSDictionary*)dict;
@@ -39,5 +40,10 @@
 - (CBLecture*)updateLecture:(NSDictionary*)dict;
 
 -(int)timeStringToTimeInt:(NSString *)stringNum;
+
+
+- (NSString*)itemArchivepath;
+
+- (BOOL)saveChanges;
 
 @end

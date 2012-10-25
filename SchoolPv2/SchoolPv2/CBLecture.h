@@ -1,6 +1,6 @@
 #import <Foundation/Foundation.h>
 
-@interface CBLecture : NSObject
+@interface CBLecture : NSObject <NSCoding>
 
 @property (nonatomic, copy) NSString *couchDBId;
 @property (nonatomic, copy) NSString *couchDBRev;
@@ -13,9 +13,6 @@
 @property (nonatomic, copy) NSString *startTime;
 @property (nonatomic, copy) NSString *stopTime;
 @property (nonatomic, copy) NSString *year;
-
-// daysOfWeek
-// weeks
 
 + (id) courseWithName: (NSString *)course
               teacher: (NSString *)teacher
@@ -48,7 +45,5 @@
 -(NSMutableArray *)daysOfWeek;
 
 -(NSMutableArray *)weeks;
-
--(void)printLecture;
 
 @end

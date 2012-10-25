@@ -125,7 +125,6 @@
 
 - (void)createTemplate:(id)sender
 {
-    NSLog(@"CREATE");
     if (!([_teacherField.text isEqualToString:@""]) && !([_courseField.text isEqualToString:@""]) && !([_roomField.text isEqualToString:@""]) && !([_dayField.text isEqualToString:@""]) && !([_weekField.text isEqualToString:@""]) && !([_yearField.text isEqualToString:@""]) && !([_startField.text isEqualToString:@""]) && !([_stopField.text isEqualToString:@""]))
     {
         [courseInfo setValue:_courseField.text forKey:@"COURSE"];
@@ -172,7 +171,6 @@
 
 - (IBAction)createEvent:(id)sender
 {
-    NSLog(@"EVENT");
     if (!([_teacherField.text isEqualToString:@""]) && !([_courseField.text isEqualToString:@""]) && !([_roomField.text isEqualToString:@""]) && !([_dayField.text isEqualToString:@""]) && !([_weekField.text isEqualToString:@""]) && !([_yearField.text isEqualToString:@""]) && !([_startField.text isEqualToString:@""]) && !([_stopField.text isEqualToString:@""]))
     {
         [courseInfo setValue:_courseField.text forKey:@"COURSE"];
@@ -220,7 +218,6 @@
 
 - (void)updateLecture:(id)sender
 {
-    NSLog(@"UPDATE");
     if (!([_teacherField.text isEqualToString:@""]) && !([_courseField.text isEqualToString:@""]) && !([_roomField.text isEqualToString:@""]) && !([_dayField.text isEqualToString:@""]) && !([_weekField.text isEqualToString:@""]) && !([_yearField.text isEqualToString:@""]) && !([_startField.text isEqualToString:@""]) && !([_stopField.text isEqualToString:@""]))
     {
         [courseInfo setObject:[_lecture couchDBId] forKey:@"COUCHID"];
@@ -271,7 +268,6 @@
 
 - (void)cancelTemplate:(id)sender
 {
-    NSLog(@"CANCEL");
     [[self presentingViewController] dismissViewControllerAnimated:YES completion:nil];
 }
 

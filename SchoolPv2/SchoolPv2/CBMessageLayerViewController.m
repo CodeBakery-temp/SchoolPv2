@@ -47,7 +47,6 @@
 {
     if (fromInterfaceOrientation==UIInterfaceOrientationLandscapeLeft||
         fromInterfaceOrientation==UIInterfaceOrientationLandscapeRight) {
-        NSLog(@"DAY VIEW");
         CBDayViewController *dayController = [[CBDayViewController alloc] init];
         dayController.delegate = delegate;
         [delegate setRootViewController:dayController];

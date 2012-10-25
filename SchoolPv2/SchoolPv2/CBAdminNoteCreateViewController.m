@@ -111,7 +111,6 @@
                 [notesDic setValue:lec.courseID forKey:@"COURSEID"];
             }
         }
-        NSLog(@"%@", [notesDic allValues]);
         [schedule createNote:notesDic];
         _noteTextView.text = @"Write a note here...";
         _superDayTextField.text = @"";

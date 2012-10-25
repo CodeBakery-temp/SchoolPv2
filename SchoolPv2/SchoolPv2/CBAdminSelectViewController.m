@@ -35,7 +35,6 @@
 
 - (void)exitAdmin:(id)sender
 {
-    NSLog(@"DAY VIEW");
     CBDayViewController *dayController = [[CBDayViewController alloc] init];
     dayController.delegate = delegate;
     [delegate setRootViewController:dayController];
@@ -43,21 +42,18 @@
 
 - (IBAction)toCourses:(id)sender
 {
-    NSLog(@"LECTURES");
     CBAdminCourseViewController *lectureList = [[CBAdminCourseViewController alloc] init];
     [[self navigationController] pushViewController:lectureList animated:YES];
 }
 
 - (IBAction)toNotes:(id)sender
 {
-    NSLog(@"NOTES");
     CBAdminNoteCreateViewController *noteCreate = [[CBAdminNoteCreateViewController alloc]init];
     [[self navigationController] pushViewController:noteCreate animated:YES];
 }
 
 - (IBAction)toMessages:(id)sender
 {
-    NSLog(@"MESSAGES");
     CBAdminCreateMessageViewController *messageCreate = [[CBAdminCreateMessageViewController alloc]init];
     [[self navigationController] pushViewController:messageCreate animated:YES];
 }

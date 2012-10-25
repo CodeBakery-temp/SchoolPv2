@@ -134,14 +134,42 @@
             [lessonDays componentsJoinedByString:@", "], [lessonWeeks componentsJoinedByString:@", "]];
 }
 
--(void)printLecture {
-    NSLog(@"\nCourse: %@, \nTeacher: %@, \nRoom: %@, \nTime: %@-%@, \nYear: %@ \n\n",
-          self.course,
-          self.teacher,
-          self.room,
-          self.startTime,
-          self.stopTime,
-          self.year);
+- (void)encodeWithCoder:(NSCoder *)aCoder
+{
+    [aCoder encodeObject: _courseID forKey:@"courseID"];
+    [aCoder encodeObject: _version forKey:@"version"];
+    [aCoder encodeObject: _course forKey:@"course"];
+    [aCoder encodeObject: _teacher forKey:@"teacher"];
+    [aCoder encodeObject: _room forKey:@"room"];
+    [aCoder encodeObject: _startTime forKey:@"startTime"];
+    [aCoder encodeObject: _stopTime forKey:@"stopTime"];
+    [aCoder encodeObject: _stopTime forKey:@"year"];
+    [aCoder encodeObject: lessonDays forKey:@"daysOfWeek"];
+    [aCoder encodeObject: lessonWeeks forKey:@"weeks"];
+    
+    [aCoder encodeObject: _couchDBId forKey:@"couchDBId"];
+    [aCoder encodeObject: _couchDBRev forKey:@"couchDBRev"];
 }
+
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
+    self = [super init];
+    if (self) {
+        [self setCourseID:[aDecoder decodeObjectForKey:@"courseID"]];
+        [self setVersion:[aDecoder decodeObjectForKey:@"version"]];
+        [self setCourse:[aDecoder decodeObjectForKey:@"course"]];
+        [self setTeacher:[aDecoder decodeObjectForKey:@"teacher"]];
+        [self setRoom:[aDecoder decodeObjectForKey:@"room"]];
+        [self setStartTime:[aDecoder decodeObjectForKey:@"startTime"]];
+        [self setStopTime:[aDecoder decodeObjectForKey:@"stopTime"]];
+        lessonDays = [aDecoder decodeObjectForKey:@"daysOfWeek"];
+        lessonWeeks = [aDecoder decodeObjectForKey:@"weeks"];
+        
+        [self setCouchDBId:[aDecoder decodeObjectForKey:@"couchDBId"]];
+        [self setCouchDBRev:[aDecoder decodeObjectForKey:@"couchDBRev"]];
+    }
+    return self;
+}
+
 
 @end

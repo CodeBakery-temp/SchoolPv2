@@ -40,41 +40,56 @@
     {
         db = [CBDatabaseService database];
         
-        NSMutableDictionary *mondayDict = [NSMutableDictionary dictionaryWithObject:@"MONDAY" forKey:@"DAY"];
-        NSMutableArray *mondayList = [[NSMutableArray alloc] init];
-        [mondayDict setObject:mondayList forKey:@"LECTURES"];
-        NSMutableDictionary *tuesdayDict = [NSMutableDictionary dictionaryWithObject:@"TUESDAY" forKey:@"DAY"];
-        NSMutableArray *tuesdayList = [[NSMutableArray alloc] init];
-        [tuesdayDict setObject:tuesdayList forKey:@"LECTURES"];
-        NSMutableDictionary *wednesdayDict = [NSMutableDictionary dictionaryWithObject:@"WEDNESDAY" forKey:@"DAY"];
-        NSMutableArray *wednesdayList = [[NSMutableArray alloc] init];
-        [wednesdayDict setObject:wednesdayList forKey:@"LECTURES"];
-        NSMutableDictionary *thursdayDict = [NSMutableDictionary dictionaryWithObject:@"THURSDAY" forKey:@"DAY"];
-        NSMutableArray *thursdayList = [[NSMutableArray alloc] init];
-        [thursdayDict setObject:thursdayList forKey:@"LECTURES"];
-        NSMutableDictionary *fridayDict = [NSMutableDictionary dictionaryWithObject:@"FRIDAY" forKey:@"DAY"];
-        NSMutableArray *fridayList = [[NSMutableArray alloc] init];
-        [fridayDict setObject:fridayList forKey:@"LECTURES"];
-        
-        weekLectures = [[NSMutableArray alloc] initWithObjects:mondayDict, tuesdayDict, wednesdayDict, thursdayDict, fridayDict, nil];
-        
-        NSMutableDictionary *mondayNoteDict = [NSMutableDictionary dictionaryWithObject:@"MONDAY" forKey:@"DAY"];
-        NSMutableArray *mondayNoteList = [[NSMutableArray alloc] init];
-        [mondayNoteDict setObject:mondayNoteList forKey:@"NOTES"];
-        NSMutableDictionary *tuesdayNoteDict = [NSMutableDictionary dictionaryWithObject:@"TUESDAY" forKey:@"DAY"];
-        NSMutableArray *tuesdayNoteList = [[NSMutableArray alloc] init];
-        [tuesdayNoteDict setObject:tuesdayNoteList forKey:@"NOTES"];
-        NSMutableDictionary *wednesdayNoteDict = [NSMutableDictionary dictionaryWithObject:@"WEDNESDAY" forKey:@"DAY"];
-        NSMutableArray *wednesdayNoteList = [[NSMutableArray alloc] init];
-        [wednesdayNoteDict setObject:wednesdayNoteList forKey:@"NOTES"];
-        NSMutableDictionary *thursdayNoteDict = [NSMutableDictionary dictionaryWithObject:@"THURSDAY" forKey:@"DAY"];
-        NSMutableArray *thursdayNoteList = [[NSMutableArray alloc] init];
-        [thursdayNoteDict setObject:thursdayNoteList forKey:@"NOTES"];
-        NSMutableDictionary *fridayNoteDict = [NSMutableDictionary dictionaryWithObject:@"FRIDAY" forKey:@"DAY"];
-        NSMutableArray *fridayNoteList = [[NSMutableArray alloc] init];
-        [fridayNoteDict setObject:fridayNoteList forKey:@"NOTES"];
-        
-        weekNotes = [[NSMutableArray alloc] initWithObjects:mondayNoteDict, tuesdayNoteDict, wednesdayNoteDict, thursdayNoteDict, fridayNoteDict, nil];
+        NSString* path = [self itemArchivepath];
+        storage = [NSKeyedUnarchiver unarchiveObjectWithFile:path];
+        if (!storage) {
+            NSMutableDictionary *mondayDict = [NSMutableDictionary dictionaryWithObject:@"MONDAY" forKey:@"DAY"];
+            NSMutableArray *mondayList = [[NSMutableArray alloc] init];
+            [mondayDict setObject:mondayList forKey:@"LECTURES"];
+            NSMutableDictionary *tuesdayDict = [NSMutableDictionary dictionaryWithObject:@"TUESDAY" forKey:@"DAY"];
+            NSMutableArray *tuesdayList = [[NSMutableArray alloc] init];
+            [tuesdayDict setObject:tuesdayList forKey:@"LECTURES"];
+            NSMutableDictionary *wednesdayDict = [NSMutableDictionary dictionaryWithObject:@"WEDNESDAY" forKey:@"DAY"];
+            NSMutableArray *wednesdayList = [[NSMutableArray alloc] init];
+            [wednesdayDict setObject:wednesdayList forKey:@"LECTURES"];
+            NSMutableDictionary *thursdayDict = [NSMutableDictionary dictionaryWithObject:@"THURSDAY" forKey:@"DAY"];
+            NSMutableArray *thursdayList = [[NSMutableArray alloc] init];
+            [thursdayDict setObject:thursdayList forKey:@"LECTURES"];
+            NSMutableDictionary *fridayDict = [NSMutableDictionary dictionaryWithObject:@"FRIDAY" forKey:@"DAY"];
+            NSMutableArray *fridayList = [[NSMutableArray alloc] init];
+            [fridayDict setObject:fridayList forKey:@"LECTURES"];
+            
+            weekLectures = [[NSMutableArray alloc] initWithObjects:mondayDict, tuesdayDict, wednesdayDict, thursdayDict, fridayDict, nil];
+            
+            NSMutableDictionary *mondayNoteDict = [NSMutableDictionary dictionaryWithObject:@"MONDAY" forKey:@"DAY"];
+            NSMutableArray *mondayNoteList = [[NSMutableArray alloc] init];
+            [mondayNoteDict setObject:mondayNoteList forKey:@"NOTES"];
+            NSMutableDictionary *tuesdayNoteDict = [NSMutableDictionary dictionaryWithObject:@"TUESDAY" forKey:@"DAY"];
+            NSMutableArray *tuesdayNoteList = [[NSMutableArray alloc] init];
+            [tuesdayNoteDict setObject:tuesdayNoteList forKey:@"NOTES"];
+            NSMutableDictionary *wednesdayNoteDict = [NSMutableDictionary dictionaryWithObject:@"WEDNESDAY" forKey:@"DAY"];
+            NSMutableArray *wednesdayNoteList = [[NSMutableArray alloc] init];
+            [wednesdayNoteDict setObject:wednesdayNoteList forKey:@"NOTES"];
+            NSMutableDictionary *thursdayNoteDict = [NSMutableDictionary dictionaryWithObject:@"THURSDAY" forKey:@"DAY"];
+            NSMutableArray *thursdayNoteList = [[NSMutableArray alloc] init];
+            [thursdayNoteDict setObject:thursdayNoteList forKey:@"NOTES"];
+            NSMutableDictionary *fridayNoteDict = [NSMutableDictionary dictionaryWithObject:@"FRIDAY" forKey:@"DAY"];
+            NSMutableArray *fridayNoteList = [[NSMutableArray alloc] init];
+            [fridayNoteDict setObject:fridayNoteList forKey:@"NOTES"];
+            
+            weekNotes = [[NSMutableArray alloc] initWithObjects:
+                         mondayNoteDict, tuesdayNoteDict, wednesdayNoteDict, thursdayNoteDict, fridayNoteDict, nil];
+            storage = [[NSDictionary alloc] initWithObjectsAndKeys:
+                       weekLectures, @"LECTURES", weekNotes, @"NOTES",messages, @"MESSAGES", nil];
+        }
+        else {
+            weekLectures = [[NSMutableArray alloc] init];
+            weekNotes = [[NSMutableArray alloc] init];
+            messages = [[NSMutableArray alloc] init];
+            [weekLectures setArray:[storage objectForKey:@"LECTURES"]];
+            [weekNotes setArray:[storage objectForKey:@"NOTES"]];
+            [messages setArray:[storage objectForKey:@"MESSAGES"]];
+        }
     }
     return self;
 }
@@ -145,12 +160,12 @@
  ACCEPTS: Student/Admin object, NSUInteger of current week
  RESULT : weekLectures has LECTURES sorts in MONDAY - FRIDAY
  *********************************************************************/
-- (void)getLecturesOfWeek:(CBUser *)user currentWeek:(NSUInteger)currentWeek
+- (void)getLecturesOfWeek:(NSDictionary *)user currentWeek:(NSUInteger)currentWeek
 {
     NSArray* lectures = [db getLectures];
     NSMutableArray* userLectures = [NSMutableArray array];
     // SORT OUT WEEK LECTURES
-    for(NSString* courseID in [user courses]) {
+    for(NSString* courseID in [user objectForKey:@"COURSES"]) {
         for(CBLecture* lecture in lectures) {
             if([courseID isEqualToString:[lecture courseID]]) {
                 for(NSString* week in [lecture weeks]) {
@@ -245,7 +260,7 @@
  ACCEPTS: Student/Admin object, NSUInteger of current week
  RESULT : weekNotes has NOTES sorts in MONDAY - FRIDAY, messages is populated
  *********************************************************************/
-- (void)getNotesOfWeekAndMessages:(CBUser *)user currentWeek:(NSUInteger)currentWeek
+- (void)getNotesOfWeekAndMessages:(NSDictionary *)user currentWeek:(NSUInteger)currentWeek
 {
     NSDictionary *notifications = [db getNotifications];
     NSArray* notes = [notifications objectForKey:@"NOTES"];
@@ -253,7 +268,7 @@
     NSMutableArray* userNotes = [NSMutableArray array];
     messages = [[NSMutableArray alloc] init];
     // SORT OUT WEEK NOTES
-    for(NSString* courseID in [user courses]) {
+    for(NSString* courseID in [user objectForKey:@"COURSES"]) {
         for(CBNote* note in notes) {
             if([courseID isEqualToString:[note courseID]]) {
                 if([[note week] isEqualToString:[NSString stringWithFormat:@"%d", currentWeek]]) {
@@ -276,7 +291,7 @@
     }
     for (CBMessage* message in allMessages) {
         for (NSString *rece in [message receiver]) {
-            if ([rece isEqual:[user mailAddress]]) {
+            if ([rece isEqual:[user objectForKey:@"MAIL"]]) {
                 [messages addObject:message];
             }
         }
@@ -439,7 +454,6 @@
                                  [dict objectForKey:@"COUCHID"], @"_id",
                                  [dict objectForKey:@"COUCHREV"], @"_rev",
                                  nil];
-        NSLog(@"DICT: %@ LECTURE: %@", dict, lecture);
         NSDictionary* result = [db lectureToDataBase:lecture];
         NSLog(@"RESULT: %@", result);
         if ([result objectForKey:@"ok"]) {
@@ -460,7 +474,7 @@
         }
     }
     else {
-        NSLog(@"Object is not previously registered in database.");
+        NSLog(@"Lecture Template does not exist.");
     }
     return nil;
 }
@@ -475,6 +489,25 @@
     NSArray *timeArray = [stringNum componentsSeparatedByString:@":"];
     NSString *time = [[timeArray objectAtIndex:0] stringByAppendingString:[timeArray objectAtIndex:1]];
     return [time intValue];
+}
+
+/*********************************************************************
+ NSARCHIVING
+ *********************************************************************/
+- (NSString *)itemArchivepath
+{
+    NSArray* documentDirectories = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,
+                                                                       NSUserDomainMask,
+                                                                       YES);
+    NSString* documentDirectory = [documentDirectories objectAtIndex:0];
+    return [documentDirectory stringByAppendingPathComponent:@"items.archive"];
+}
+
+- (BOOL)saveChanges
+{
+    NSString *path = [self itemArchivepath];
+    NSLog(@"MESS: %d", [[storage objectForKey:@"MESSAGES"] count]);
+    return [NSKeyedArchiver archiveRootObject: storage toFile:path];
 }
 
 @end

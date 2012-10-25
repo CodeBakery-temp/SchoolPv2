@@ -7,7 +7,6 @@
 
 @synthesize sender = _sender;
 @synthesize text = _text;
-// receiver
 
 +(id)messageWithSender:(NSString *)sender
               receiver:(NSArray *)receiver
@@ -34,6 +33,25 @@
 
 -(NSMutableArray *)receiver {
     return allReceivers;
+}
+
+- (void)encodeWithCoder:(NSCoder *)aCoder
+{
+    NSLog(@"MESSAGE");
+    [aCoder encodeObject: _sender forKey:@"sender"];
+    [aCoder encodeObject: allReceivers forKey:@"receiver"];
+    [aCoder encodeObject: _text forKey:@"text"];
+}
+
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
+    self = [super init];
+    if (self) {
+        [self setSender:[aDecoder decodeObjectForKey:@"sender"]];
+        allReceivers = [aDecoder decodeObjectForKey:@"receiver"];
+        [self setText:[aDecoder decodeObjectForKey:@"text"]];
+    }
+    return self;
 }
 
 @end

@@ -40,4 +40,24 @@
             self.courseID];
 }
 
+- (void)encodeWithCoder:(NSCoder *)aCoder
+{
+    [aCoder encodeObject: _courseID forKey:@"courseID"];
+    [aCoder encodeObject: _week forKey:@"week"];
+    [aCoder encodeObject: _day forKey:@"day"];
+    [aCoder encodeObject: _text forKey:@"text"];
+}
+
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
+    self = [super init];
+    if (self) {
+        [self setCourseID:[aDecoder decodeObjectForKey:@"courseID"]];
+        [self setWeek:[aDecoder decodeObjectForKey:@"week"]];
+        [self setDay:[aDecoder decodeObjectForKey:@"day"]];
+        [self setText:[aDecoder decodeObjectForKey:@"text"]];
+    }
+    return self;
+}
+
 @end

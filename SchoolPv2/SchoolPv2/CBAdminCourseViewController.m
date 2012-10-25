@@ -113,8 +113,6 @@
         [editLecture setLecture:lecture];
         // EXECUTION BLOCK FOR EVENT-CREATION
         [editLecture setAddBlock:^void(CBLecture* lec){
-            NSString *keyID = [NSString stringWithFormat:@"%@", [lec courseID]];
-            NSLog(@"ADD TO LIST ID: %@", keyID);
             [[[courseLectures objectAtIndex:[indexPath section]] objectForKey:@"COURSE"] addObject:lec];
             [[self tableView] reloadData];
         }];
@@ -143,7 +141,6 @@
     CBAdminCourseFormViewController* addLecture = [[CBAdminCourseFormViewController alloc] initNewTemplate];
     [addLecture setAddBlock:^void(CBLecture* lec){
         NSString *keyID = [NSString stringWithFormat:@"%@", [lec courseID]];
-        NSLog(@"ADD TO LIST ID: %@", keyID);
         NSMutableArray *list = [[NSMutableArray alloc] init];
         [list addObject:lec];
         NSDictionary *courseDict = [[NSDictionary alloc] initWithObjectsAndKeys:

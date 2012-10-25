@@ -22,10 +22,6 @@
         schedule = [CBScheduleService schedule];
         messages = [[NSMutableArray alloc] init];
         messages = [[schedule getMessages] mutableCopy];
-        for (CBMessage *message in messages) {
-            NSLog(@"%@", message);
-        }
-        
     }
     return self;
 }

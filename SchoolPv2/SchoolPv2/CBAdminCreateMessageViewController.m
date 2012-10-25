@@ -54,7 +54,6 @@
 }
 
 - (IBAction)mailTextFieldDo:(id)sender {
-    NSLog(@"HEJ");
     [sender resignFirstResponder];
 }
 
@@ -62,21 +61,16 @@
     [[self view] endEditing:YES];
 }
 
--(IBAction)newMessage:(id)sender
+-(void)newMessage:(id)sender
 {
-    NSLog(@"%@",_mailTextField.text);
-    NSLog(@"%@", _messageTextField.text);
     if (!([_mailTextField.text isEqualToString:@""]) && !([_messageTextField.text isEqualToString:@""])) {
-        NSLog(@"OK");
         [messageDictionary setValue:_messageTextField.text forKey:@"TEXT"];
         [messageDictionary setValue:[[NSUserDefaults standardUserDefaults]objectForKey:@"SchoolP_user"] forKey:@"SENDER"];
         
         allReceivers = [[NSMutableArray alloc] init];
         allReceivers = [[[_mailTextField.text stringByReplacingOccurrencesOfString:@" " withString:@""] componentsSeparatedByString:@","] mutableCopy];
             [messageDictionary setValue:allReceivers forKey:@"RECEIVER"];
-        
-        
-        NSLog(@"%@", [messageDictionary allValues]);
+
         [schedule createMessage:messageDictionary];
         _messageTextField.text = @"";
         _mailTextField.text = @"";

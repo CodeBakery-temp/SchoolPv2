@@ -13,19 +13,21 @@
 		06AA445B16256504002DDB8F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 06AA445916256504002DDB8F /* InfoPlist.strings */; };
 		06AA445D16256504002DDB8F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 06AA445C16256504002DDB8F /* main.m */; };
 		06AA446116256504002DDB8F /* CBAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 06AA446016256504002DDB8F /* CBAppDelegate.m */; };
-		06AA446316256504002DDB8F /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 06AA446216256504002DDB8F /* Default.png */; };
-		06AA446516256504002DDB8F /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 06AA446416256504002DDB8F /* Default@2x.png */; };
-		06AA446716256504002DDB8F /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 06AA446616256504002DDB8F /* Default-568h@2x.png */; };
-		06AA446A16256504002DDB8F /* SchoolPv2.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 06AA446816256504002DDB8F /* SchoolPv2.xcdatamodeld */; };
+		06AA446316256504002DDB8F /* Default1.png in Resources */ = {isa = PBXBuildFile; fileRef = 06AA446216256504002DDB8F /* Default1.png */; };
+		06AA446516256504002DDB8F /* Default1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 06AA446416256504002DDB8F /* Default1@2x.png */; };
+		06AA446716256504002DDB8F /* Default1-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 06AA446616256504002DDB8F /* Default1-568h@2x.png */; };
 		06AA44811625660F002DDB8F /* CBLecture.m in Sources */ = {isa = PBXBuildFile; fileRef = 06AA44801625660F002DDB8F /* CBLecture.m */; };
 		06AA448416256623002DDB8F /* CBNote.m in Sources */ = {isa = PBXBuildFile; fileRef = 06AA448316256623002DDB8F /* CBNote.m */; };
 		06AA448716256638002DDB8F /* CBUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 06AA448616256638002DDB8F /* CBUser.m */; };
 		06AA448A16256644002DDB8F /* CBMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 06AA448916256644002DDB8F /* CBMessage.m */; };
 		06AA448D16256777002DDB8F /* CBDatabaseService.m in Sources */ = {isa = PBXBuildFile; fileRef = 06AA448C16256777002DDB8F /* CBDatabaseService.m */; };
 		06AA4490162567EB002DDB8F /* CBScheduleService.m in Sources */ = {isa = PBXBuildFile; fileRef = 06AA448F162567EB002DDB8F /* CBScheduleService.m */; };
-		06B0607F1637343A00294CB7 /* adminButton in Resources */ = {isa = PBXBuildFile; fileRef = 06B0607E1637343A00294CB7 /* adminButton */; };
 		06B060831637421500294CB7 /* CBMessageLayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06B060811637421400294CB7 /* CBMessageLayerViewController.m */; };
 		06B060841637421500294CB7 /* CBMessageLayerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 06B060821637421400294CB7 /* CBMessageLayerViewController.xib */; };
+		06B8DE451639572100C579FF /* app-icon_114x114.png in Resources */ = {isa = PBXBuildFile; fileRef = 06B8DE441639572100C579FF /* app-icon_114x114.png */; };
+		06B8DE4E1639589100C579FF /* app-icon_57x57.png in Resources */ = {isa = PBXBuildFile; fileRef = 06B8DE4B1639589100C579FF /* app-icon_57x57.png */; };
+		06B8DE4F1639589100C579FF /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 06B8DE4C1639589100C579FF /* Default@2x.png */; };
+		06B8DE501639589100C579FF /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 06B8DE4D1639589100C579FF /* Default-568h@2x.png */; };
 		06C239B41631388600ADD838 /* bottom.png in Resources */ = {isa = PBXBuildFile; fileRef = 06C239AC1631388600ADD838 /* bottom.png */; };
 		06C239B51631388600ADD838 /* chalkboard.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 06C239AD1631388600ADD838 /* chalkboard.jpg */; };
 		06C239B61631388600ADD838 /* mail-closed.png in Resources */ = {isa = PBXBuildFile; fileRef = 06C239AE1631388600ADD838 /* mail-closed.png */; };
@@ -80,10 +82,9 @@
 		06AA445E16256504002DDB8F /* SchoolPv2-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SchoolPv2-Prefix.pch"; sourceTree = "<group>"; };
 		06AA445F16256504002DDB8F /* CBAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CBAppDelegate.h; path = SchoolPv2/CBAppDelegate.h; sourceTree = "<group>"; };
 		06AA446016256504002DDB8F /* CBAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = CBAppDelegate.m; path = SchoolPv2/CBAppDelegate.m; sourceTree = "<group>"; };
-		06AA446216256504002DDB8F /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
-		06AA446416256504002DDB8F /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
-		06AA446616256504002DDB8F /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		06AA446916256504002DDB8F /* SchoolPv2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SchoolPv2.xcdatamodel; sourceTree = "<group>"; };
+		06AA446216256504002DDB8F /* Default1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default1.png; sourceTree = "<group>"; };
+		06AA446416256504002DDB8F /* Default1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default1@2x.png"; sourceTree = "<group>"; };
+		06AA446616256504002DDB8F /* Default1-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default1-568h@2x.png"; sourceTree = "<group>"; };
 		06AA447F1625660F002DDB8F /* CBLecture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBLecture.h; sourceTree = "<group>"; };
 		06AA44801625660F002DDB8F /* CBLecture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBLecture.m; sourceTree = "<group>"; };
 		06AA448216256623002DDB8F /* CBNote.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBNote.h; sourceTree = "<group>"; };
@@ -96,10 +97,13 @@
 		06AA448C16256777002DDB8F /* CBDatabaseService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBDatabaseService.m; sourceTree = "<group>"; };
 		06AA448E162567EB002DDB8F /* CBScheduleService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBScheduleService.h; sourceTree = "<group>"; };
 		06AA448F162567EB002DDB8F /* CBScheduleService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBScheduleService.m; sourceTree = "<group>"; };
-		06B0607E1637343A00294CB7 /* adminButton */ = {isa = PBXFileReference; lastKnownFileType = file; path = adminButton; sourceTree = "<group>"; };
 		06B060801637421400294CB7 /* CBMessageLayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBMessageLayerViewController.h; sourceTree = "<group>"; };
 		06B060811637421400294CB7 /* CBMessageLayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBMessageLayerViewController.m; sourceTree = "<group>"; };
 		06B060821637421400294CB7 /* CBMessageLayerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CBMessageLayerViewController.xib; sourceTree = "<group>"; };
+		06B8DE441639572100C579FF /* app-icon_114x114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "app-icon_114x114.png"; sourceTree = "<group>"; };
+		06B8DE4B1639589100C579FF /* app-icon_57x57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "app-icon_57x57.png"; sourceTree = "<group>"; };
+		06B8DE4C1639589100C579FF /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "../Default@2x.png"; sourceTree = "<group>"; };
+		06B8DE4D1639589100C579FF /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../Default-568h@2x.png"; sourceTree = "<group>"; };
 		06C239AC1631388600ADD838 /* bottom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bottom.png; sourceTree = "<group>"; };
 		06C239AD1631388600ADD838 /* chalkboard.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = chalkboard.jpg; sourceTree = "<group>"; };
 		06C239AE1631388600ADD838 /* mail-closed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mail-closed.png"; sourceTree = "<group>"; };
@@ -211,7 +215,6 @@
 				06AA447016256555002DDB8F /* Service */,
 				06AA44711625655C002DDB8F /* View */,
 				06AA447216256562002DDB8F /* Model */,
-				06AA446816256504002DDB8F /* SchoolPv2.xcdatamodeld */,
 			);
 			path = SchoolPv2;
 			sourceTree = "<group>";
@@ -219,15 +222,17 @@
 		06AA445716256504002DDB8F /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				06B8DE4C1639589100C579FF /* Default@2x.png */,
+				06B8DE4D1639589100C579FF /* Default-568h@2x.png */,
 				151E4D8B16318AC20054E358 /* Schoolbell.ttf */,
 				15E3830616315C9600D8BBCA /* DK Crayon Crumble.ttf */,
 				06AA445816256504002DDB8F /* SchoolPv2-Info.plist */,
 				06AA445916256504002DDB8F /* InfoPlist.strings */,
 				06AA445C16256504002DDB8F /* main.m */,
 				06AA445E16256504002DDB8F /* SchoolPv2-Prefix.pch */,
-				06AA446216256504002DDB8F /* Default.png */,
-				06AA446416256504002DDB8F /* Default@2x.png */,
-				06AA446616256504002DDB8F /* Default-568h@2x.png */,
+				06AA446216256504002DDB8F /* Default1.png */,
+				06AA446416256504002DDB8F /* Default1@2x.png */,
+				06AA446616256504002DDB8F /* Default1-568h@2x.png */,
 			);
 			name = "Supporting Files";
 			path = SchoolPv2;
@@ -341,10 +346,11 @@
 		CE8FE5761636D3A00028EB61 /* Image */ = {
 			isa = PBXGroup;
 			children = (
+				06B8DE4B1639589100C579FF /* app-icon_57x57.png */,
+				06B8DE441639572100C579FF /* app-icon_114x114.png */,
 				15BE97E416380EFA005A7D7E /* cogweel.png */,
 				15BE97E516380EFA005A7D7E /* postIT2.png */,
 				15BE97E616380EFA005A7D7E /* syncArrow.png */,
-				06B0607E1637343A00294CB7 /* adminButton */,
 				06C239AF1631388600ADD838 /* mail-open.png */,
 				15964B3F16317CB0002F3AEB /* postitICON.png */,
 				06C239B01631388600ADD838 /* postit.png */,
@@ -445,9 +451,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				06AA445B16256504002DDB8F /* InfoPlist.strings in Resources */,
-				06AA446316256504002DDB8F /* Default.png in Resources */,
-				06AA446516256504002DDB8F /* Default@2x.png in Resources */,
-				06AA446716256504002DDB8F /* Default-568h@2x.png in Resources */,
+				06AA446316256504002DDB8F /* Default1.png in Resources */,
+				06AA446516256504002DDB8F /* Default1@2x.png in Resources */,
+				06AA446716256504002DDB8F /* Default1-568h@2x.png in Resources */,
 				06C239B41631388600ADD838 /* bottom.png in Resources */,
 				06C239B51631388600ADD838 /* chalkboard.jpg in Resources */,
 				06C239B61631388600ADD838 /* mail-closed.png in Resources */,
@@ -469,11 +475,14 @@
 				CE2163791636B349009FA04B /* CBAdminCreateMessageViewController.xib in Resources */,
 				CE21637E1636B373009FA04B /* CBAdminNoteCreateViewController.xib in Resources */,
 				CE8FE5651636D08A0028EB61 /* CBMessageCell.xib in Resources */,
-				06B0607F1637343A00294CB7 /* adminButton in Resources */,
 				06B060841637421500294CB7 /* CBMessageLayerViewController.xib in Resources */,
 				15BE97E716380EFA005A7D7E /* cogweel.png in Resources */,
 				15BE97E816380EFA005A7D7E /* postIT2.png in Resources */,
 				15BE97E916380EFA005A7D7E /* syncArrow.png in Resources */,
+				06B8DE451639572100C579FF /* app-icon_114x114.png in Resources */,
+				06B8DE4E1639589100C579FF /* app-icon_57x57.png in Resources */,
+				06B8DE4F1639589100C579FF /* Default@2x.png in Resources */,
+				06B8DE501639589100C579FF /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -486,7 +495,6 @@
 			files = (
 				06AA445D16256504002DDB8F /* main.m in Sources */,
 				06AA446116256504002DDB8F /* CBAppDelegate.m in Sources */,
-				06AA446A16256504002DDB8F /* SchoolPv2.xcdatamodeld in Sources */,
 				06AA44811625660F002DDB8F /* CBLecture.m in Sources */,
 				06AA448416256623002DDB8F /* CBNote.m in Sources */,
 				06AA448716256638002DDB8F /* CBUser.m in Sources */,
@@ -620,19 +628,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		06AA446816256504002DDB8F /* SchoolPv2.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				06AA446916256504002DDB8F /* SchoolPv2.xcdatamodel */,
-			);
-			currentVersion = 06AA446916256504002DDB8F /* SchoolPv2.xcdatamodel */;
-			path = SchoolPv2.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 06AA444116256504002DDB8F /* Project object */;
 }

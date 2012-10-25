@@ -1,3 +1,5 @@
+#import <Foundation/Foundation.h>
+
 @interface CBUser : NSObject
 
 @property (nonatomic, copy) NSString *firstName;
