@@ -179,7 +179,13 @@
 
 - (NSUInteger)supportedInterfaceOrientations
 {
-    return UIInterfaceOrientationMaskAll;
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:@"SchoolP_user"]) {
+        return UIInterfaceOrientationMaskAll;
+    }
+    else
+    {
+        return UIInterfaceOrientationMaskPortrait;
+    }
 }
 
 - (IBAction)showNotes:(id)sender {
