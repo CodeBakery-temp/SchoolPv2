@@ -74,6 +74,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    UIImageView *imgView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"chalkboard.jpg"]];
+    [[self tableView]setBackgroundView:imgView];
 }
 
 - (void)viewWillAppear:(BOOL)animated
