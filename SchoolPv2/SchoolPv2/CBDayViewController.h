@@ -17,7 +17,9 @@
 @property (weak, nonatomic) IBOutlet UIView *noteView;
 @property (weak, nonatomic) IBOutlet UITableView *lectureTable;
 @property (weak, nonatomic) IBOutlet UITableView *noteTable;
+@property (strong, nonatomic) IBOutlet UIView *creditView;
 
+- (IBAction)showCredit:(id)sender;
 - (IBAction)showNotes:(id)sender;
 - (IBAction)toInbox:(id)sender;
 - (IBAction)doSync:(id)sender;

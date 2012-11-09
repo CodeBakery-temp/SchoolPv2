@@ -188,9 +188,20 @@
     }
 }
 
+- (IBAction)showCredit:(id)sender {
+    if (_creditView.hidden) {
+        _noteView.hidden =TRUE;
+        _creditView.hidden =FALSE;
+    }
+    else
+        _creditView.hidden =TRUE;
+}
+
 - (IBAction)showNotes:(id)sender {
-    if (_noteView.hidden)
+    if (_noteView.hidden) {
         _noteView.hidden =FALSE;
+        _creditView.hidden =TRUE;
+    }
     else
         _noteView.hidden =TRUE;
 }
